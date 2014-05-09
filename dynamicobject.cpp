@@ -1,0 +1,94 @@
+#include "dynamicobject.h"
+namespace SSJ{
+    DynamicObject::DynamicObject(): InteractiveObject()
+    {
+
+        this->angle = 0.0;
+        this->targetAngle = 0.0;
+
+    }
+
+    void DynamicObject::MoveForward(){
+        this->setMapPosition(CalcNewPosition(this->angle));
+
+    }
+
+    void DynamicObject::MoveBackward(){
+        this->setMapPosition(CalcNewPosition(this->angle+180));
+    }
+
+    void DynamicObject::MoveLeft(){
+        this->setMapPosition(CalcNewPosition(this->angle+270));
+    }
+
+    void DynamicObject::MoveRight(){
+        this->setMapPosition(CalcNewPosition(this->angle+90));
+    }
+
+    void DynamicObject::RotateLeft(){
+        double deltaAngle = Config::RotationSpeed * Config::DeltaTime.asSeconds();
+        bool a;
+        if(this->targetAngle.getDegrees() - this->angle.getDegrees() < 0)
+            a = true;
+        else
+            a = false;
+
+        /** czy przeszło przez zero by Łysy**/
+        if(this->angle.getDegrees() * (this->angle.getDegrees() - deltaAngle) < 0){
+            a = !a;
+        }
+
+        if(((this->targetAngle.getDegrees() - this->angle.getDegrees()- deltaAngle ) < 0 ) != a)
+            this->angle = this->targetAngle;
+        else
+            this->angle -= deltaAngle;
+
+
+
+    }
+
+    void DynamicObject::RotateRight(){
+        double deltaAngle = Config::RotationSpeed * Config::DeltaTime.asSeconds();
+        bool a;
+        if(this->targetAngle.getDegrees() - this->angle.getDegrees() < 0)
+            a = true;
+        else
+            a = false;
+
+        /** czy przeszło przez zero by Łysy**/
+        if(this->angle.getDegrees() * (this->angle.getDegrees() + deltaAngle) < 0){
+            a = !a;
+        }
+
+        if(((this->targetAngle.getDegrees() - this->angle.getDegrees() + deltaAngle ) < 0 ) != a)
+            this->angle = this->targetAngle;
+        else
+            this->angle += deltaAngle;
+    }
+
+    Point DynamicObject::CalcNewPosition(SSJ::Degrees addAngle){
+        Point newPosition;
+        SSJ::Degrees tempDegrees = this->angle;
+        tempDegrees += addAngle;
+        double s = this->velocity * Config::DeltaTime.asSeconds();
+        int px = sin(tempDegrees.getRadians()) * s;
+        int py = cos(tempDegrees.getRadians()) * s;
+        if(tempDegrees < 90.0){
+            newPosition.x = this->getMapPosition().x + px;
+            newPosition.y = this->getMapPosition().y - py;
+        }
+        else if(tempDegrees>=90.0 && tempDegrees < 180.0){
+            newPosition.x = this->getMapPosition().x + px;
+            newPosition.y = this->getMapPosition().y + py;
+        }
+        else if(tempDegrees >=180.0 && tempDegrees < 270.0){
+            newPosition.x = this->getMapPosition().x - px;
+            newPosition.y = this->getMapPosition().y + py;
+        }
+        else{
+            newPosition.x = this->getMapPosition().x - px;
+            newPosition.y = this->getMapPosition().y - py;
+        }
+        return newPosition;
+    }
+}
