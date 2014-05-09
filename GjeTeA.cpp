@@ -5,28 +5,38 @@
 // Copyright   : Your copyright notice
 // Description : Hello World in C++, Ansi-style
 //============================================================================
-#include <SFML/Graphics.hpp>
-#include <cmath>
+#include "appwindow.h"
+
+void Akcja1(sf::Event event){
+    cout << event.key.code << endl;
+}
+
 
 int main()
 {
-  //ddd
-    sf::RenderWindow okno( sf::VideoMode( 320, 240 ), "Kurs SFML 2.0 - http://cpp0x.pl" );
-    sf::Clock stoper;
-    while( okno.isOpen() )
-    {
-        sf::Event event;
-        while( okno.pollEvent( event ) )
-        {
-            if( event.type == sf::Event::Closed )
-                 okno.close();
+    Json::Value root;
+    SSJ::Config::ScreenWidth = 800;
+    SSJ::Config::ScreenHeight = 600;
+    SSJ::Config::ScreenMargin = 64;
 
-        } //while
-        okno.clear();
+    SSJ::AppWindow *Game  = new SSJ::AppWindow;
 
+    SSJ::GameLayer *pierwsza = new SSJ::GameLayer("pierwszy", true);
+    SSJ::MainPlayer *obiekt = new SSJ::MainPlayer();
+   // obiekt->AddAction(sf::Event::MouseButtonPressed, Akcja1);
+    pierwsza->addObject(obiekt);
+    Game->AddLayer(pierwsza);
 
 
-        okno.display();
-    } //while
-    return 0;
+    Game->LoadObjects();
+     while( Game->appWindow->isOpen())
+     {
+         Game->Events();
+         Game->Update();
+         Game->Draw();
+         Game->appWindow->display();
+
+
+     }
+     return 0;
 }
