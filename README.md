@@ -12,6 +12,7 @@ Konfiguracja Projektu GjeTeA pod Windowsem
 - Po instalacji odpalamy Git Bash'a
 - W konsoli wchodzimy do katalogu gdzie będą znajdować się pliki
 w Visual Studio będzie to katalog wg schemtu: 
+
         "sciezka_do_katalogu_z_projektami/Nazwa_projektu/Nazwa_projektu"
 	np w przypadku:  C://projects/ProjektProgramu/ProjektProgramu
 
@@ -25,8 +26,10 @@ w Visual Studio będzie to katalog wg schemtu:
 		git remote add origin https://github.com/qba10/GjeTeA.git
 - Ok, jako że nasze repozytorium lokalne jest puste musimy pobrać pliki z serwera
 	Do tego służy komenda:
+
         git pull
-	Będziemy jej  używać również podczas odświerzania naszego repozytorium lokalnego
+        
+Będziemy jej  używać również podczas odświerzania naszego repozytorium lokalnego
 
 - Jak możesz w tej chwili zauważyć, w naszym katalogu nie ma jescze żadanych plików. Żeby się pojawiły musisz wybrać branch'a z któego chcesz korzystać.
 Co to jest branch?
