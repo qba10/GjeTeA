@@ -62,6 +62,7 @@ Niestety nie potrafię w tej chwili w jakiś logiczny sposób zintegrować git'a
 
 	
 W Git Bashu wklepujemy następujące kroki:
+
 		cd /C
 		mkdir liby
 		cd liby
