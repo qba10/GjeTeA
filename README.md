@@ -53,6 +53,7 @@ Niestety nie potrafię w tej chwili w jakiś logiczny sposób zintegrować git'a
 ##Ściągniecie potrzebnych bibliotek
 
 * Tworzymy jakiś katlog gdzieś na komputerze i sciagmy tam liby potrzebne do kompilacji (w moim przypadku będzie to *C:/liby* )
+
 	
 W Git Bashu wklepujemy następujące kroki:
 		cd /C
@@ -64,14 +65,17 @@ W Git Bashu wklepujemy następujące kroki:
 * W Solution Explorer kilkamy prawym na nazwe projektu, a nstępnie Propertis
 * Wchodzimy do zakładki Configuration Propertis-> C++ ->General 
 * Do Additional Include Directories dodajmy scieżki: 
+
 		C:\liby\GjeTeA\SFML-2.1\include
 		C:\liby\GjeTeA\jsoncpp
 - Wchodzimy do zakładki Configuration Propertis-> Linker -> General
 - Do Additional Library Directories dodajmy scieżki:
+
 		C:\liby\GjeTeA\SFML-2.1\lib
 		C:\liby\GjeTeA\jsoncpp\Debug\bin
 - Wchodzimy do zakładki Configuration Propertis-> Linker -> Input
 - Do Additional Dependencies dodajmy :
+
 		sfml-window-d.lib
 		sfml-system-d.lib
 		sfml-graphics-d.lib
