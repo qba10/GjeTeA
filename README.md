@@ -18,12 +18,15 @@ w Visual Studio będzie to katalog wg schemtu:
 
 		cd /C/ProjektProgramu/ProjektProgramu
 - Inicjalizujemy projekt Gitza pomocą komendy:
+
         git init
-	W tym miejscu kilka słów o "gicie":
+W tym miejscu kilka słów o "gicie":
 
 	Git składa się z dwóch rodzajów repozytorium: lokalnego i zdalnego. Wygląda to tak, że pliki wersjonujemy na naszym lokalnym repozytorium, a potem dopiero zmiany wrzucamy do repoztorium zdalnego w naszym przypadku hostowanego na github.com		komenda git init tworzy nam właśnie takie repozytorium lokalne
 - Następnym krokiem jest podłączenie do naszego repozytorium, repozytorium zdalnego:
+
 		git remote add origin https://github.com/qba10/GjeTeA.git
+		
 - Ok, jako że nasze repozytorium lokalne jest puste musimy pobrać pliki z serwera
 	Do tego służy komenda:
 
