@@ -51,18 +51,19 @@ W tym momencie powinny pokazać się pliki w twoim katalogu
 Niestety nie potrafię w tej chwili w jakiś logiczny sposób zintegrować git'a z Visual Studio 
 	tak więc nowe pliki sciągniete z github'a na razie  dodajemy ręcznie do projektu (Solution Explorer -> *right click* -> add new -> existing files)
 ##Ściągniecie potrzebnych bibliotek
-- Tworzymy jakiś katlog gdzieś na komputerze i sciagmy tam liby potrzebne do kompilacji (w moim przypadku będzie to *C:/liby* )
+
+* Tworzymy jakiś katlog gdzieś na komputerze i sciagmy tam liby potrzebne do kompilacji (w moim przypadku będzie to *C:/liby* )
 	
-    W Git Bashu wklepujemy następujące kroki:
+W Git Bashu wklepujemy następujące kroki:
 		cd /C
 		mkdir liby
 		cd liby
 		git clone https://github.com/qba10/GjeTeA.git -b windows_lib
 
 ##Konfiguracja projektu Visual Studio	
-- W Solution Explorer kilkamy prawym na nazwe projektu, a nstępnie Propertis
-- Wchodzimy do zakładki Configuration Propertis-> C++ ->General
-- Do Additional Include Directories dodajmy scieżki:
+* W Solution Explorer kilkamy prawym na nazwe projektu, a nstępnie Propertis
+* Wchodzimy do zakładki Configuration Propertis-> C++ ->General 
+* Do Additional Include Directories dodajmy scieżki: 
 		C:\liby\GjeTeA\SFML-2.1\include
 		C:\liby\GjeTeA\jsoncpp
 - Wchodzimy do zakładki Configuration Propertis-> Linker -> General
