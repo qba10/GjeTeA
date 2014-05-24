@@ -8,7 +8,7 @@ namespace SSJ {
 	}
 	void Map::draw(){
 		sf::CircleShape mapa(500);
-		mapa.setPosition(0-Config::ScreenPosition.x, 0-Config::ScreenPosition.y);
+        mapa.setPosition(0-DataContainer::ScreenPosition.x, 0-DataContainer::ScreenPosition.y);
 		mapa.setFillColor(sf::Color(150, 120, 10));
 		//sf::Texture tekstura;
 		//tekstura.loadFromFile("mapa.png");
@@ -16,6 +16,6 @@ namespace SSJ {
 		//sprite.setTexture(tekstura);
 		//sprite.setPosition(0,0);
 		//Config::window->draw(sprite);
-		Config::window->draw(mapa);
+        DataContainer::window->draw(mapa);
 	}
 }
