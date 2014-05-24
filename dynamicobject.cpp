@@ -11,7 +11,7 @@ namespace SSJ{
 
 
     void DynamicObject::MoveForward(){
-        this->setMapPosition(CalcNewPosition(this->angle));
+        this->setMapPosition(CalcNewPosition(this->angle+0));
     }
 
     void DynamicObject::MoveBackward(){

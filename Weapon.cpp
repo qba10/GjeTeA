@@ -1,8 +1,12 @@
 #include "Weapon.h"
 namespace SSJ {
 
+	void Weapon::Shoot(){
+
+	}
+
 	string Weapon::getName(){
-		return this->getName;
+		return this->name;
 	}
     Weapon::Weapon(){
         this->ammo = maxAmmo;
@@ -48,5 +52,9 @@ namespace SSJ {
     void Weapon::setFireRate(int fireRate){
         this->fireRate = fireRate;
     }
+
+	Weapon::~Weapon(){
+
+	}
 }
 

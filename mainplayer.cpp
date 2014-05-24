@@ -185,8 +185,9 @@ namespace SSJ {
 
 		if(isFiring){
 			weapon.Shoot();	
-			if(!weapon.repeatFire)
+			if(!weapon.repeatFire){
 				isFiring = false;
+			}
 		}
     }
 }
