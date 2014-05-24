@@ -27,7 +27,7 @@ namespace SSJ {
     }
 
 	void MainPlayer::eventMouseMoved(sf::Event event){
-		int x = event.mouseMove.x - Config::;
+        //int x = event.mouseMove.x - Config::;
 		cout << event.mouseMove.x << endl;
 	}
 
@@ -73,7 +73,7 @@ namespace SSJ {
 		sf::Texture* teksture = new sf::Texture;
 		teksture->loadFromFile("texture.jpg");
 		shape.setTexture(teksture, true);
-		Config::window->draw(shape);
+        DataContainer::window->draw(shape);
 
 
         DataContainer::ScreenPosition.x = this->getMapPosition().x - DataContainer::ScreenWidth/2;

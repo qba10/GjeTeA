@@ -35,13 +35,13 @@ namespace SSJ{
             if(this->event.type == sf::Event::Closed){
                 this->appWindow->close();
             }
-            for(size_t i = 0 ; i < Config::EventList.size(); i++){
-                if(this->event.type == Config::EventList.at(i).EventType){
+            for(size_t i = 0 ; i < DataContainer::EventList.size(); i++){
+                if(this->event.type == DataContainer::EventList.at(i).EventType){
 					if(this->event.type == sf::Event::KeyPressed || this->event.type == sf::Event::KeyReleased){
-						if(Config::EventList.at(i).KeyAction != sf::Keyboard::Unknown && Config::EventList.at(i).KeyAction == this->event.key.code)
-							((Config::EventList.at(i).object)->*(Config::EventList.at(i).ActionFunction))(this->event);
+                        if(DataContainer::EventList.at(i).KeyAction != sf::Keyboard::Unknown && DataContainer::EventList.at(i).KeyAction == this->event.key.code)
+                            ((DataContainer::EventList.at(i).object)->*(DataContainer::EventList.at(i).ActionFunction))(this->event);
 					}else{
-						    ((Config::EventList.at(i).object)->*(Config::EventList.at(i).ActionFunction))(this->event);
+                            ((DataContainer::EventList.at(i).object)->*(DataContainer::EventList.at(i).ActionFunction))(this->event);
 					}
 						
 
