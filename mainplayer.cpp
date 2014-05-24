@@ -1,4 +1,4 @@
-#include "mainplayer.h"
+﻿#include "mainplayer.h"
 namespace SSJ {
 
 
@@ -128,7 +128,7 @@ namespace SSJ {
 		//shape.setTexture(teksture, true);
         DataContainer::window->draw(shape);
 
-
+		// dodać wyśrodkowanie gracza na środku ekranu na podstawie grafiki
         DataContainer::ScreenPosition.x = this->getMapPosition().x - DataContainer::ScreenWidth/2;
         DataContainer::ScreenPosition.y = this->getMapPosition().y - DataContainer::ScreenHeight/2;
     }

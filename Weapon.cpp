@@ -1,7 +1,9 @@
 #include "Weapon.h"
+#include "Bullet.h"
 namespace SSJ {
 
 	void Weapon::Shoot(){
+		Bullet* bullet = new Bullet();
 
 	}
 
