@@ -75,8 +75,9 @@ namespace SSJ {
 		shape.setTexture(teksture, true);
 		Config::window->draw(shape);
 
-		Config::ScreenPosition.x = this->getMapPosition().x - Config::ScreenWidth/2;
-		Config::ScreenPosition.y = this->getMapPosition().y - Config::ScreenHeight/2;
+
+        DataContainer::ScreenPosition.x = this->getMapPosition().x - DataContainer::ScreenWidth/2;
+        DataContainer::ScreenPosition.y = this->getMapPosition().y - DataContainer::ScreenHeight/2;
     }
 
     bool MainPlayer::getMoveLeft() const

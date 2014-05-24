@@ -1,6 +1,6 @@
 #ifndef HELPERS_H
 #define HELPERS_H
-#include "config.h"
+#include "datacontainer.h"
 namespace SSJ{
     class Helpers{
     public:

@@ -15,14 +15,14 @@ void Akcja1(sf::Event event){
 int main()
 {
     Json::Value root;
-    SSJ::Config::ScreenWidth = 800;
-    SSJ::Config::ScreenHeight = 600;
-    SSJ::Config::ScreenMargin = 64;
+    SSJ::DataContainer::ScreenWidth = 800;
+    SSJ::DataContainer::ScreenHeight = 600;
+    SSJ::DataContainer::ScreenMargin = 64;
 
-	SSJ::Point screenPosition;
+    SSJ::Point screenPosition;
 	screenPosition.x = 0;
 	screenPosition.y = 0;
-	SSJ::Config::ScreenPosition = screenPosition;
+    SSJ::DataContainer::ScreenPosition = screenPosition;
 
     SSJ::AppWindow *Game  = new SSJ::AppWindow;
     Game->appWindow->setKeyRepeatEnabled(false);
@@ -39,7 +39,7 @@ int main()
 	druga->addObject(obiekt);
     Game->AddLayer(pierwsza);
 	Game->AddLayer(druga);
-	SSJ::Config::window = Game->appWindow;
+    SSJ::DataContainer::window = Game->appWindow;
 
 
     //Game->LoadObjects();

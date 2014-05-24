@@ -23,16 +23,12 @@ namespace SSJ {
          sf::Keyboard::Key KeyAction;
          Object * object;
     };
+
     class Config{
     public:
-        static Point ScreenPosition;
-        static size_t ScreenHeight;
-        static size_t ScreenWidth;
-        static size_t ScreenMargin;
-        static vector <Event> EventList;
-        static sf::Time DeltaTime;
+
         static size_t RotationSpeed;
-		static sf::RenderWindow *window;
+
     };
 }
 #endif // CONFIG_H

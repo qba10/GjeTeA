@@ -3,7 +3,7 @@
 namespace SSJ{
     AppWindow::AppWindow()
     {
-        this->appWindow = new sf::RenderWindow( sf::VideoMode( Config::ScreenWidth, Config::ScreenHeight, 32 ), "GjeTeA" );
+        this->appWindow = new sf::RenderWindow( sf::VideoMode( DataContainer::ScreenWidth, DataContainer::ScreenHeight, 32 ), "GjeTeA" );
         this->Clock.restart();
 
 
@@ -11,7 +11,7 @@ namespace SSJ{
     void AppWindow::Update(){
         this->Delta = this->Clock.getElapsedTime();
 		this->Clock.restart();
-        Config::DeltaTime = this->Delta;
+        DataContainer::DeltaTime = this->Delta;
 
         for(size_t i = 0 ; i < this->GameLayers.size(); i++){
             if(this->GameLayers.at(i)->isDynamic()){
