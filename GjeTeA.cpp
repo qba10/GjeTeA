@@ -18,12 +18,14 @@ int main()
     SSJ::Config::ScreenWidth = 800;
     SSJ::Config::ScreenHeight = 600;
     SSJ::Config::ScreenMargin = 64;
+
 	SSJ::Point screenPosition;
 	screenPosition.x = 0;
 	screenPosition.y = 0;
 	SSJ::Config::ScreenPosition = screenPosition;
 
     SSJ::AppWindow *Game  = new SSJ::AppWindow;
+    Game->appWindow->setKeyRepeatEnabled(false);
 
     SSJ::GameLayer *druga = new SSJ::GameLayer("druga", true);
     SSJ::MainPlayer *obiekt = new SSJ::MainPlayer();
@@ -44,7 +46,7 @@ int main()
      while( Game->appWindow->isOpen())
      {
 		 //Game->appWindow->clear(sf::Color::Black);
-		 cout << "xmap: " << SSJ::Config::ScreenPosition.x << "\tymap: " << SSJ::Config::ScreenPosition.y << "\n";
+         //cout << "xmap: " << SSJ::Config::ScreenPosition.x << "\tymap: " << SSJ::Config::ScreenPosition.y << "\n";
          Game->Events();
          Game->Update();
          Game->Draw();

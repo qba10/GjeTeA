@@ -2,15 +2,16 @@
 namespace SSJ{
     DynamicObject::DynamicObject(): InteractiveObject()
     {
-		this->velocity = 10.0;
+        this->velocity = 0.0;
         this->angle = 0.0;
         this->targetAngle = 0.0;
 
     }
 
+
+
     void DynamicObject::MoveForward(){
         this->setMapPosition(CalcNewPosition(this->angle));
-
     }
 
     void DynamicObject::MoveBackward(){
@@ -67,30 +68,16 @@ namespace SSJ{
     }
 
     Point DynamicObject::CalcNewPosition(SSJ::Degrees addAngle){
+
         Point newPosition = this->getMapPosition();
         SSJ::Degrees tempDegrees = this->angle;
         tempDegrees += addAngle;
-        double s = this->velocity * Config::DeltaTime.asSeconds() * 1000;
+        double s = this->velocity * Config::DeltaTime.asSeconds();
         double px = sin(tempDegrees.getRadians()) * s;
         double py = cos(tempDegrees.getRadians()) * s;
-        /*if(tempDegrees < 90.0){
-            newPosition.x = this->getMapPosition().x + px;
-            newPosition.y = this->getMapPosition().y - py;
-        }
-        else if(tempDegrees>=90.0 && tempDegrees < 180.0){
-            newPosition.x = this->getMapPosition().x + px;
-            newPosition.y = this->getMapPosition().y + py;
-        }
-        else if(tempDegrees >=180.0 && tempDegrees < 270.0){
-            newPosition.x = this->getMapPosition().x - px;
-            newPosition.y = this->getMapPosition().y + py;
-        }
-        else{
-            newPosition.x = this->getMapPosition().x - px;
-            newPosition.y = this->getMapPosition().y - py;
-        }*/
-		newPosition.x += px;
-		newPosition.y -= py;
+        newPosition.x += px;
+        newPosition.y -= py;
         return newPosition;
+
     }
 }

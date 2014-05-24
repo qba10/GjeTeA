@@ -11,6 +11,7 @@ namespace SSJ {
         SSJ::Degrees angle;
         SSJ::Degrees targetAngle;
 
+
     public:
         void MoveForward();
         void MoveBackward();
@@ -20,6 +21,7 @@ namespace SSJ {
         void RotateRight();
         Point CalcNewPosition( SSJ::Degrees);
         DynamicObject();
+
     };
 }
 #endif // DYNAMICOBJECT_H
