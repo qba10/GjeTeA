@@ -87,11 +87,11 @@ namespace SSJ {
             return false;
     }
 
-    Degrees & Degrees::operator+ (const double & degrees){
-
-        this-> degrees += degrees;
-        this->degrees = fabs(fmod(degrees, 360.0));
-        return *this ;
+    Degrees Degrees::operator+ (const double & degrees){
+		Degrees temp = *this;
+        temp += degrees;
+        temp.degrees = fabs(fmod(temp.degrees, 360.0));
+        return temp ;
     }
 
 
@@ -100,7 +100,7 @@ namespace SSJ {
         this->degrees = fabs(fmod(degrees, 360.0));
         return *this;
     }
-    Degrees & Degrees::operator+ ( Degrees degrees){
+    Degrees Degrees::operator+ ( Degrees degrees){
 
          this-> degrees -= degrees.getDegrees();
         this->degrees = fabs(fmod(this->degrees, 360.0));

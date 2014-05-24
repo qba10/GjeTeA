@@ -6,9 +6,7 @@ namespace SSJ{
     {
     public:
         MainPlayer();
-        //void eventMoveForward(sf::Event event);
         void eventMoveForward(sf::Event event);
-
         void eventMoveBackward(sf::Event event);
         void eventMoveLeft(sf::Event event);
         void eventMoveRight(sf::Event event);

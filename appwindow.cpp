@@ -3,13 +3,14 @@
 namespace SSJ{
     AppWindow::AppWindow()
     {
-        this->appWindow = new sf::Window( sf::VideoMode( Config::ScreenWidth, Config::ScreenHeight, 32 ), "GjeTeA" );
+        this->appWindow = new sf::RenderWindow( sf::VideoMode( Config::ScreenWidth, Config::ScreenHeight, 32 ), "GjeTeA" );
         this->Clock.restart();
 
 
     }
     void AppWindow::Update(){
         this->Delta = this->Clock.getElapsedTime();
+		this->Clock.restart();
         Config::DeltaTime = this->Delta;
 
         for(size_t i = 0 ; i < this->GameLayers.size(); i++){
@@ -20,6 +21,9 @@ namespace SSJ{
     }
 
     void AppWindow::Draw(){
+		appWindow->clear(sf::Color::Black);
+		//sf::RectangleShape rectangle(sf::Vector2f(120, 50));
+
         for(size_t i = 0 ; i < this->GameLayers.size(); i++){
                 this->GameLayers.at(i)->DrawLayer();
         }

@@ -23,14 +23,11 @@ namespace SSJ {
         bool operator> (const double &);
         bool operator>= (const double &);
         bool operator<= (const double &);
-        Degrees &operator+ (const double &);
-        Degrees &operator+ ( Degrees );
+        Degrees operator+ (const double &);
+        Degrees operator+ ( Degrees );
         Degrees &operator- (const double &);
         Degrees &operator- ( Degrees );
         double getRadians();
-
-
-
 
     };
 }

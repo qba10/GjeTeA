@@ -5,6 +5,7 @@
 #include "gamelayer.h"
 #include "staticobject.h"
 #include "mainplayer.h"
+#include "map.h"
 namespace SSJ {
 
     class AppWindow
@@ -23,7 +24,7 @@ namespace SSJ {
         sf::Time Delta;
 
 
-        sf::Window *appWindow;
+        sf::RenderWindow *appWindow;
         sf::Event event;
         sf::Clock Clock;
     };

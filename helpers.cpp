@@ -15,7 +15,6 @@ namespace SSJ {
         objectPosition.x = x - Config::ScreenPosition.x;
         objectPosition.y = y - Config::ScreenPosition.y;
         return objectPosition;
-
     }
 
     bool Helpers::isInScreen(double x, double y){
@@ -24,7 +23,6 @@ namespace SSJ {
         virtualScreen.y = Config::ScreenPosition.y - Config::ScreenMargin;
         size_t virtualScreenWidth = Config::ScreenWidth + 2 * Config::ScreenMargin;
         size_t virtualScreenHeight = Config::ScreenHeight + 2 * Config::ScreenMargin;
-
 
         if(x <= virtualScreen.x && x >= virtualScreen.x+virtualScreenWidth)
             return false;

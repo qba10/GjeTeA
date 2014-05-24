@@ -7,5 +7,6 @@ namespace SSJ {
     vector <Event> Config::EventList;
     sf::Time Config::DeltaTime;
     size_t Config::RotationSpeed = 360;
+	sf::RenderWindow* Config::window;
 }
 

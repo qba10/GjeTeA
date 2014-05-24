@@ -3,6 +3,7 @@
 #include "point.h"
 #include <vector>
 #include <SFML/Window.hpp>
+#include <SFML/Graphics/RenderWindow.hpp>
 #include <functional>
 #define SLOT(object, method) object, (ActionEvent)(&method)
 #define PI 3.14159265
@@ -31,6 +32,7 @@ namespace SSJ {
         static vector <Event> EventList;
         static sf::Time DeltaTime;
         static size_t RotationSpeed;
+		static sf::RenderWindow *window;
     };
 }
 #endif // CONFIG_H
