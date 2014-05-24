@@ -6,7 +6,8 @@ namespace SSJ{
     {
     public:
         InteractiveObject();
-    private:
+    protected:
+        /*for synchronization by server*/
         size_t hp;
         size_t maxHP;
     public:
@@ -17,6 +18,17 @@ namespace SSJ{
         size_t getHP();
         size_t getMaxHP();
         bool isDead();
+        /**
+         * JSON:
+         * {
+         *      mapPositionX: "",
+         *      mapPositionY: "",
+         *      activity: "",
+         *      hp: "",
+         *      maxHP: ""
+         * }
+         */
+        void SynchronizationObject(Json::Value);
     };
 }
 

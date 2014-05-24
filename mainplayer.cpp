@@ -130,5 +130,33 @@ namespace SSJ {
         if(moveForward)
             this->MoveForward();
     }
+    void MainPlayer::SynchronizationObject(Json::Value jsonObject)
+    {
+        if(jsonObject.isMember("mapPositionX")){
+            this->mapPosition.x = jsonObject["mapPositionX"].asDouble();
+        }
+        if(jsonObject.isMember("mapPositionY")){
+            this->mapPosition.y = jsonObject["mapPositionY"].asDouble();
+        }
+        if(jsonObject.isMember("activity")){
+            this->activity = jsonObject["activity"].asBool();
+        }
+        if(jsonObject.isMember("hp")){
+            this->hp = jsonObject["hp"].asUInt();
+        }
+        if(jsonObject.isMember("maxHP")){
+            this->maxHP = jsonObject["maxHP"].asUInt();
+        }
+        if(jsonObject.isMember("velocity")){
+            this->velocity = jsonObject["velocity"].asUInt();
+        }
+        if(jsonObject.isMember("angle")){
+            this->angle = jsonObject["angle"].asDouble();
+        }
+        if(jsonObject.isMember("targetAngle")){
+            this->targetAngle = jsonObject["targetAngle"].asDouble();
+        }
+
+    }
 }
 

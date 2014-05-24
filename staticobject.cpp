@@ -13,4 +13,8 @@ namespace SSJ{
 
     }
 
+    void StaticObject::SynchronizationObject(Json::Value value){
+
+    }
+
 }
