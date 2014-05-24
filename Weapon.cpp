@@ -3,8 +3,11 @@
 namespace SSJ {
 
 	void Weapon::Shoot(){
-		Bullet* bullet = new Bullet();
-
+		
+		this->timeBetweenBullets = this->clock.getElapsedTime();
+		this->clock.restart();
+		if(timeBetweenBullets.asSeconds() > this->fireRate)
+			Bullet* bullet = new Bullet();
 	}
 
 	string Weapon::getName(){
@@ -12,6 +15,7 @@ namespace SSJ {
 	}
     Weapon::Weapon(){
         this->ammo = maxAmmo;
+		this->clock.restart();
     }
 
     void Weapon::Hit(){

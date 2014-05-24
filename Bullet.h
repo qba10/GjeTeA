@@ -9,7 +9,7 @@ namespace SSJ{
 		~Bullet();
 		void draw();
 		void update();
-
+		Sprite sprite;
 	};
 }
 #endif

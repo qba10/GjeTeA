@@ -70,18 +70,14 @@ namespace SSJ {
 			tanAng = tg * 180.0 / PI;
 			this->angle = (double)(180.0 + tanAng.getDegrees());
 		}
-		else if(x >= 0.0 && y == 0.0){
+		else if(x >= 0.0 && y == 0.0)
 			this->angle = 90.0;
-		}
-		else if(x < 0.0 && y == 0.0){
+		else if(x < 0.0 && y == 0.0)
 			this->angle = 270.0;
-		}
-		else if(x == 0.0 && y >= 0.0){
+		else if(x == 0.0 && y >= 0.0)
 			this->angle = 180.0;
-		}
-		else if(x == 0 && y < 0.0){
+		else if(x == 0 && y < 0.0)
 			this->angle = 0.0;
-		}
 	}
 
     void MainPlayer::eventStartMoveForward(sf::Event event){

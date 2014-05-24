@@ -15,6 +15,9 @@ namespace SSJ{
         int ammo; // aktualna ilośc amunicji
         bool blastFire; // czy broń zadaje obrażenia obszarowe
 		bool repeatFire; // czy broń jest jednostrzałowa czy ma strzał powtarzalny
+		Sprite sprite;
+		sf::Clock clock;
+		sf::Time timeBetweenBullets;
 
     public:
 		string getName();
@@ -29,6 +32,7 @@ namespace SSJ{
         void setReloadTime(int reloadTime);
         void setDamage(int damage);
         void setFireRate(int fireRate);
+		
         Weapon();
         ~Weapon();
     };
