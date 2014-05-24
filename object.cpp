@@ -24,7 +24,7 @@ namespace SSJ {
     void Object::setMapPosition(double x, double y){
         this->mapPosition.x = x;
         this->mapPosition.y = y;
-		printf("x: %d, y: %d, x: %d, y: %d\n", mapPosition.x, mapPosition.y, x, y);
+        //printf("x: %d, y: %d, x: %d, y: %d\n", mapPosition.x, mapPosition.y, x, y);
     }
 
     void Object::setMapPosition(Point position){
