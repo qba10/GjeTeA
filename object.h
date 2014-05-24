@@ -12,7 +12,7 @@ namespace SSJ{
         Object(Point);
         bool activity;
     public:
-        void AddAction(sf::Event::EventType , ActionEvent);
+        void AddAction(sf::Event::EventType, Object*,  ActionEvent);
         void AddActionKeyboard(sf::Event::EventType, sf::Keyboard::Key, Object* ,ActionEvent);
     public:
         Object();
