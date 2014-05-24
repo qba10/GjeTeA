@@ -22,8 +22,14 @@ namespace SSJ {
         this->AddActionKeyboard(sf::Event::KeyReleased,sf::Keyboard::S,  SLOT(this, MainPlayer::eventStopMoveBackward));
         this->AddActionKeyboard(sf::Event::KeyReleased,sf::Keyboard::A,  SLOT(this, MainPlayer::eventStopMoveLeft));
         this->AddActionKeyboard(sf::Event::KeyReleased,sf::Keyboard::D,  SLOT(this, MainPlayer::eventStopMoveRight));
+		this->AddAction(sf::Event::MouseMoved, SLOT(this, MainPlayer::eventMouseMoved)); 
 
     }
+
+	void MainPlayer::eventMouseMoved(sf::Event event){
+		int x = event.mouseMove.x - Config::;
+		cout << event.mouseMove.x << endl;
+	}
 
     void MainPlayer::eventStartMoveForward(sf::Event event){
         this->setMoveForward(true);
@@ -64,8 +70,9 @@ namespace SSJ {
 		// set the shape color to green
 		shape.setPosition(playerPosition.x, playerPosition.y);
 		shape.setFillColor(sf::Color(100, 250, 50));
-		
-
+		sf::Texture* teksture = new sf::Texture;
+		teksture->loadFromFile("texture.jpg");
+		shape.setTexture(teksture, true);
 		Config::window->draw(shape);
 
 		Config::ScreenPosition.x = this->getMapPosition().x - Config::ScreenWidth/2;

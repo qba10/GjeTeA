@@ -11,6 +11,7 @@ namespace SSJ{
         bool moveBackward;
     public:
         MainPlayer();
+		void eventMouseMoved(sf::Event event);
         void eventStartMoveForward(sf::Event event);
         void eventStartMoveBackward(sf::Event event);
         void eventStartMoveLeft(sf::Event event);
