@@ -3,7 +3,7 @@
 namespace SSJ{
     AppWindow::AppWindow()
     {
-        this->appWindow = new sf::RenderWindow( sf::VideoMode( Config::ScreenWidth, Config::ScreenHeight, 32 ), "GjeTeA" );
+        this->appWindow = new sf::RenderWindow( sf::VideoMode( DataContainer::ScreenWidth, DataContainer::ScreenHeight, 32 ), "GjeTeA" );
         this->Clock.restart();
 
 
@@ -11,7 +11,7 @@ namespace SSJ{
     void AppWindow::Update(){
         this->Delta = this->Clock.getElapsedTime();
 		this->Clock.restart();
-        Config::DeltaTime = this->Delta;
+        DataContainer::DeltaTime = this->Delta;
 
         for(size_t i = 0 ; i < this->GameLayers.size(); i++){
             if(this->GameLayers.at(i)->isDynamic()){
@@ -35,10 +35,10 @@ namespace SSJ{
             if(this->event.type == sf::Event::Closed){
                 this->appWindow->close();
             }
-            for(size_t i = 0 ; i < Config::EventList.size(); i++){
-                if(this->event.type == Config::EventList.at(i).EventType){
-                    if(Config::EventList.at(i).KeyAction != sf::Keyboard::Unknown && Config::EventList.at(i).KeyAction == this->event.key.code)
-                        ((Config::EventList.at(i).object)->*(Config::EventList.at(i).ActionFunction))(this->event);
+            for(size_t i = 0 ; i < DataContainer::EventList.size(); i++){
+                if(this->event.type == DataContainer::EventList.at(i).EventType){
+                    if(DataContainer::EventList.at(i).KeyAction != sf::Keyboard::Unknown && DataContainer::EventList.at(i).KeyAction == this->event.key.code)
+                        ((DataContainer::EventList.at(i).object)->*(DataContainer::EventList.at(i).ActionFunction))(this->event);
 
                 }
             }

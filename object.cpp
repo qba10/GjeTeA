@@ -35,7 +35,7 @@ namespace SSJ {
         temp.ActionFunction = function;
         temp.EventType = type;
         temp.object = object;
-        Config::EventList.push_back(temp);
+        DataContainer::EventList.push_back(temp);
 
     }
 
@@ -45,7 +45,7 @@ namespace SSJ {
         temp.EventType = type;
         temp.KeyAction =  key;
         temp.object = object;
-        Config::EventList.push_back(temp);
+        DataContainer::EventList.push_back(temp);
 
     }
 

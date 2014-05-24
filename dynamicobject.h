@@ -6,7 +6,7 @@ namespace SSJ {
 
     class DynamicObject : public InteractiveObject
     {
-    private:
+    protected:
         size_t velocity; // px per second
         SSJ::Degrees angle;
         SSJ::Degrees targetAngle;
