@@ -11,6 +11,8 @@
 #include <iostream>
 #include <jsoncpp/json/json.h>
 #include "degrees.h"
+#include "Weapon.h"
+#include "WeaponFactory.h"
 
 
 

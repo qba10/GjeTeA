@@ -8,6 +8,7 @@ namespace SSJ {
 		this->setMaxHP(100);
         this->velocity = 100.0;
 		this->setHP(this->getMaxHP());
+		this->isFiring = false;
 
         this->moveBackward = false;
         this->moveForward = false;
@@ -23,12 +24,64 @@ namespace SSJ {
         this->AddActionKeyboard(sf::Event::KeyReleased,sf::Keyboard::A,  SLOT(this, MainPlayer::eventStopMoveLeft));
         this->AddActionKeyboard(sf::Event::KeyReleased,sf::Keyboard::D,  SLOT(this, MainPlayer::eventStopMoveRight));
 		this->AddAction(sf::Event::MouseMoved, SLOT(this, MainPlayer::eventMouseMoved)); 
+		this->AddAction(sf::Event::MouseButtonPressed, SLOT(this, MainPlayer::eventMouseButtonPressed));
+		this->AddAction(sf::Event::MouseButtonPressed, SLOT(this, MainPlayer::eventMouseButtonReleased));
 
     }
 
+	void MainPlayer::eventMouseButtonPressed(sf::Event event){
+		
+		if(event.mouseButton.button == sf::Mouse::Button::Left){
+			isFiring = true;
+		}
+		//else if(event.mouseButton.button == sf::Mouse::Button::Right)
+			//cout << "prawy" << endl;
+	}
+
+	void MainPlayer::eventMouseButtonReleased(sf::Event event){
+		isFiring = false;
+	}
+
+
+
 	void MainPlayer::eventMouseMoved(sf::Event event){
-        //int x = event.mouseMove.x - Config::;
-		cout << event.mouseMove.x << endl;
+		double x = (double)(event.mouseMove.x - (double)(DataContainer::ScreenWidth/2));
+		double y = (double)(event.mouseMove.y - (double)(DataContainer::ScreenHeight/2));
+		double tg = 0.0;
+		SSJ::Degrees tanAng = 0.0;
+		
+		if(x > 0.0 && y > 0.0){
+			tg = atan(y / x);
+			tanAng = tg * 180.0 / PI;
+			this->angle = (double)(90.0 + tanAng.getDegrees());
+		}
+		else if(x > 0.0 && y < 0.0){
+			tg = atan(abs(x) / abs(y));
+			tanAng = tg * 180.0 / PI;
+			this->angle = tanAng;
+		}
+		else if(x < 0.0 && y < 0.0){
+			tg = atan(abs(y) / abs(x));
+			tanAng = tg * 180.0 / PI;
+			this->angle = (double)(270.0 + tanAng.getDegrees());
+		}
+		else if(x < 0.0 && y > 0.0){
+			tg = atan(abs(x) / abs(y));
+			tanAng = tg * 180.0 / PI;
+			this->angle = (double)(180.0 + tanAng.getDegrees());
+		}
+		else if(x >= 0.0 && y == 0.0){
+			this->angle = 90.0;
+		}
+		else if(x < 0.0 && y == 0.0){
+			this->angle = 270.0;
+		}
+		else if(x == 0.0 && y >= 0.0){
+			this->angle = 180.0;
+		}
+		else if(x == 0 && y < 0.0){
+			this->angle = 0.0;
+		}
 	}
 
     void MainPlayer::eventStartMoveForward(sf::Event event){
@@ -70,9 +123,9 @@ namespace SSJ {
 		// set the shape color to green
 		shape.setPosition(playerPosition.x, playerPosition.y);
 		shape.setFillColor(sf::Color(100, 250, 50));
-		sf::Texture* teksture = new sf::Texture;
-		teksture->loadFromFile("texture.jpg");
-		shape.setTexture(teksture, true);
+		//sf::Texture* teksture = new sf::Texture;
+		//teksture->loadFromFile("texture.jpg");
+		//shape.setTexture(teksture, true);
         DataContainer::window->draw(shape);
 
 
@@ -129,6 +182,12 @@ namespace SSJ {
             this->MoveRight();
         if(moveForward)
             this->MoveForward();
+
+		if(isFiring){
+			weapon.Shoot();	
+			if(!weapon.repeatFire)
+				isFiring = false;
+		}
     }
 }
 

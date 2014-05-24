@@ -1,7 +1,9 @@
 #include "Weapon.h"
 namespace SSJ {
 
-
+	string Weapon::getName(){
+		return this->getName;
+	}
     Weapon::Weapon(){
         this->ammo = maxAmmo;
     }
@@ -15,11 +17,11 @@ namespace SSJ {
     }
 
     int Weapon::getMaxAmmo(){
-        return maxAmmo;
+        return this->maxAmmo;
     }
 
     int Weapon::getAmmo(){
-        return ammo;
+        return this->ammo;
     }
 
     void Weapon::setMaxAmmo(int maxAmmo){
