@@ -31,17 +31,18 @@ namespace SSJ {
         this->mapPosition = position;
     }
 
-    void Object::AddAction(sf::Event::EventType type, ActionEvent function){
+    void Object::AddAction(sf::Event::EventType type, Object*  object , ActionEvent method){
         Event temp;
-        temp.ActionFunction = function;
+        temp.ActionFunction = method;
         temp.EventType = type;
+        temp.object = object;
         Config::EventList.push_back(temp);
 
     }
 
-    void Object::AddActionKeyboard(sf::Event::EventType type, sf::Keyboard::Key key,  Object*  object , ActionEvent function){
+    void Object::AddActionKeyboard(sf::Event::EventType type, sf::Keyboard::Key key,  Object*  object , ActionEvent method){
         Event temp;
-        temp.ActionFunction = function;
+        temp.ActionFunction = method;
         temp.EventType = type;
         temp.KeyAction =  key;
         temp.object = object;
