@@ -10,7 +10,7 @@ namespace SSJ{
 	}
 
 	void Bullet::draw(){
-
+		
 	}
 
 	void Bullet::update(){

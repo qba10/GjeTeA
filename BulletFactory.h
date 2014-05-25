@@ -2,14 +2,15 @@
 namespace SSJ {
 
     class BulletFactory{
-        Bullet* CreateGlockBullet();
-        Bullet* CreateUziBullet();
-        Bullet* CreateAk47Bullet();
-        Bullet* CreateM16Bullet();
-        Bullet* CreateShotgunBullet();
-        Bullet* CreateSniperRifleBullet();
-        Bullet* CreateBazookaBullet();
-        Bullet* CreateGrenadeBullet();
-        Bullet* CreateKnifeBullet();
+	public:
+        static Bullet* CreateGlockBullet();
+        static Bullet* CreateUziBullet();
+        static Bullet* CreateAk47Bullet();
+        static Bullet* CreateM16Bullet();
+        static Bullet* CreateShotgunBullet();
+        static Bullet* CreateSniperRifleBullet();
+        static Bullet* CreateBazookaBullet();
+        static Bullet* CreateGrenadeBullet();
+        static Bullet* CreateKnifeBullet();
     };
- }
+}

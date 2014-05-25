@@ -1,6 +1,7 @@
 #ifndef MAINPLAYER_H
 #define MAINPLAYER_H
 #include "dynamicobject.h"
+#include "Weapon.h"
 namespace SSJ{
     class MainPlayer : public DynamicObject
     {

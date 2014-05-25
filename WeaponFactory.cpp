@@ -1,3 +1,4 @@
+#pragma once
 #include "WeaponFactory.h"
 namespace SSJ {
     Weapon* WeaponFactory::CreateGlockObject(){

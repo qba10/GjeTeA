@@ -1,11 +1,13 @@
+#pragma once
 #ifndef WEAPON_H
 #define WEAPON_H
+#include "object.h"
 #include <string>
-using namespace std;
+//using namespace std;
 namespace SSJ{
-    class Weapon{
+    class Weapon : public Object{
     public:
-		string name;
+		std::string name;
         int range; // zasięg broni
         int bulletSpeed; // prędkość pocisku
         int fireRate; // szybkostrzelność
@@ -32,7 +34,8 @@ namespace SSJ{
         void setReloadTime(int reloadTime);
         void setDamage(int damage);
         void setFireRate(int fireRate);
-		
+		void draw();
+		void update();
         Weapon();
         ~Weapon();
     };

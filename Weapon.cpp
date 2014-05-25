@@ -13,6 +13,7 @@ namespace SSJ {
 	string Weapon::getName(){
 		return this->name;
 	}
+
     Weapon::Weapon(){
         this->ammo = maxAmmo;
 		this->clock.restart();
@@ -62,5 +63,15 @@ namespace SSJ {
 	Weapon::~Weapon(){
 
 	}
+
+	void Weapon::draw(){
+
+	}
+
+	void Weapon::update(){
+
+	}
+
+
 }
 

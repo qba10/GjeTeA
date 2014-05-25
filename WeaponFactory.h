@@ -2,14 +2,14 @@
 namespace SSJ {
 
     class WeaponFactory{
-        Weapon* CreateGlockObject();
-        Weapon* CreateUziObject();
-        Weapon* CreateAk47Object();
-        Weapon* CreateM16Object();
-        Weapon* CreateShotgunObject();
-        Weapon* CreateSniperRifleObject();
-        Weapon* CreateBazookaObject();
-        Weapon* CreateGrenadeObject();
-        Weapon* CreateKnifeObject();
+        static Weapon* CreateGlockObject();
+        static Weapon* CreateUziObject();
+        static Weapon* CreateAk47Object();
+        static Weapon* CreateM16Object();
+        static Weapon* CreateShotgunObject();
+        static Weapon* CreateSniperRifleObject();
+        static Weapon* CreateBazookaObject();
+        static Weapon* CreateGrenadeObject();
+        static Weapon* CreateKnifeObject();
     };
  }
