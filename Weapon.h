@@ -20,6 +20,7 @@ namespace SSJ{
 		Sprite sprite;
 		sf::Clock clock;
 		sf::Time timeBetweenBullets;
+		Object* player;
 
     public:
 		string getName();

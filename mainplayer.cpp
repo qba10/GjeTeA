@@ -6,7 +6,7 @@ namespace SSJ {
     {
         this->setActivity(true);
 		this->setMaxHP(100);
-        this->velocity = 100.0;
+        this->velocity = 200.0;
 		this->setHP(this->getMaxHP());
 		this->isFiring = false;
 

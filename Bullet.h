@@ -10,8 +10,11 @@ namespace SSJ{
 		~Bullet();
 		void draw();
 		void update();
+		void Blast();
+		void Hit();
+		Point CalcNewPosition();
 
-		Weapon weapon;
+		//Weapon weapon;
 		Sprite sprite;
 		string name;
 		SSJ::Degrees angle;
