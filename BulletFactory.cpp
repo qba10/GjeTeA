@@ -20,7 +20,7 @@ namespace SSJ{
 		GlockBullet->bulletSpeed =		5;
 		GlockBullet->damage =			25;
 		GlockBullet->blastFire =		false;
-		GlockBullet->blastRange =		NULL; 
+        GlockBullet->blastRange =		0;
 		GlockBullet->ownerPosition =	BulletFactory::ownerPosition;
 		GlockBullet->angle =			BulletFactory::ownerAngle;
 		return GlockBullet;
@@ -32,7 +32,7 @@ namespace SSJ{
 		UziBullet->bulletSpeed =		6;
 		UziBullet->damage =				10;
 		UziBullet->blastFire =			false;
-		UziBullet->blastRange =			NULL;
+        UziBullet->blastRange =			0;
 		UziBullet->ownerPosition =		BulletFactory::ownerPosition;
 		UziBullet->angle =				BulletFactory::ownerAngle;
 		return UziBullet;
@@ -44,7 +44,7 @@ namespace SSJ{
 		Ak47Bullet->bulletSpeed =		9;
 		Ak47Bullet->damage =			15;
 		Ak47Bullet->blastFire =			false;
-		Ak47Bullet->blastRange =		NULL;
+        Ak47Bullet->blastRange =		0;
 		Ak47Bullet->ownerPosition =		BulletFactory::ownerPosition;
 		Ak47Bullet->angle =				BulletFactory::ownerAngle;
 		return Ak47Bullet;
@@ -56,7 +56,7 @@ namespace SSJ{
 		M16Bullet->bulletSpeed =		9;
 		M16Bullet->damage =				12;
 		M16Bullet->blastFire =			false;
-		M16Bullet->blastRange =			NULL;
+        M16Bullet->blastRange =			0;
 		M16Bullet->ownerPosition =		BulletFactory::ownerPosition;
 		M16Bullet->angle =				BulletFactory::ownerAngle;
 		return M16Bullet;
@@ -80,7 +80,7 @@ namespace SSJ{
 		SniperRifleBullet->bulletSpeed = 8;
 		SniperRifleBullet->damage =		100;
 		SniperRifleBullet->blastFire =	false;
-		SniperRifleBullet->blastRange =	NULL;
+        SniperRifleBullet->blastRange =	0;
 		SniperRifleBullet->ownerPosition =	BulletFactory::ownerPosition;
 		SniperRifleBullet->angle =		BulletFactory::ownerAngle;
 		return SniperRifleBullet;
@@ -113,10 +113,10 @@ namespace SSJ{
 		Bullet* KnifeBullet = new Bullet();
 		KnifeBullet->name =				"Knife";
 		KnifeBullet->range =			50;
-		KnifeBullet->bulletSpeed =		NULL;
+        KnifeBullet->bulletSpeed =		0;
 		KnifeBullet->damage =			35;
 		KnifeBullet->blastFire =		false;
-		KnifeBullet->blastRange =		NULL;
+        KnifeBullet->blastRange =		0;
 		KnifeBullet->ownerPosition =	BulletFactory::ownerPosition;
 		KnifeBullet->angle =			BulletFactory::ownerAngle;
 		return KnifeBullet;

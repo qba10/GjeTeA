@@ -34,7 +34,7 @@ namespace SSJ {
 
 	void MainPlayer::eventMouseButtonPressed(sf::Event event){
 		
-		if(event.mouseButton.button == sf::Mouse::Button::Left){
+        if(event.mouseButton.button == sf::Mouse::Left){
 			isFiring = true;
 		}
 		//else if(event.mouseButton.button == sf::Mouse::Button::Right)
