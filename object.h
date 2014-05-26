@@ -4,23 +4,28 @@
 namespace SSJ{
     class Object
     {
-    private:
-        Point screenPosition;
+    protected:
+
         Point mapPosition;
         Sprite sprite;
-        Object(double x, double y);
-        Object(Point);
+
+        /*for synchronization by server*/
+        Point screenPosition;
         bool activity;
+
     public:
         void AddAction(sf::Event::EventType, Object*,  ActionEvent);
         void AddActionKeyboard(sf::Event::EventType, sf::Keyboard::Key, Object* ,ActionEvent);
     public:
         Object();
+        Object(double x, double y);
+        Object(Point);
         Point getMapPosition();
         void setMapPosition(double x, double y);
         void setMapPosition(Point screenPosition);
         virtual void draw() = 0;
         virtual void update() = 0;
+        virtual void SynchronizationObject(Json::Value) = 0;
         void setActivity(bool activity);
         bool isActive();
     };

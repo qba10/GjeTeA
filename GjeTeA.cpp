@@ -40,8 +40,6 @@ int main()
     Game->AddLayer(pierwsza);
 	Game->AddLayer(druga);
     SSJ::DataContainer::window = Game->appWindow;
-
-
     //Game->LoadObjects();
      while( Game->appWindow->isOpen())
      {

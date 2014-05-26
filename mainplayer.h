@@ -30,6 +30,21 @@ namespace SSJ{
         void setMoveForward(bool value);
         bool getMoveBackward() const;
         void setMoveBackward(bool value);
+        /**
+         * JSON:
+         * {
+         *      mapPositionX: "",
+         *      mapPositionY: "",
+         *      activity: "",
+         *      hp: "",
+         *      maxHP: "",
+         *      angle: "",
+         *      targetAngle: "",
+         *      velocity: ""
+         *
+         * }
+         */
+        void SynchronizationObject(Json::Value);
     };
 }
 

@@ -5,10 +5,17 @@ namespace SSJ{
     {
         this->appWindow = new sf::RenderWindow( sf::VideoMode( DataContainer::ScreenWidth, DataContainer::ScreenHeight, 32 ), "GjeTeA" );
         this->Clock.restart();
+        ServerConnectAPI ServerConnect;
+
+        thread = new sf::Thread(&ServerConnectAPI::ServerListener, &ServerConnect);
+        thread->launch();
+
+
 
 
     }
     void AppWindow::Update(){
+        ServerConnectAPI::SendToServer("hej chujowy serwerze");
         this->Delta = this->Clock.getElapsedTime();
 		this->Clock.restart();
         DataContainer::DeltaTime = this->Delta;
