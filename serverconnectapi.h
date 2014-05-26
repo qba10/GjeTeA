@@ -9,8 +9,6 @@ namespace SSJ{
           static  sf::TcpSocket* Socket;
             sf::Mutex mutex;
     public:
-        ServerConnectAPI();
-        void ConnectToServer();
         void ServerListener();
         static void SendToServer(string);
     };

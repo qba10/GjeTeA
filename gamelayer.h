@@ -1,7 +1,6 @@
 #ifndef GAMELAYER_H
 #define GAMELAYER_H
-#include "Loader.h"
-#include "object.h"
+/*
 namespace SSJ{
     class GameLayer
     {
@@ -25,4 +24,5 @@ namespace SSJ{
         size_t AmountOfObjects();
     };
 }
+*/
 #endif // GAMELAYER_H

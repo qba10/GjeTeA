@@ -1,4 +1,4 @@
-#include "gamelayer.h"
+#include "object.h"
 
 namespace SSJ{
     string GameLayer::getName() const
@@ -61,4 +61,6 @@ namespace SSJ{
     size_t GameLayer::AmountOfObjects(){
         return this->objects.size();
     }
+	GameLayer *LayerContainer::warstwa3 = NULL;
+
 }
