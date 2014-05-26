@@ -6,12 +6,14 @@
 #include "staticobject.h"
 #include "mainplayer.h"
 #include "map.h"
+#include "serverconnectapi.h"
 namespace SSJ {
 
     class AppWindow
     {
     private:
        vector <GameLayer*> GameLayers;
+        sf::Thread *thread;
     public:
        void AddLayer(GameLayer*);
 

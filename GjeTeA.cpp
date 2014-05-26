@@ -40,55 +40,6 @@ int main()
     Game->AddLayer(pierwsza);
 	Game->AddLayer(druga);
     SSJ::DataContainer::window = Game->appWindow;
-//*
-    sf::IpAddress ip =  sf::IpAddress("127.0.0.1");
-    std::string publicIP = ip.toString();
-    sf::TcpSocket socket;
-    bool done = false;
-    std::string id;
-    std::string text = "";
-
-    std::cout << "Enter online id: ";
-    std::cin >> id;
-
-    ip = sf::IpAddress(publicIP);
-
-    socket.connect(ip, 2000);
-
-
-    sf::Packet packet;
-    packet << id;
-    socket.send(packet);
-    socket.setBlocking(false);
-
-
-
-    while(!done)
-    {
-
-                    sf::Packet packet;
-                    cin >> text;
-                    packet << id + ": " + text;
-                    socket.send(packet);
-
-
-
-
-        socket.receive(packet);
-
-        std::string temptext;
-        if(packet >> temptext)
-        {
-cout << temptext << endl;
-        }
-
-
-
- }
-
-
-
-//*
     //Game->LoadObjects();
      while( Game->appWindow->isOpen())
      {

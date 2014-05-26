@@ -27,8 +27,6 @@ namespace SSJ {
     }
 
 	void MainPlayer::eventMouseMoved(sf::Event event){
-        //int x = event.mouseMove.x - Config::;
-		cout << event.mouseMove.x << endl;
 	}
 
     void MainPlayer::eventStartMoveForward(sf::Event event){
@@ -70,9 +68,9 @@ namespace SSJ {
 		// set the shape color to green
 		shape.setPosition(playerPosition.x, playerPosition.y);
 		shape.setFillColor(sf::Color(100, 250, 50));
-		sf::Texture* teksture = new sf::Texture;
-		teksture->loadFromFile("texture.jpg");
-		shape.setTexture(teksture, true);
+        //sf::Texture* teksture = new sf::Texture;
+        //teksture->loadFromFile("texture.jpg");
+        //shape.setTexture(teksture, true);
         DataContainer::window->draw(shape);
 
 
