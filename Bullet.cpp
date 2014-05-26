@@ -1,8 +1,10 @@
 #include "Bullet.h"
 namespace SSJ{
 
-	Bullet::Bullet(){
 
+
+	Bullet::Bullet(){
+		this->bulletPosition = ownerPosition;
 	}
 
 	Bullet::~Bullet(){
@@ -10,18 +12,11 @@ namespace SSJ{
 	}
 
 	void Bullet::draw(){
-		/*Point firePosition;
-		firePosition.x = mainPlayer->getMapPosition().x;
-		firePosition.y = mainPlayer->getMapPosition().y;
-		Point bulletPosition;
-		bulletPosition = firePosition;
 
-		if( (pow(bulletPosition.x - firePosition.x, 2) + pow(bulletPosition.y - firePosition.y, 2)) <= pow(this->range, 2)){
-			this->setMapPosition(CalcNewPosition(this->angle));
-		}
-		else{
-			delete Bullet();
-		}*/
+		//if( (pow(bulletPosition.x - ownerPosition.x, 2) + pow(bulletPosition.y - ownerPosition.y, 2)) <= pow(this->range, 2)){
+			this->setMapPosition(CalcNewPosition());
+			cout << "x: " << this->getMapPosition().x << "\ty: " << this->getMapPosition().y << endl;
+		//}
 	}
 
 	void Bullet::update(){

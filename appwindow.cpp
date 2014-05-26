@@ -7,10 +7,7 @@ namespace SSJ{
         this->Clock.restart();
 		//appWindow->setMouseCursorVisible(false);
 
-		/*sf::Texture cursor;
-		cursor.loadFromFile("aim.png");
-		sf::Sprite sprite(cursor);
-		sprite.setPosition(static_cast<sf::Vector2f>(sf::Mouse::getPosition(appWindow));*/
+		
 
     }
     void AppWindow::Update(){

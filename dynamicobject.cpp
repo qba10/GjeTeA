@@ -73,4 +73,9 @@ namespace SSJ{
         newPosition.y -= py;
         return newPosition;
     }
+
+	Degrees DynamicObject::getAngle(){
+		return this->angle;
+	}
+
 }

@@ -1,7 +1,7 @@
 #ifndef MAINPLAYER_H
 #define MAINPLAYER_H
 #include "dynamicobject.h"
-#include "Weapon.h"
+#include "WeaponFactory.h"
 namespace SSJ{
     class MainPlayer : public DynamicObject
     {
@@ -12,7 +12,7 @@ namespace SSJ{
         bool moveBackward;
 		bool isFiring;
 	protected:
-		Weapon weapon;
+		Weapon* weapon1;
     public:
         MainPlayer();
 		void eventMouseButtonReleased(sf::Event event);

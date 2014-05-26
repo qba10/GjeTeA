@@ -25,7 +25,10 @@ namespace SSJ {
         this->AddActionKeyboard(sf::Event::KeyReleased,sf::Keyboard::D,  SLOT(this, MainPlayer::eventStopMoveRight));
 		this->AddAction(sf::Event::MouseMoved, SLOT(this, MainPlayer::eventMouseMoved)); 
 		this->AddAction(sf::Event::MouseButtonPressed, SLOT(this, MainPlayer::eventMouseButtonPressed));
-		this->AddAction(sf::Event::MouseButtonPressed, SLOT(this, MainPlayer::eventMouseButtonReleased));
+		this->AddAction(sf::Event::MouseButtonReleased, SLOT(this, MainPlayer::eventMouseButtonReleased));
+
+		WeaponFactory::setOwner(this);
+		this->weapon1 = WeaponFactory::CreateAk47Object();
 
     }
 
@@ -180,8 +183,8 @@ namespace SSJ {
             this->MoveForward();
 
 		if(isFiring){
-			weapon.Shoot();	
-			if(!weapon.repeatFire){
+			weapon1->Shoot();	
+			if(!weapon1->repeatFire){
 				isFiring = false;
 			}
 		}

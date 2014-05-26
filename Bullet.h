@@ -1,11 +1,11 @@
 #ifndef BULLET_H
 #define BULLET_H
 #include "dynamicobject.h"
-#include "Weapon.h"
+
 namespace SSJ{
     class Bullet : public DynamicObject{
     public:
-
+		
 		Bullet();
 		~Bullet();
 		void draw();
@@ -14,7 +14,8 @@ namespace SSJ{
 		void Hit();
 		Point CalcNewPosition();
 
-		//Weapon weapon;
+		Point ownerPosition;
+		Point bulletPosition;
 		Sprite sprite;
 		string name;
 		SSJ::Degrees angle;

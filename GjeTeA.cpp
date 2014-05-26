@@ -26,19 +26,27 @@ int main()
 
     SSJ::AppWindow *Game  = new SSJ::AppWindow;
     Game->appWindow->setKeyRepeatEnabled(false);
-
+	SSJ::GameLayer *trzecia = new SSJ::GameLayer("trzecia", true);
+	SSJ::LayerContainer::warstwa3 = trzecia;
     SSJ::GameLayer *druga = new SSJ::GameLayer("druga", true);
     SSJ::MainPlayer *obiekt = new SSJ::MainPlayer();
 	obiekt->setMapPosition(100, 200);
 
 	SSJ::GameLayer *pierwsza = new SSJ::GameLayer("pierwsza", true);
 	SSJ::Map *mapa = new SSJ::Map;
+
+
+	/*sf::Texture cursor;
+	cursor.loadFromFile("aim.png");
+	sf::Sprite sprite(cursor);
+	sprite.setPosition(sf::Mouse::getPosition(Game).x, sf::Mouse::getPosition(Game).y);*/
 	
     //obiekt->AddAction(sf::Event::MouseButtonPressed, Akcja1);
     pierwsza->addObject(mapa);
 	druga->addObject(obiekt);
     Game->AddLayer(pierwsza);
 	Game->AddLayer(druga);
+	Game->AddLayer(trzecia);
     SSJ::DataContainer::window = Game->appWindow;
 
 

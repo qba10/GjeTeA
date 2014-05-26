@@ -9,8 +9,8 @@ namespace SSJ {
     private:
 	protected:
 		size_t velocity; // px per second
-		SSJ::Degrees angle;
-		SSJ::Degrees targetAngle;
+		Degrees angle;
+		Degrees targetAngle;
     public:
         void MoveForward();
         void MoveBackward();
@@ -19,6 +19,7 @@ namespace SSJ {
         void RotateLeft();
         void RotateRight();
         Point CalcNewPosition( SSJ::Degrees);
+		Degrees getAngle();
         DynamicObject();
 
     };

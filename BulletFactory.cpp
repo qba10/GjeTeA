@@ -1,5 +1,18 @@
 #include "BulletFactory.h"
 namespace SSJ{
+	Point BulletFactory::ownerPosition;
+
+	void BulletFactory::setOwnerPosition(Point ownerPosition){
+		BulletFactory::ownerPosition = ownerPosition;
+	}
+
+	SSJ::Degrees BulletFactory::ownerAngle;
+
+	void BulletFactory::setOwnerAngle(SSJ::Degrees ownerAngle){
+		BulletFactory::ownerAngle = ownerAngle;
+	}
+
+
 	Bullet* BulletFactory::CreateGlockBullet(){
 		Bullet* GlockBullet = new Bullet();
 		GlockBullet->name =				"Glock";
@@ -8,6 +21,8 @@ namespace SSJ{
 		GlockBullet->damage =			25;
 		GlockBullet->blastFire =		false;
 		GlockBullet->blastRange =		NULL; 
+		GlockBullet->ownerPosition =	BulletFactory::ownerPosition;
+		GlockBullet->angle =			BulletFactory::ownerAngle;
 		return GlockBullet;
 	}
 	Bullet* BulletFactory::CreateUziBullet(){
@@ -18,6 +33,8 @@ namespace SSJ{
 		UziBullet->damage =				10;
 		UziBullet->blastFire =			false;
 		UziBullet->blastRange =			NULL;
+		UziBullet->ownerPosition =		BulletFactory::ownerPosition;
+		UziBullet->angle =				BulletFactory::ownerAngle;
 		return UziBullet;
 	}
 	Bullet* BulletFactory::CreateAk47Bullet(){
@@ -28,6 +45,8 @@ namespace SSJ{
 		Ak47Bullet->damage =			15;
 		Ak47Bullet->blastFire =			false;
 		Ak47Bullet->blastRange =		NULL;
+		Ak47Bullet->ownerPosition =		BulletFactory::ownerPosition;
+		Ak47Bullet->angle =				BulletFactory::ownerAngle;
 		return Ak47Bullet;
 	}
 	Bullet* BulletFactory::CreateM16Bullet(){
@@ -38,6 +57,8 @@ namespace SSJ{
 		M16Bullet->damage =				12;
 		M16Bullet->blastFire =			false;
 		M16Bullet->blastRange =			NULL;
+		M16Bullet->ownerPosition =		BulletFactory::ownerPosition;
+		M16Bullet->angle =				BulletFactory::ownerAngle;
 		return M16Bullet;
 	}
 	Bullet* BulletFactory::CreateShotgunBullet(){
@@ -48,6 +69,8 @@ namespace SSJ{
 		ShotgunBullet->damage =			50;
 		ShotgunBullet->blastFire =		true;
 		ShotgunBullet->blastRange =		20;
+		ShotgunBullet->ownerPosition =	BulletFactory::ownerPosition;
+		ShotgunBullet->angle =			BulletFactory::ownerAngle;
 		return ShotgunBullet;
 	}
 	Bullet* BulletFactory::CreateSniperRifleBullet(){
@@ -58,6 +81,8 @@ namespace SSJ{
 		SniperRifleBullet->damage =		100;
 		SniperRifleBullet->blastFire =	false;
 		SniperRifleBullet->blastRange =	NULL;
+		SniperRifleBullet->ownerPosition =	BulletFactory::ownerPosition;
+		SniperRifleBullet->angle =		BulletFactory::ownerAngle;
 		return SniperRifleBullet;
 	}
 	Bullet* BulletFactory::CreateBazookaBullet(){
@@ -68,6 +93,8 @@ namespace SSJ{
 		BazookaBullet->damage =			100;
 		BazookaBullet->blastFire =		true;
 		BazookaBullet->blastRange =		100;
+		BazookaBullet->ownerPosition =	BulletFactory::ownerPosition;
+		BazookaBullet->angle =			BulletFactory::ownerAngle;
 		return BazookaBullet;
 	}
 	Bullet* BulletFactory::CreateGrenadeBullet(){
@@ -78,6 +105,8 @@ namespace SSJ{
 		GrenadeBullet->damage =			100;
 		GrenadeBullet->blastFire =		true;
 		GrenadeBullet->blastRange =		70;
+		GrenadeBullet->ownerPosition =	BulletFactory::ownerPosition;
+		GrenadeBullet->angle =			BulletFactory::ownerAngle;
 		return GrenadeBullet;
 	}
 	Bullet* BulletFactory::CreateKnifeBullet(){
@@ -88,6 +117,8 @@ namespace SSJ{
 		KnifeBullet->damage =			35;
 		KnifeBullet->blastFire =		false;
 		KnifeBullet->blastRange =		NULL;
+		KnifeBullet->ownerPosition =	BulletFactory::ownerPosition;
+		KnifeBullet->angle =			BulletFactory::ownerAngle;
 		return KnifeBullet;
 	}
 

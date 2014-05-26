@@ -1,13 +1,13 @@
-#pragma once
 #ifndef WEAPON_H
 #define WEAPON_H
-#include "object.h"
+#include "dynamicobject.h"
 #include <string>
-//using namespace std;
+#include "BulletFactory.h"
 namespace SSJ{
     class Weapon : public Object{
     public:
-		std::string name;
+		WeaponType type;
+		string name;
         int range; // zasięg broni
         int bulletSpeed; // prędkość pocisku
         int fireRate; // szybkostrzelność
@@ -20,10 +20,11 @@ namespace SSJ{
 		Sprite sprite;
 		sf::Clock clock;
 		sf::Time timeBetweenBullets;
-		Object* player;
+		DynamicObject* owner;
 
     public:
-		string getName();
+		static Bullet* CreateBullet(Point ownerPosition, SSJ::Degrees ownerAngle, WeaponType type);
+		WeaponType getName();
         void Hit(); // dla zwykłych broni
         void HitByBlast(); // dla broni obszarowych
         int getMaxAmmo();
@@ -37,7 +38,7 @@ namespace SSJ{
         void setFireRate(int fireRate);
 		void draw();
 		void update();
-        Weapon();
+		Weapon();
         ~Weapon();
     };
 }

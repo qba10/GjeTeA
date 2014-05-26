@@ -1,20 +1,55 @@
 #include "Weapon.h"
-#include "Bullet.h"
 namespace SSJ {
+
+	Bullet* Weapon::CreateBullet(Point ownerPosition, SSJ::Degrees ownerAngle, WeaponType type){
+		BulletFactory::setOwnerPosition(ownerPosition);
+		BulletFactory::setOwnerAngle(ownerAngle);
+		switch(type){
+		case Glock:
+			return BulletFactory::CreateGlockBullet();
+			break;
+		case Uzi:
+			return BulletFactory::CreateUziBullet();
+			break;
+		case Ak47:
+			return BulletFactory::CreateAk47Bullet();
+			break;
+		case M16:
+			return BulletFactory::CreateM16Bullet();
+			break;
+		case Shotgun:
+			return BulletFactory::CreateShotgunBullet();
+			break;
+		case SniperRifle:
+			return BulletFactory::CreateSniperRifleBullet();
+			break;
+		case Bazooka:
+			return BulletFactory::CreateBazookaBullet();
+			break;
+		case Grenade:
+			return BulletFactory::CreateGrenadeBullet();
+			break;
+		case Knife:
+			return BulletFactory::CreateKnifeBullet();
+			break;
+		}
+	}
 
 	void Weapon::Shoot(){
 		
 		this->timeBetweenBullets = this->clock.getElapsedTime();
 		this->clock.restart();
-		if(timeBetweenBullets.asSeconds() > this->fireRate)
-			Bullet* bullet = new Bullet();
+		if(timeBetweenBullets.asSeconds() > this->fireRate){
+			LayerContainer::warstwa3->addObject(Weapon::CreateBullet(this->owner->getMapPosition(), this->owner->getAngle(), this->type));
+
+		}
 	}
 
-	string Weapon::getName(){
-		return this->name;
+	WeaponType Weapon::getName(){
+		return this->type;
 	}
 
-    Weapon::Weapon(){
+	Weapon::Weapon(){
         this->ammo = maxAmmo;
 		this->clock.restart();
     }
