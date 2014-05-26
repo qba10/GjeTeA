@@ -34,7 +34,7 @@ namespace SSJ {
 
 	void MainPlayer::eventMouseButtonPressed(sf::Event event){
 		
-		if(event.mouseButton.button == sf::Mouse::Button::Left){
+        if(event.mouseButton.button == sf::Mouse::Left){
 			isFiring = true;
 		}
 		//else if(event.mouseButton.button == sf::Mouse::Button::Right)
@@ -48,6 +48,7 @@ namespace SSJ {
 
 
 	void MainPlayer::eventMouseMoved(sf::Event event){
+
 		double x = (double)(event.mouseMove.x - (double)(DataContainer::ScreenWidth/2));
 		double y = (double)(event.mouseMove.y - (double)(DataContainer::ScreenHeight/2));
 		double tg = 0.0;
@@ -122,9 +123,7 @@ namespace SSJ {
 		// set the shape color to green
 		shape.setPosition(playerPosition.x, playerPosition.y);
 		shape.setFillColor(sf::Color(100, 250, 50));
-		//sf::Texture* teksture = new sf::Texture;
-		//teksture->loadFromFile("texture.jpg");
-		//shape.setTexture(teksture, true);
+
         DataContainer::window->draw(shape);
 
 		// dodać wyśrodkowanie gracza na środku ekranu na podstawie grafiki
@@ -188,6 +187,34 @@ namespace SSJ {
 				isFiring = false;
 			}
 		}
+    }
+    void MainPlayer::SynchronizationObject(Json::Value jsonObject)
+    {
+        if(jsonObject.isMember("mapPositionX")){
+            this->mapPosition.x = jsonObject["mapPositionX"].asDouble();
+        }
+        if(jsonObject.isMember("mapPositionY")){
+            this->mapPosition.y = jsonObject["mapPositionY"].asDouble();
+        }
+        if(jsonObject.isMember("activity")){
+            this->activity = jsonObject["activity"].asBool();
+        }
+        if(jsonObject.isMember("hp")){
+            this->hp = jsonObject["hp"].asUInt();
+        }
+        if(jsonObject.isMember("maxHP")){
+            this->maxHP = jsonObject["maxHP"].asUInt();
+        }
+        if(jsonObject.isMember("velocity")){
+            this->velocity = jsonObject["velocity"].asUInt();
+        }
+        if(jsonObject.isMember("angle")){
+            this->angle = jsonObject["angle"].asDouble();
+        }
+        if(jsonObject.isMember("targetAngle")){
+            this->targetAngle = jsonObject["targetAngle"].asDouble();
+        }
+
     }
 }
 

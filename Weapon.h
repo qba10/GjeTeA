@@ -38,6 +38,7 @@ namespace SSJ{
         void setFireRate(int fireRate);
 		void draw();
 		void update();
+        void SynchronizationObject(Json::Value);
 		Weapon();
         ~Weapon();
     };

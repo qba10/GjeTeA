@@ -8,7 +8,7 @@ namespace SSJ{
         StaticObject();
         void draw();
         void update();
-
+        void SynchronizationObject(Json::Value);
     };
 }
 #endif // STATICOBJECT_H

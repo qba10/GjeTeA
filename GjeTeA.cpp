@@ -48,8 +48,6 @@ int main()
 	Game->AddLayer(druga);
 	Game->AddLayer(trzecia);
     SSJ::DataContainer::window = Game->appWindow;
-
-
     //Game->LoadObjects();
      while( Game->appWindow->isOpen())
      {

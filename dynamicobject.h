@@ -6,8 +6,8 @@ namespace SSJ {
 
     class DynamicObject : public InteractiveObject
     {
-    private:
 	protected:
+        /*for synchronization by server*/
 		size_t velocity; // px per second
 		Degrees angle;
 		Degrees targetAngle;
@@ -21,6 +21,21 @@ namespace SSJ {
         Point CalcNewPosition( SSJ::Degrees);
 		Degrees getAngle();
         DynamicObject();
+        /**
+         * JSON:
+         * {
+         *      mapPositionX: "",
+         *      mapPositionY: "",
+         *      activity: "",
+         *      hp: "",
+         *      maxHP: "",
+         *      angle: "",
+         *      targetAngle: "",
+         *      velocity: ""
+         *
+         * }
+         */
+        void SynchronizationObject(Json::Value);
 
     };
 }

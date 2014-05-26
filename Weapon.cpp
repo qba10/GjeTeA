@@ -107,6 +107,10 @@ namespace SSJ {
 
 	}
 
+    void Weapon::SynchronizationObject(Json::Value){
+
+    }
+
 
 }
 
