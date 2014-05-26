@@ -5,13 +5,10 @@ namespace SSJ{
         this->velocity = 0.0;
         this->angle = 0.0;
         this->targetAngle = 0.0;
-
     }
 
-
-
     void DynamicObject::MoveForward(){
-        this->setMapPosition(CalcNewPosition(this->angle));
+        this->setMapPosition(CalcNewPosition(this->angle+0));
     }
 
     void DynamicObject::MoveBackward(){
@@ -43,9 +40,6 @@ namespace SSJ{
             this->angle = this->targetAngle;
         else
             this->angle -= deltaAngle;
-
-
-
     }
 
     void DynamicObject::RotateRight(){
@@ -78,8 +72,8 @@ namespace SSJ{
         newPosition.x += px;
         newPosition.y -= py;
         return newPosition;
-
     }
+
 
     void DynamicObject::SynchronizationObject(Json::Value jsonObject)
     {
@@ -109,4 +103,10 @@ namespace SSJ{
         }
 
     }
+
+	Degrees DynamicObject::getAngle(){
+		return this->angle;
+	}
+
+
 }

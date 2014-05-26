@@ -1,15 +1,22 @@
+#ifndef WEAPONFACTORY_H
+#define WEAPONFACTORY_H
 #include "Weapon.h"
 namespace SSJ {
 
     class WeaponFactory{
-        Weapon* CreateGlockObject();
-        Weapon* CreateUziObject();
-        Weapon* CreateAk47Object();
-        Weapon* CreateM16Object();
-        Weapon* CreateShotgunObject();
-        Weapon* CreateSniperRifleObject();
-        Weapon* CreateBazookaObject();
-        Weapon* CreateGrenadeObject();
-        Weapon* CreateKnifeObject();
+	private:
+		static DynamicObject* owner;
+	public:
+		static void setOwner(DynamicObject* owner);
+        static Weapon* CreateGlockObject();
+        static Weapon* CreateUziObject();
+        static Weapon* CreateAk47Object();
+        static Weapon* CreateM16Object();
+        static Weapon* CreateShotgunObject();
+        static Weapon* CreateSniperRifleObject();
+        static Weapon* CreateBazookaObject();
+        static Weapon* CreateGrenadeObject();
+        static Weapon* CreateKnifeObject();
     };
  }
+#endif

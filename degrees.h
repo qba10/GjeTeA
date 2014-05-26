@@ -12,7 +12,6 @@ namespace SSJ {
         Degrees(int);
         double getDegrees();
         void operator= (const double &);
-        void operator= (const int &);
         void operator-= (const double &);
         void operator-= ( Degrees );
         void operator+= (const double &);

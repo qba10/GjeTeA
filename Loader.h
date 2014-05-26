@@ -3,17 +3,24 @@
 #include <SFML/Window.hpp>
 #include <SFML/Network.hpp>
 #include "helpers.h"
-#include "point.h"
-#include "sprite.h"
 #include <cmath>
 #include <map>
 #include <string>
 #include <vector>
 #include <iostream>
 #include <jsoncpp/json/json.h>
-#include "degrees.h"
 
-
+enum WeaponType{	
+		Glock,
+		Uzi,
+		Ak47,
+		M16,
+		Shotgun,
+		SniperRifle,
+		Bazooka,
+		Grenade,
+		Knife
+};
 
 
 

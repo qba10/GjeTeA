@@ -2,18 +2,6 @@
 namespace SSJ {
 sf::TcpSocket *ServerConnectAPI::Socket = NULL;
 
-    ServerConnectAPI::ServerConnectAPI()
-    {
-
-
-
-    }
-
-    void ServerConnectAPI::ConnectToServer()
-    {
-
-    }
-
     void ServerConnectAPI::ServerListener(){
         sf::TcpSocket socket;
         sf::IpAddress ip =  sf::IpAddress("127.0.0.1");

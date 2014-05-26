@@ -1,6 +1,8 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 #include "point.h"
+#include "degrees.h"
+#include "sprite.h"
 #include <vector>
 #include <SFML/Window.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>

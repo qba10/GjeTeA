@@ -6,13 +6,11 @@ namespace SSJ {
 
     class DynamicObject : public InteractiveObject
     {
-    protected:
-        /*for synchronization by server*/
-        SSJ::Degrees angle;
-        SSJ::Degrees targetAngle;
 	protected:
         /*for synchronization by server*/
 		size_t velocity; // px per second
+		Degrees angle;
+		Degrees targetAngle;
     public:
         void MoveForward();
         void MoveBackward();
@@ -21,6 +19,7 @@ namespace SSJ {
         void RotateLeft();
         void RotateRight();
         Point CalcNewPosition( SSJ::Degrees);
+		Degrees getAngle();
         DynamicObject();
         /**
          * JSON:

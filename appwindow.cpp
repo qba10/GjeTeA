@@ -5,6 +5,7 @@ namespace SSJ{
     {
         this->appWindow = new sf::RenderWindow( sf::VideoMode( DataContainer::ScreenWidth, DataContainer::ScreenHeight, 32 ), "GjeTeA" );
         this->Clock.restart();
+
         ServerConnectAPI ServerConnect;
 
         thread = new sf::Thread(&ServerConnectAPI::ServerListener, &ServerConnect);
@@ -12,6 +13,7 @@ namespace SSJ{
 
 
 
+		
 
     }
     void AppWindow::Update(){
@@ -29,7 +31,6 @@ namespace SSJ{
 
     void AppWindow::Draw(){
 		appWindow->clear(sf::Color::Black);
-		//sf::RectangleShape rectangle(sf::Vector2f(120, 50));
 
         for(size_t i = 0 ; i < this->GameLayers.size(); i++){
                 this->GameLayers.at(i)->DrawLayer();

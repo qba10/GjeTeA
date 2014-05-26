@@ -1,6 +1,6 @@
 #include "object.h"
 namespace SSJ {
-
+	
 
     Object::Object(double x, double y){
         this->mapPosition.x = x;
