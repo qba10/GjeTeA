@@ -1,6 +1,9 @@
-#include "object.h"
+#include "gamelayer.h"
 
 namespace SSJ{
+
+    map <string, GameLayer * > LayerContainer::layers;
+
     string GameLayer::getName() const
     {
         return name;
@@ -61,6 +64,17 @@ namespace SSJ{
     size_t GameLayer::AmountOfObjects(){
         return this->objects.size();
     }
-	GameLayer *LayerContainer::warstwa3 = NULL;
+
+
+
+    void LayerContainer::AddGameLayer(GameLayer * gameLayer)
+    {
+        LayerContainer::layers[gameLayer->getName()] = gameLayer;
+    }
+
+    SSJ::GameLayer *SSJ::LayerContainer::GetGameLayer(string name)
+    {
+        return LayerContainer::layers.at(name);
+    }
 
 }

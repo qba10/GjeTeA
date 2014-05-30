@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <map>
 #include <string>
+#include <iostream>
 using namespace std;
 
 namespace SSJ{
@@ -10,11 +11,12 @@ namespace SSJ{
     {
     private:
         map <string, sf::Texture *> textures;
-        sf::Sprite sprite;
+        sf::Sprite *sprite;
         string defaultTexture;
     public:
         void AddTexture(string key, string path);
         Sprite();
+        sf::Sprite *getSprite() const;
     };
 }
 #endif // SPRITE_H

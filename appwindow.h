@@ -13,7 +13,7 @@ namespace SSJ {
     {
     private:
        vector <GameLayer*> GameLayers;
-        sf::Thread *thread;
+        sf::Thread *ServerConnectThread;
     public:
        void AddLayer(GameLayer*);
 

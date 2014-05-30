@@ -1,6 +1,6 @@
 #ifndef INTERACTIVEOBJECT_H
 #define INTERACTIVEOBJECT_H
-#include "object.h"
+#include "gamelayer.h"
 namespace SSJ{
     class InteractiveObject : public Object
     {

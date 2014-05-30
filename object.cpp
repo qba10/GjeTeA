@@ -30,6 +30,11 @@ namespace SSJ {
         this->mapPosition = position;
     }
 
+    Point Object::getScreenPosition()
+    {
+        return Helpers::getOnScreenPosition(this->mapPosition);
+    }
+
     void Object::AddAction(sf::Event::EventType type,  Object*  object, ActionEvent function){
         Event temp;
         temp.ActionFunction = function;
