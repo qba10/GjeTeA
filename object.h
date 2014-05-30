@@ -31,6 +31,8 @@ namespace SSJ{
         virtual void SynchronizationObject(Json::Value) = 0;
         void setActivity(bool activity);
         bool isActive();
+        Sprite getSprite() ;
+        void setSprite( Sprite value);
     };
 
 

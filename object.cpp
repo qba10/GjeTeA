@@ -35,6 +35,16 @@ namespace SSJ {
         return Helpers::getOnScreenPosition(this->mapPosition);
     }
 
+
+    Sprite Object::getSprite()
+    {
+        return sprite;
+    }
+
+    void Object::setSprite( Sprite value)
+    {
+        sprite = value;
+    }
     void Object::AddAction(sf::Event::EventType type,  Object*  object, ActionEvent function){
         Event temp;
         temp.ActionFunction = function;

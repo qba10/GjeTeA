@@ -18,6 +18,8 @@ namespace SSJ{
 		
     }
     void AppWindow::Update(){
+        Animation::UpdateAllAnimation();
+        Sprite::updateAllSprites();
         ServerConnectAPI::SendToServer("hej chujowy serwerze");
         this->Delta = this->Clock.getElapsedTime();
 		this->Clock.restart();

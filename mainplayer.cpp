@@ -14,9 +14,27 @@ namespace SSJ {
         this->moveForward = false;
         this->moveLeft = false;
         this->moveRight = false;
+
+
+        Animation * animation = new Animation("chodzenie");
+        animation->setAlphaMask(sf::Color::Magenta);
+        //animation->setSmooth(true);
+       // animation->setDefaultFrameBreakTime(sf::milliseconds(300));
+        animation->setDefaultFrame(0);
+        animation->AddFrame("./sprite/mainPlayerChodzenie/mainChodzenie1.png");
+        animation->AddFrame("./sprite/mainPlayerChodzenie/mainChodzenie2.png");
+        animation->AddFrame("./sprite/mainPlayerChodzenie/mainChodzenie3.png");
+        animation->AddFrame("./sprite/mainPlayerChodzenie/mainChodzenie4.png");
+        animation->AddFrame("./sprite/mainPlayerChodzenie/mainChodzenie5.png");
+        this->sprite.AddAnimation(animation);
+        this->sprite.ActiveAnimation("chodzenie");
+
         
-        this->sprite.AddTexture("main1", "./sprite/main1.png");
-        this->sprite.getSprite()->setScale(2.f, 2.f);
+        //this->sprite.setSmooth(true);
+        //this->sprite.setAlphaMaks(sf::Color::Black);
+       //
+
+
 
         this->AddActionKeyboard(sf::Event::KeyPressed,sf::Keyboard::W,  SLOT(this, MainPlayer::eventStartMoveForward));
         this->AddActionKeyboard(sf::Event::KeyPressed,sf::Keyboard::S,  SLOT(this, MainPlayer::eventStartMoveBackward));
@@ -89,44 +107,49 @@ namespace SSJ {
 	}
 
     void MainPlayer::eventStartMoveForward(sf::Event event){
+        this->getSprite().getAnimation("chodzenie")->start();
         this->setMoveForward(true);
     }
 
     void MainPlayer::eventStartMoveBackward(sf::Event event){
+        this->getSprite().getAnimation("chodzenie")->start();
         this->setMoveBackward(true);
     }
 
     void MainPlayer::eventStartMoveLeft(sf::Event event){
+        this->getSprite().getAnimation("chodzenie")->start();
         this->setMoveLeft(true);
     }
 
     void MainPlayer::eventStartMoveRight(sf::Event event){
+        this->getSprite().getAnimation("chodzenie")->start();
         this->setMoveRight(true);
     }
 
     void MainPlayer::eventStopMoveForward(sf::Event event){
+        this->getSprite().getAnimation("chodzenie")->stop();
         this->setMoveForward(false);
     }
 
     void MainPlayer::eventStopMoveBackward(sf::Event event){
+        this->getSprite().getAnimation("chodzenie")->stop();
         this->setMoveBackward(false);
     }
 
     void MainPlayer::eventStopMoveLeft(sf::Event event){
+        this->getSprite().getAnimation("chodzenie")->stop();
         this->setMoveLeft(false);
     }
 
     void MainPlayer::eventStopMoveRight(sf::Event event){
+       this->getSprite().getAnimation("chodzenie")->stop();
         this->setMoveRight(false);
     }
 
     void MainPlayer::draw(){
-		
-		Point playerPosition = Helpers::getOnScreenPosition(getMapPosition());
 
-		// dodać wyśrodkowanie gracza na środku ekranu na podstawie grafiki
-        DataContainer::ScreenPosition.x = this->getMapPosition().x - DataContainer::ScreenWidth/2;
-        DataContainer::ScreenPosition.y = this->getMapPosition().y - DataContainer::ScreenHeight/2;
+
+
         DataContainer::window->draw(*(this->sprite.getSprite()));
     }
 
@@ -147,6 +170,7 @@ namespace SSJ {
 
     void MainPlayer::setMoveRight(bool value)
     {
+
         moveRight = value;
     }
 
@@ -171,6 +195,7 @@ namespace SSJ {
     }
 
     void MainPlayer::update(){
+        this->sprite.getSprite()->setScale(2.f,2.f);
 
         if(moveBackward)
             this->MoveBackward();
@@ -180,16 +205,21 @@ namespace SSJ {
             this->MoveRight();
         if(moveForward)
             this->MoveForward();
-
 		if(isFiring){
 			weapon1->Shoot();	
 			if(!weapon1->repeatFire){
 				isFiring = false;
 			}
 		}
-        this->sprite.getSprite()->setOrigin(this->sprite.getSprite()->getTexture()->getSize().x/2,this->sprite.getSprite()->getTexture()->getSize().y/2 );
-        this->sprite.getSprite()->setRotation(this->angle.getDegrees()-180);
+
+       this->sprite.getSprite()->setOrigin(this->sprite.getSprite()->getTexture()->getSize().x/2,this->sprite.getSprite()->getTexture()->getSize().y/2 );
+       this->sprite.getSprite()->setRotation(this->angle.getDegrees()-180);
+
+        DataContainer::ScreenPosition.x = this->getMapPosition().x+this->sprite.getSprite()->getOrigin().x - (DataContainer::ScreenWidth)/2;
+        DataContainer::ScreenPosition.y = this->getMapPosition().y+this->sprite.getSprite()->getOrigin().y - (DataContainer::ScreenHeight)/2;
+
         this->sprite.getSprite()->setPosition(this->getScreenPosition().x, this->getScreenPosition().y);
+
     }
     void MainPlayer::SynchronizationObject(Json::Value jsonObject)
     {

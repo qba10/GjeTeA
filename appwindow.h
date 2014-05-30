@@ -8,7 +8,7 @@
 #include "map.h"
 #include "serverconnectapi.h"
 namespace SSJ {
-
+ ;
     class AppWindow
     {
     private:

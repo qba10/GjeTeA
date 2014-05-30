@@ -53,6 +53,9 @@ int main()
     //Game->AddLayer(trzecia);
     SSJ::DataContainer::window = Game->appWindow;
     //Game->LoadObjects();
+    sf::Clock clk;
+    float fps = 0;
+
      while( Game->appWindow->isOpen())
      {
 		 //Game->appWindow->clear(sf::Color::Black);
@@ -63,6 +66,12 @@ int main()
          Game->appWindow->display();
 		 
 
+
+         fps = 1/ clk.getElapsedTime().asSeconds();
+         clk.restart();
+
+
+         //cout << "FPS: " << fps << endl;
 
      }
      return 0;

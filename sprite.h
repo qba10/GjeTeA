@@ -4,19 +4,42 @@
 #include <map>
 #include <string>
 #include <iostream>
+#include "animation.h"
 using namespace std;
 
 namespace SSJ{
     class Sprite
     {
     private:
+        static vector <Sprite *> allSprites;
         map <string, sf::Texture *> textures;
+        map <string, Animation *> animations;
         sf::Sprite *sprite;
         string defaultTexture;
+        string activeTexture;
+        bool smooth;
+        sf::Color alphaMaks;
+        bool alphaMaksSet;
+        string activeAnimation;
+        void Update();
+        bool AnyTextureActive;
     public:
+        static void updateAllSprites();
         void AddTexture(string key, string path);
+        void AddAnimation(Animation *);
+        void ActiveAnimation(string);
+        void DeactivateAnimation();
+        void setTexture(string);
+        bool isAnyTextureActive();
+
+        Animation* getAnimation(string);
         Sprite();
+
         sf::Sprite *getSprite() const;
+        bool getSmooth() const;
+        void setSmooth(bool value);
+        sf::Color getAlphaMaks() const;
+        void setAlphaMaks(const sf::Color &value);
     };
 }
 #endif // SPRITE_H
