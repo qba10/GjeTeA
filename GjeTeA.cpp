@@ -25,14 +25,18 @@ int main()
     SSJ::DataContainer::ScreenPosition = screenPosition;
 
     SSJ::AppWindow *Game  = new SSJ::AppWindow;
-    Game->appWindow->setKeyRepeatEnabled(false);
-	SSJ::GameLayer *trzecia = new SSJ::GameLayer("trzecia", true);
-	SSJ::LayerContainer::warstwa3 = trzecia;
+
+    SSJ::GameLayer *pierwsza = new SSJ::GameLayer("pierwsza", true);
     SSJ::GameLayer *druga = new SSJ::GameLayer("druga", true);
+	SSJ::GameLayer *trzecia = new SSJ::GameLayer("trzecia", true);
+    SSJ::LayerContainer::AddGameLayer(pierwsza);
+    SSJ::LayerContainer::AddGameLayer(druga);
+    SSJ::LayerContainer::AddGameLayer(trzecia);
+
     SSJ::MainPlayer *obiekt = new SSJ::MainPlayer();
 	obiekt->setMapPosition(100, 200);
 
-	SSJ::GameLayer *pierwsza = new SSJ::GameLayer("pierwsza", true);
+
 	SSJ::Map *mapa = new SSJ::Map;
 
 
@@ -46,7 +50,7 @@ int main()
 	druga->addObject(obiekt);
     Game->AddLayer(pierwsza);
 	Game->AddLayer(druga);
-	Game->AddLayer(trzecia);
+    //Game->AddLayer(trzecia);
     SSJ::DataContainer::window = Game->appWindow;
     //Game->LoadObjects();
      while( Game->appWindow->isOpen())

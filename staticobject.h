@@ -1,6 +1,6 @@
 #ifndef STATICOBJECT_H
 #define STATICOBJECT_H
-#include "object.h"
+#include "gamelayer.h"
 namespace SSJ{
     class StaticObject : public Object
     {

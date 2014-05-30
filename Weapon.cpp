@@ -33,6 +33,7 @@ namespace SSJ {
 			return BulletFactory::CreateKnifeBullet();
 			break;
 		}
+        return NULL;
 	}
 
 	void Weapon::Shoot(){
@@ -40,7 +41,7 @@ namespace SSJ {
 		this->timeBetweenBullets = this->clock.getElapsedTime();
 		this->clock.restart();
 		if(timeBetweenBullets.asSeconds() > this->fireRate){
-			LayerContainer::warstwa3->addObject(Weapon::CreateBullet(this->owner->getMapPosition(), this->owner->getAngle(), this->type));
+             LayerContainer::GetGameLayer("trzecia")->addObject(Weapon::CreateBullet(this->owner->getMapPosition(), this->owner->getAngle(), this->type));
 
 		}
 	}

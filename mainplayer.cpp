@@ -14,6 +14,9 @@ namespace SSJ {
         this->moveForward = false;
         this->moveLeft = false;
         this->moveRight = false;
+        
+        this->sprite.AddTexture("main1", "./sprite/main1.png");
+        this->sprite.getSprite()->setScale(2.f, 2.f);
 
         this->AddActionKeyboard(sf::Event::KeyPressed,sf::Keyboard::W,  SLOT(this, MainPlayer::eventStartMoveForward));
         this->AddActionKeyboard(sf::Event::KeyPressed,sf::Keyboard::S,  SLOT(this, MainPlayer::eventStartMoveBackward));
@@ -23,9 +26,9 @@ namespace SSJ {
         this->AddActionKeyboard(sf::Event::KeyReleased,sf::Keyboard::S,  SLOT(this, MainPlayer::eventStopMoveBackward));
         this->AddActionKeyboard(sf::Event::KeyReleased,sf::Keyboard::A,  SLOT(this, MainPlayer::eventStopMoveLeft));
         this->AddActionKeyboard(sf::Event::KeyReleased,sf::Keyboard::D,  SLOT(this, MainPlayer::eventStopMoveRight));
-		this->AddAction(sf::Event::MouseMoved, SLOT(this, MainPlayer::eventMouseMoved)); 
-		this->AddAction(sf::Event::MouseButtonPressed, SLOT(this, MainPlayer::eventMouseButtonPressed));
-		this->AddAction(sf::Event::MouseButtonReleased, SLOT(this, MainPlayer::eventMouseButtonReleased));
+        this->AddAction(sf::Event::MouseMoved, SLOT(this, MainPlayer::eventMouseMoved));
+        this->AddAction(sf::Event::MouseButtonPressed, SLOT(this, MainPlayer::eventMouseButtonPressed));
+        this->AddAction(sf::Event::MouseButtonReleased, SLOT(this, MainPlayer::eventMouseButtonReleased));
 
 		WeaponFactory::setOwner(this);
 		this->weapon1 = WeaponFactory::CreateAk47Object();
@@ -82,6 +85,7 @@ namespace SSJ {
 			this->angle = 180.0;
 		else if(x == 0 && y < 0.0)
 			this->angle = 0.0;
+
 	}
 
     void MainPlayer::eventStartMoveForward(sf::Event event){
@@ -119,16 +123,11 @@ namespace SSJ {
     void MainPlayer::draw(){
 		
 		Point playerPosition = Helpers::getOnScreenPosition(getMapPosition());
-		sf::CircleShape shape(20);
-		// set the shape color to green
-		shape.setPosition(playerPosition.x, playerPosition.y);
-		shape.setFillColor(sf::Color(100, 250, 50));
-
-        DataContainer::window->draw(shape);
 
 		// dodać wyśrodkowanie gracza na środku ekranu na podstawie grafiki
         DataContainer::ScreenPosition.x = this->getMapPosition().x - DataContainer::ScreenWidth/2;
         DataContainer::ScreenPosition.y = this->getMapPosition().y - DataContainer::ScreenHeight/2;
+        DataContainer::window->draw(*(this->sprite.getSprite()));
     }
 
     bool MainPlayer::getMoveLeft() const
@@ -172,6 +171,7 @@ namespace SSJ {
     }
 
     void MainPlayer::update(){
+
         if(moveBackward)
             this->MoveBackward();
         if(moveLeft)
@@ -187,6 +187,9 @@ namespace SSJ {
 				isFiring = false;
 			}
 		}
+        this->sprite.getSprite()->setOrigin(this->sprite.getSprite()->getTexture()->getSize().x/2,this->sprite.getSprite()->getTexture()->getSize().y/2 );
+        this->sprite.getSprite()->setRotation(this->angle.getDegrees()-180);
+        this->sprite.getSprite()->setPosition(this->getScreenPosition().x, this->getScreenPosition().y);
     }
     void MainPlayer::SynchronizationObject(Json::Value jsonObject)
     {

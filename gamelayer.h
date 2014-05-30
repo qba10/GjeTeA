@@ -1,16 +1,16 @@
 #ifndef GAMELAYER_H
 #define GAMELAYER_H
-/*
+#include "object.h"
 namespace SSJ{
     class GameLayer
     {
-    private:
+        private:
         string name;
         vector <Object*> objects;
         bool dynamic;
 
 
-    public:
+        public:
         GameLayer(string name);
         GameLayer(string name , bool dynamic);
         string getName() const;
@@ -23,6 +23,14 @@ namespace SSJ{
         void DrawLayer();
         size_t AmountOfObjects();
     };
+
+    class LayerContainer{
+        private:
+            static map <string,GameLayer*> layers;
+        public:
+            static void AddGameLayer(GameLayer *);
+            static GameLayer* GetGameLayer(string name);
+    };
 }
-*/
+
 #endif // GAMELAYER_H
