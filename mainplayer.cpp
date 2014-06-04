@@ -26,6 +26,7 @@ namespace SSJ {
         animation->AddFrame("./sprite/mainPlayerChodzenie/mainChodzenie3.png");
         animation->AddFrame("./sprite/mainPlayerChodzenie/mainChodzenie4.png");
         animation->AddFrame("./sprite/mainPlayerChodzenie/mainChodzenie5.png");
+		animation->AddFrame("./sprite/mainPlayerChodzenie/mainChodzenie2.png");
         this->sprite.AddAnimation(animation);
         this->sprite.ActiveAnimation("chodzenie");
 

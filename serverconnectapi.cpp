@@ -30,6 +30,6 @@ sf::TcpSocket *ServerConnectAPI::Socket = NULL;
 
         sf::Packet packet;
         packet << json;
-        ServerConnectAPI::Socket->send(packet);
+        //ServerConnectAPI::Socket->send(packet);
     }
 }
