@@ -31,6 +31,10 @@ namespace SSJ {
         return sprite;
     }
 
+	void Sprite::setSprite(sf::Sprite sprite)
+	{
+		this->sprite = new sf::Sprite(sprite);
+	}
 
 
     bool Sprite::getSmooth() const
@@ -81,6 +85,19 @@ namespace SSJ {
         this->textures[key] = tempTexture;
         if(this->textures.size() == 1){
             this->sprite->setTexture(*tempTexture);
+            this->activeTexture = key;
+            this->defaultTexture = key;
+            this->AnyTextureActive = true;
+        }
+
+
+    }
+	void Sprite::AddTexture(string key, sf::Texture* texture, sf::IntRect clip){
+
+        this->textures[key] = texture;
+        if(this->textures.size() == 1){
+            this->sprite->setTexture(*texture);
+			this->sprite->setTextureRect(clip);
             this->activeTexture = key;
             this->defaultTexture = key;
             this->AnyTextureActive = true;

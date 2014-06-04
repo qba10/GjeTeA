@@ -31,4 +31,17 @@ namespace SSJ {
 
         return true;
     }
+
+	bool Helpers::checkCollision(sf::Rect<double> a, sf::Rect<double> b)
+	{
+		if(a.left + a.width < b.left)
+			return false;
+		if(a.top + a.height < b.top )
+			return false;
+		if(a.left > b.left + b.width)
+			return false;
+		if(a.top > b.top + b.height)
+			return false;
+		return true;
+	}
 }

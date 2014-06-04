@@ -1,16 +1,19 @@
 #ifndef MAP
 #define MAP
-#include "staticobject.h"
-#include <vector>
+#include "gamelayer.h"
 using namespace std;
 namespace SSJ{
-	class Map : public StaticObject{
+	class Map : public GameLayer{
 	public:
 		Map();
+		Map(string file);
+		void load(string file);
 	private:
-		vector<Object*> obiekty;
-		Sprite podloga;	
-		void draw();
+		sf::Texture texture;
+		void DrawLayer();
+		int tileWidth;
+		int w;
+		int h;
 	};
 }
 #endif

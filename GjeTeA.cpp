@@ -26,7 +26,8 @@ int main()
 
     SSJ::AppWindow *Game  = new SSJ::AppWindow;
 
-    SSJ::GameLayer *pierwsza = new SSJ::GameLayer("pierwsza", true);
+	SSJ::Map *mapa = new SSJ::Map("mapa.txt");
+    SSJ::GameLayer *pierwsza = mapa;
     SSJ::GameLayer *druga = new SSJ::GameLayer("druga", true);
 	SSJ::GameLayer *trzecia = new SSJ::GameLayer("trzecia", true);
     SSJ::LayerContainer::AddGameLayer(pierwsza);
@@ -34,10 +35,10 @@ int main()
     SSJ::LayerContainer::AddGameLayer(trzecia);
 
     SSJ::MainPlayer *obiekt = new SSJ::MainPlayer();
-	obiekt->setMapPosition(100, 200);
+	obiekt->setMapPosition(0, 0);
 
 
-	SSJ::Map *mapa = new SSJ::Map;
+	
 
 
 	/*sf::Texture cursor;
@@ -46,7 +47,7 @@ int main()
 	sprite.setPosition(sf::Mouse::getPosition(Game).x, sf::Mouse::getPosition(Game).y);*/
 	
     //obiekt->AddAction(sf::Event::MouseButtonPressed, Akcja1);
-    pierwsza->addObject(mapa);
+    
 	druga->addObject(obiekt);
     Game->AddLayer(pierwsza);
 	Game->AddLayer(druga);
@@ -63,6 +64,15 @@ int main()
          Game->Events();
          Game->Update();
          Game->Draw();
+		 /*
+		 sf::Texture tekstura;
+		 tekstura.loadFromFile("gta2tiles.jpg");
+		 sf::Sprite sprite;
+		 sprite.setTexture(tekstura);
+		 sf::IntRect rect(0,0, 64,64);
+		 sprite.setTextureRect(rect);
+		 SSJ::DataContainer::window->draw(sprite);*/
+
          Game->appWindow->display();
 		 
 

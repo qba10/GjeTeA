@@ -26,6 +26,7 @@ namespace SSJ{
     public:
         static void updateAllSprites();
         void AddTexture(string key, string path);
+		void AddTexture(string key, sf::Texture* texture, sf::IntRect clip);
         void AddAnimation(Animation *);
         void ActiveAnimation(string);
         void DeactivateAnimation();
@@ -36,6 +37,7 @@ namespace SSJ{
         Sprite();
 
         sf::Sprite *getSprite() const;
+		void		setSprite(sf::Sprite sprite);
         bool getSmooth() const;
         void setSmooth(bool value);
         sf::Color getAlphaMaks() const;
