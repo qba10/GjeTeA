@@ -28,6 +28,12 @@ namespace SSJ {
 
     }
 
+	void ServerApi::AskToCreateBullet(Json::Value parameters){
+		ServerApi::CreateRequest("createBullet", parameters);
+		
+	}
+
+
 
 
 }

@@ -27,20 +27,26 @@ sf::TcpSocket *ServerConnectAPI::Socket = NULL;
                     Json::Value objectsNumber = root["objectNumber"];
                     // cout << temptext << endl;
 
-                   DataContainer::mutex.lock();
-                   for(int i = 0 ; i <  DataContainer::ObjectLists.size(); i++){
-                      DataContainer::ObjectLists.at(i)->SynchronizationObject(root["synchronize"][i]);
-                   }
-                   for(int i =  DataContainer::ObjectLists.size() ; i <  objectsNumber.asInt(); i++){
-                        if(static_cast<ObjectType>(root["synchronize"][i]["objectName"].asInt()) == _MainPlayer)
-                            if(root["synchronize"][i]["playerID"] == Config::PlayerId)
-                                ObjectManager::CreateMainPlayer(root["synchronize"][i]);
-                            else
-                                ObjectManager::CreatePlayer(root["synchronize"][i]);
+					DataContainer::mutex.lock();
+					for(int i = 0 ; i <  DataContainer::ObjectLists.size(); i++){
+						DataContainer::ObjectLists.at(i)->SynchronizationObject(root["synchronize"][i]);
+					}
+					for(int i =  DataContainer::ObjectLists.size() ; i <  objectsNumber.asInt(); i++){
+						if(static_cast<ObjectType>(root["synchronize"][i]["objectName"].asInt()) == _MainPlayer){
+							if(root["synchronize"][i]["playerID"] == Config::PlayerId)
+								ObjectManager::CreateMainPlayer(root["synchronize"][i]);
+							else
+								ObjectManager::CreatePlayer(root["synchronize"][i]);
 
-                   }
 
-                    
+						}
+						else if(static_cast<ObjectType>(root["synchronize"][i]["objectName"].asInt()) == _Bullet){
+							ObjectManager::CreateBullet(root["synchronize"][i]);
+						}
+
+					}
+
+
                    DataContainer::mutex.unlock();
                 }
            }

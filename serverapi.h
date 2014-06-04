@@ -11,6 +11,7 @@ namespace SSJ {
     public:
         static void AskToCreateMainPlayer();
         static void AskToSynchronizeMainPlayer();
+		static void AskToCreateBullet(Json::Value parameters);
 
     };
 }

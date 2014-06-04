@@ -41,7 +41,14 @@ namespace SSJ {
 		this->timeBetweenBullets = this->clock.getElapsedTime();
 		this->clock.restart();
 		if(timeBetweenBullets.asSeconds() > this->fireRate){
-             LayerContainer::GetGameLayer("trzecia")->addObject(Weapon::CreateBullet(this->owner->getMapPosition(), this->owner->getAngle(), this->type));
+			Request tmp;
+			tmp.action = _CreateBullet;
+			tmp.parameters["ownerPositionx"] = this->owner->getMapPosition().x;
+			tmp.parameters["ownerPositiony"] = this->owner->getMapPosition().y;
+			tmp.parameters["ownerAngle"] = this->owner->getAngle().getDegrees();
+			tmp.parameters["type"] = this->type;
+			DataContainer::ReqToServer.push(tmp);
+            //LayerContainer::GetGameLayer("trzecia")->addObject(Weapon::CreateBullet(this->owner->getMapPosition(), this->owner->getAngle(), this->type));
 
 		}
 	}

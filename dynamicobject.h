@@ -8,7 +8,7 @@ namespace SSJ {
     {
 	protected:
         /*for synchronization by server*/
-		size_t velocity; // px per second
+		int velocity; // px per second
 		Degrees angle;
 		Degrees targetAngle;
     public:
@@ -36,7 +36,9 @@ namespace SSJ {
          * }
          */
         void SynchronizationObject(Json::Value);
-
+		void setVelocity(int velocity);
+		int getVelocity();
+		void setAngle(Degrees angle);
     };
 }
 #endif // DYNAMICOBJECT_H

@@ -15,15 +15,12 @@ namespace SSJ{
 		Point CalcNewPosition();
 
 		Point ownerPosition;
-		Point bulletPosition;
-		Sprite sprite;
 		string name;
-		SSJ::Degrees angle;
 		int range;
-		int bulletSpeed;
 		int damage;
 		bool blastFire;
 		int blastRange;
+		void SynchronizationObject(Json::Value);
 	};
 }
 #endif
