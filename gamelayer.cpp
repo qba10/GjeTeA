@@ -37,7 +37,7 @@ namespace SSJ{
     }
 
     void GameLayer::addObject(Object *object){
-        DataContainer::ObjectLists.push_back(object);
+
         this->objects.push_back(object);
     }
 

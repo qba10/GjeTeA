@@ -2,7 +2,7 @@
 namespace SSJ {
 
 
-    MainPlayer::MainPlayer(): DynamicObject()
+    MainPlayer::MainPlayer(): Player()
     {
         this->setActivity(true);
 		this->setMaxHP(100);
@@ -103,6 +103,7 @@ namespace SSJ {
 			this->angle = 180.0;
 		else if(x == 0 && y < 0.0)
 			this->angle = 0.0;
+        this->desynchronization = true;
 
 	}
 
@@ -220,6 +221,7 @@ namespace SSJ {
 
         this->sprite.getSprite()->setPosition(this->getScreenPosition().x, this->getScreenPosition().y);
 
+
     }
     void MainPlayer::SynchronizationObject(Json::Value jsonObject)
     {
@@ -248,6 +250,21 @@ namespace SSJ {
             this->targetAngle = jsonObject["targetAngle"].asDouble();
         }
 
+    }
+
+    Json::Value MainPlayer::SerializeMainPlayer()
+    {
+        Json::Value object;
+           object["mapPositionX"] =  this->getMapPosition().x;
+           object["mapPositionY"] =  this->getMapPosition().y;
+           object["activity"] = this->activity;
+           object["hp"] = (unsigned int)this->getHP();
+           object["maxHP"] = (unsigned int)this->getMaxHP();
+           object["velocity"] = (unsigned int)this->velocity;
+           object["angle"] = this->getAngle().getDegrees();
+           object["targetAngle"] = this->targetAngle.getDegrees();
+           this->desynchronization = false;
+        return object;
     }
 }
 

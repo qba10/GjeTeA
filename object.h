@@ -7,13 +7,15 @@ namespace SSJ{
     class Object
     {
     protected:
+        Point screenPosition;
 
-        Point mapPosition;
         Sprite sprite;
 
         /*for synchronization by server*/
-        Point screenPosition;
+
+        Point mapPosition;
         bool activity;
+        bool desynchronization;
 
     public:
         void AddAction(sf::Event::EventType, Object*,  ActionEvent);
@@ -33,6 +35,8 @@ namespace SSJ{
         bool isActive();
         Sprite getSprite() ;
         void setSprite( Sprite value);
+        bool isDesynchronization() const;
+        void setDesynchronization(bool value);
     };
 
 

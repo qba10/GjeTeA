@@ -1,12 +1,7 @@
 #ifndef APPWINDOW_H
 #define APPWINDOW_H
-#include "Loader.h"
-#include "object.h"
-#include "gamelayer.h"
-#include "staticobject.h"
-#include "mainplayer.h"
-#include "map.h"
-#include "serverconnectapi.h"
+#include "objectmanager.h"
+#include "serverapi.h"
 namespace SSJ {
  ;
     class AppWindow

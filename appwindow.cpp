@@ -20,7 +20,6 @@ namespace SSJ{
     void AppWindow::Update(){
         Animation::UpdateAllAnimation();
         Sprite::updateAllSprites();
-        ServerConnectAPI::SendToServer("hej chujowy serwerze");
         this->Delta = this->Clock.getElapsedTime();
 		this->Clock.restart();
         DataContainer::DeltaTime = this->Delta;
@@ -30,6 +29,8 @@ namespace SSJ{
                 this->GameLayers.at(i)->UpdateLayer();
             }
         }
+
+       ServerApi::AskToSynchronizeMainPlayer();
     }
 
     void AppWindow::Draw(){
@@ -63,7 +64,7 @@ namespace SSJ{
 
 
     void AppWindow::LoadObjects(){
-
+        ServerApi::AskToCreateMainPlayer();
     }
 
     void AppWindow::AddLayer(GameLayer *gameLayer){

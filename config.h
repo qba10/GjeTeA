@@ -10,11 +10,19 @@
 #define SLOT(object, method) object, (ActionEvent)(&method)
 #define PI 3.14159265
 namespace SSJ {
+enum ObjectType{
+        _Object,
+        _InteractiveObject,
+        _StaticObject,
+        _DynamicObject,
+        _MainPlayer,
+        _Player
+
+};
     class Object;
     using namespace std;
     typedef void(Object::*ActionEvent)(sf::Event);
-    //void (Object::*ActionEvent)(sf::Event)  = NULL;
-    //typedef function<void(sf::Event)> ActionEvent;
+
 
     struct Event{
         Event(){
@@ -28,7 +36,7 @@ namespace SSJ {
 
     class Config{
     public:
-
+        static string PlayerId;
         static size_t RotationSpeed;
 
     };

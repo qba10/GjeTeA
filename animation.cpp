@@ -31,7 +31,7 @@ namespace SSJ {
 
     void Animation::disableAlphaMask()
     {
-        alphaMaskSet = true;
+        alphaMaskSet = false;
     }
 
     void Animation::setDefaultFrame(int id)
@@ -84,7 +84,6 @@ namespace SSJ {
            sf::Time checkTime = this->clock.getElapsedTime();
            if(checkTime.asMilliseconds() > this->framesBreakTime.at(this->getNextFrameIndex()).asMilliseconds()){
                this->nextFrame();
-               cout << "Buu: " << this->currentFrame << endl;
                this->clock.restart();
 
            }

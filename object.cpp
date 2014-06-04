@@ -5,15 +5,18 @@ namespace SSJ {
     Object::Object(double x, double y){
         this->mapPosition.x = x;
         this->mapPosition.y = y;
+        this->desynchronization = false;
     }
 
     Object::Object(Point position){
         this->mapPosition = position;
+        this->desynchronization = false;
     }
 
     Object::Object(){
         this->mapPosition.x = 0;
         this->mapPosition.y = 0;
+        this->desynchronization = false;
 
     }
 
@@ -44,6 +47,16 @@ namespace SSJ {
     void Object::setSprite( Sprite value)
     {
         sprite = value;
+    }
+
+    bool Object::isDesynchronization() const
+    {
+        return desynchronization;
+    }
+
+    void Object::setDesynchronization(bool value)
+    {
+        desynchronization = value;
     }
     void Object::AddAction(sf::Event::EventType type,  Object*  object, ActionEvent function){
         Event temp;

@@ -8,18 +8,22 @@ namespace SSJ{
     }
 
     void DynamicObject::MoveForward(){
+        this->desynchronization = true;
         this->setMapPosition(CalcNewPosition(this->angle+0));
     }
 
     void DynamicObject::MoveBackward(){
+        this->desynchronization = true;
         this->setMapPosition(CalcNewPosition(this->angle+180));
     }
 
     void DynamicObject::MoveLeft(){
+        this->desynchronization = true;
         this->setMapPosition(CalcNewPosition(this->angle+270));
     }
 
     void DynamicObject::MoveRight(){
+        this->desynchronization = true;
         this->setMapPosition(CalcNewPosition(this->angle+90));
     }
 

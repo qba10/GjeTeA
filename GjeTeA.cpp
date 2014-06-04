@@ -7,17 +7,20 @@
 //============================================================================
 #include "appwindow.h"
 
-void Akcja1(sf::Event event){
-    cout << event.key.code << endl;
-}
+
 
 
 int main()
 {
-    Json::Value root;
+    SSJ::DataContainer::mutex.lock();
     SSJ::DataContainer::ScreenWidth = 800;
     SSJ::DataContainer::ScreenHeight = 600;
     SSJ::DataContainer::ScreenMargin = 64;
+    time_t  timev;
+    time(&timev);
+    ostringstream oss;
+    oss << (int)timev;
+    SSJ::Config::PlayerId = oss.str();
 
     SSJ::Point screenPosition;
 	screenPosition.x = 0;
@@ -33,8 +36,8 @@ int main()
     SSJ::LayerContainer::AddGameLayer(druga);
     SSJ::LayerContainer::AddGameLayer(trzecia);
 
-    SSJ::MainPlayer *obiekt = new SSJ::MainPlayer();
-	obiekt->setMapPosition(100, 200);
+  //  SSJ::MainPlayer *obiekt = new SSJ::MainPlayer();
+//	obiekt->setMapPosition(100, 200);
 
 
 	SSJ::Map *mapa = new SSJ::Map;
@@ -46,8 +49,9 @@ int main()
 	sprite.setPosition(sf::Mouse::getPosition(Game).x, sf::Mouse::getPosition(Game).y);*/
 	
     //obiekt->AddAction(sf::Event::MouseButtonPressed, Akcja1);
+    //druga->addObject(obiekt);
     pierwsza->addObject(mapa);
-	druga->addObject(obiekt);
+
     Game->AddLayer(pierwsza);
 	Game->AddLayer(druga);
     //Game->AddLayer(trzecia);
@@ -55,17 +59,21 @@ int main()
     //Game->LoadObjects();
     sf::Clock clk;
     float fps = 0;
+    Game->LoadObjects();
+    SSJ::DataContainer::mutex.unlock();
 
      while( Game->appWindow->isOpen())
      {
 		 //Game->appWindow->clear(sf::Color::Black);
          //cout << "xmap: " << SSJ::Config::ScreenPosition.x << "\tymap: " << SSJ::Config::ScreenPosition.y << "\n";
+         SSJ::DataContainer::mutex.lock();
          Game->Events();
          Game->Update();
          Game->Draw();
          Game->appWindow->display();
+         SSJ::DataContainer::mutex.unlock();
 		 
-
+sf::sleep(sf::milliseconds(10));
 
          fps = 1/ clk.getElapsedTime().asSeconds();
          clk.restart();

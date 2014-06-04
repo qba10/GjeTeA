@@ -1,16 +1,16 @@
 #ifndef MAINPLAYER_H
 #define MAINPLAYER_H
-#include "dynamicobject.h"
+#include "player.h"
 #include "WeaponFactory.h"
 namespace SSJ{
-    class MainPlayer : public DynamicObject
+    class MainPlayer : public Player
     {
     private:
         bool moveLeft;
         bool moveRight;
         bool moveForward;
         bool moveBackward;
-		bool isFiring;
+
 	protected:
 		Weapon* weapon1;
     public:
@@ -51,6 +51,7 @@ namespace SSJ{
          * }
          */
         void SynchronizationObject(Json::Value);
+        Json::Value SerializeMainPlayer();
     };
 }
 
