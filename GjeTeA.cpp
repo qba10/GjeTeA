@@ -6,6 +6,7 @@
 // Description : Hello World in C++, Ansi-style
 //============================================================================
 #include "appwindow.h"
+#define BEZ_SERWERA
 
 
 
@@ -36,6 +37,10 @@ int main()
     SSJ::LayerContainer::AddGameLayer(pierwsza);
     SSJ::LayerContainer::AddGameLayer(druga);
     SSJ::LayerContainer::AddGameLayer(trzecia);
+#ifdef BEZ_SERWERA
+    SSJ::MainPlayer * mainPlayer = new SSJ::MainPlayer;
+    trzecia->addObject(mainPlayer);
+#endif
 
 
 
