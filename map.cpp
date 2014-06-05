@@ -82,11 +82,32 @@ namespace SSJ {
 	}
 
 	void Map::DrawLayer(){
-		double x;
-		double y;
-		//x = 
-		for(size_t i = 0 ; i < this->getObjects()->size() ; i++ ){
-            this->getObjects()->at(i)->draw();
+		int x;
+		int y;
+		int first;
+		int last;
+		int offset = 5;
+		int screenTileHeight = ( DataContainer::ScreenHeight / this->tileWidth ) + 4*offset; 
+		
+		x = ( ( DataContainer::ScreenPosition.x -  fmod(DataContainer::ScreenPosition.x, tileWidth) )/ 
+			this->tileWidth ) - offset; 
+		y = ( ( DataContainer::ScreenPosition.y -  fmod(DataContainer::ScreenPosition.y, tileWidth) )/ 
+			this->tileWidth ) - offset;
+		
+		for(int i = 0 ; i <  screenTileHeight; i++ )
+		{
+			first = y * (this->w) + x + i*w;
+			if (first < 0)
+				first = 0;
+			
+			last  = first + ( DataContainer::ScreenWidth / this->tileWidth ) + offset;
+			if (last >= this->getObjects()->size())
+				last = this->getObjects()->size()-1;
+
+			for( int j = first ; j < last ; ++j)
+			{
+				this->getObjects()->at(j)->draw();
+			}
         }
 	}
 }
