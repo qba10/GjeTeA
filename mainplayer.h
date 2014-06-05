@@ -37,6 +37,7 @@ namespace SSJ{
         void setMoveForward(bool value);
         bool getMoveBackward() const;
         void setMoveBackward(bool value);
+		Weapon* getWeapon1();
         /**
          * JSON:
          * {

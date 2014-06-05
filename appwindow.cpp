@@ -15,6 +15,7 @@ namespace SSJ{
         ServerConnectThread = new sf::Thread(&ServerConnectAPI::ServerListener, &ServerConnect);
         ServerConnectThread->launch();
 
+		this->hud = new Hud;
 		
     }
     void AppWindow::Update(){
@@ -44,10 +45,11 @@ namespace SSJ{
 
     void AppWindow::Draw(){
 		appWindow->clear(sf::Color::Black);
-
+		
         for(size_t i = 0 ; i < this->GameLayers.size(); i++){
                 this->GameLayers.at(i)->DrawLayer();
         }
+		hud->draw();
     }
 
 

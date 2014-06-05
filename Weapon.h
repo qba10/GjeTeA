@@ -5,7 +5,7 @@
 #include "BulletFactory.h"
 namespace SSJ{
     class Weapon : public DynamicObject{
-    public:
+	public:
 		WeaponType type;
 		string name;
         int range; // zasięg broni
@@ -32,10 +32,10 @@ namespace SSJ{
 		WeaponType getName();
         void Hit(); // dla zwykłych broni
         void HitByBlast(); // dla broni obszarowych
-        int getMaxAmmo();
+        int getAllAmmo();
         int getAmmo();
 		void Shoot();
-        void setMaxAmmo(int maxAmmo);
+        void setAllAmmo(int allAmmo);
         void decreaseAmmo(); // zmniejsz ilość pocisków po strzale
         void setAmmo(int ammo);
         void setReloadTime(int reloadTime);

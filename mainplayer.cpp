@@ -152,6 +152,11 @@ namespace SSJ {
         this->setMoveRight(false);
     }
 
+	Weapon* MainPlayer::getWeapon1(){
+		return this->weapon1;
+	}
+
+
     void MainPlayer::draw(){
 
 
