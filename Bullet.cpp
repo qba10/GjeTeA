@@ -45,26 +45,26 @@ namespace SSJ{
 
 	void Bullet::SynchronizationObject(Json::Value jsonObject)
     {
-        if(jsonObject.isMember("mapPositionX")){
-            this->mapPosition.x = jsonObject["mapPositionX"].asDouble();
+        if(jsonObject.isMember(_J(_mapPositionX))){
+            this->mapPosition.x = jsonObject[_J(_mapPositionX)].asDouble();
         }
-        if(jsonObject.isMember("mapPositionY")){
-            this->mapPosition.y = jsonObject["mapPositionY"].asDouble();
+        if(jsonObject.isMember(_J(_mapPositionY))){
+            this->mapPosition.y = jsonObject[_J(_mapPositionY)].asDouble();
         }
-        if(jsonObject.isMember("activity")){
-            this->activity = jsonObject["activity"].asBool();
+        if(jsonObject.isMember(_J(_activity))){
+            this->activity = jsonObject[_J(_activity)].asBool();
         }
-        if(jsonObject.isMember("hp")){
-            this->hp = jsonObject["hp"].asUInt();
+        if(jsonObject.isMember(_J(_hp))){
+            this->hp = jsonObject[_J(_hp)].asUInt();
         }
-        if(jsonObject.isMember("maxHP")){
-            this->maxHP = jsonObject["maxHP"].asUInt();
+        if(jsonObject.isMember(_J(_maxHP))){
+            this->maxHP = jsonObject[_J(_maxHP)].asUInt();
         }
-        if(jsonObject.isMember("angle")){
-            this->angle = jsonObject["angle"].asDouble();
+        if(jsonObject.isMember(_J(_maxHP))){
+            this->angle = jsonObject[_J(_maxHP)].asDouble();
         }
-        if(jsonObject.isMember("targetAngle")){
-            this->targetAngle = jsonObject["targetAngle"].asDouble();
+        if(jsonObject.isMember(_J(_targetAngle))){
+            this->targetAngle = jsonObject[_J(_targetAngle)].asDouble();
         }
 
     }

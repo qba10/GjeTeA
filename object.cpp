@@ -87,14 +87,14 @@ namespace SSJ {
 
     void Object::SynchronizationObject(Json::Value jsonObject)
     {
-        if(jsonObject.isMember("mapPositionX")){
-            this->mapPosition.x = jsonObject["mapPositionX"].asDouble();
+        if(jsonObject.isMember(_J(_mapPositionX))){
+            this->mapPosition.x = jsonObject[_J(_mapPositionX)].asDouble();
         }
-        if(jsonObject.isMember("mapPositionY")){
-            this->mapPosition.y = jsonObject["mapPositionY"].asDouble();
+        if(jsonObject.isMember(_J(_mapPositionY))){
+            this->mapPosition.y = jsonObject[_J(_mapPositionY)].asDouble();
         }
-        if(jsonObject.isMember("activity")){
-            this->activity = jsonObject["mapPositionX"].asBool();
+        if(jsonObject.isMember(_J(_activity))){
+            this->activity = jsonObject[_J(_activity)].asBool();
         }
 
     }

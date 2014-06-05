@@ -1,12 +1,12 @@
 #include "serverapi.h"
 namespace SSJ {
 
-    void ServerApi::CreateRequest(string request, Json::Value parametres)
+    void ServerApi::CreateRequest(RequestName request, Json::Value parametres)
     {
         Json::Value object;
-        object["playerId"] = Config::PlayerId;
-        object["ask"] = request;
-        object["parametres"] = parametres;
+        object[_J(_playerId)] = Config::PlayerId;
+        object[_J(_ask)] = request;
+        object[_J(_parameters)] = parametres;
         Json::FastWriter writer;
  
         ServerConnectAPI::SendToServer(writer.write(object));
@@ -18,19 +18,19 @@ namespace SSJ {
     {
         if(DataContainer::MainPlayer != NULL){
             if(DataContainer::MainPlayer->isDesynchronization()){
-                 ServerApi::CreateRequest("synchronizeMainPlayer", dynamic_cast<MainPlayer*>(DataContainer::MainPlayer)->SerializeMainPlayer());
+                 ServerApi::CreateRequest(_synchronizeMainPlayer, dynamic_cast<MainPlayer*>(DataContainer::MainPlayer)->SerializeMainPlayer());
             }
         }
     }
 
     void ServerApi::AskToCreateMainPlayer()
     {
-        ServerApi::CreateRequest("createMainPlayer");
+        ServerApi::CreateRequest(_createMainPlayer);
 
     }
 
 	void ServerApi::AskToCreateBullet(Json::Value parameters){
-		ServerApi::CreateRequest("createBullet", parameters);
+        ServerApi::CreateRequest(_createBullet, parameters);
 		
 	}
 

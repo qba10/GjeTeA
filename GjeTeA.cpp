@@ -6,7 +6,7 @@
 // Description : Hello World in C++, Ansi-style
 //============================================================================
 #include "appwindow.h"
-#define BEZ_SERWERA
+//#define BEZ_SERWERA
 
 
 

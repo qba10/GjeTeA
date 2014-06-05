@@ -9,9 +9,12 @@
 #include <functional>
 #include <queue>
 #include <jsoncpp/json/json.h>
+#include <sstream>
 #define SLOT(object, method) object, (ActionEvent)(&method)
+#define _J(enum) intToString(enum)
 #define PI 3.14159265
 namespace SSJ {
+    string intToString(int);
 
 	enum WeaponType{	
 		Glock,
@@ -23,19 +26,48 @@ namespace SSJ {
 		Bazooka,
 		Grenade,
 		Knife
-};
+    };
+    enum RequestName{
+        _synchronizeMainPlayer,
+        _createMainPlayer,
+        _createBullet
+
+    };
+
+    enum JsonOption{
+        _mapPositionX,
+        _mapPositionY,
+        _activity,
+        _hp,
+        _maxHP,
+        _velocity,
+        _angle,
+        _targetAngle,
+        _playerId,
+        _ask,
+        _parameters,
+        _objectName,
+        _name,
+        _ownerPositionX,
+        _ownerPositionY,
+        _ownerAngle,
+        _weaponType,
+        _objectAmount,
+        _synchronize
 
 
-enum ObjectType{
+    };
+    enum ObjectType{
         _Object,
         _InteractiveObject,
         _StaticObject,
         _DynamicObject,
         _MainPlayer,
         _Player,
-		_Bullet
+        _Bullet
 
-};
+    };
+
     class Object;
     using namespace std;
     typedef void(Object::*ActionEvent)(sf::Event);
@@ -51,12 +83,10 @@ enum ObjectType{
          Object * object;
     };
 
-	enum RequestType{
-		_CreateBullet,
-	};
+
 
 	struct Request{
-		RequestType action;
+        RequestName action;
 		Json::Value parameters;
 	};
 
