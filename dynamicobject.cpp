@@ -112,5 +112,17 @@ namespace SSJ{
 		return this->angle;
 	}
 
+	void DynamicObject::setAngle(Degrees angle){
+		this->angle = angle;
+	}
+
+	int DynamicObject::getVelocity(){
+		return this->velocity;
+	}
+
+	void DynamicObject::setVelocity(int velocity){
+		this->velocity = velocity;
+	}
+
 
 }

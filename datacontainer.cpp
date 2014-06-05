@@ -11,7 +11,7 @@ namespace SSJ {
     sf::Mutex DataContainer::mutex;
     sf::Mutex DataContainer::SendMutex;
     Object * DataContainer::MainPlayer = NULL;
-
+	queue<Request> DataContainer::ReqToServer;
 
 
 }

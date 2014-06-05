@@ -29,8 +29,17 @@ namespace SSJ{
                 this->GameLayers.at(i)->UpdateLayer();
             }
         }
+		while(!DataContainer::ReqToServer.empty()){
+			switch(DataContainer::ReqToServer.front().action){
+			case _CreateBullet:
+				ServerApi::AskToCreateBullet(DataContainer::ReqToServer.front().parameters);
+				break;
+			}
+			DataContainer::ReqToServer.pop();
+		}
 
-       ServerApi::AskToSynchronizeMainPlayer();
+
+        ServerApi::AskToSynchronizeMainPlayer();
     }
 
     void AppWindow::Draw(){

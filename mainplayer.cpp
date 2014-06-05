@@ -266,5 +266,6 @@ namespace SSJ {
            this->desynchronization = false;
         return object;
     }
+
 }
 

@@ -3,7 +3,6 @@
 #include "objectmanager.h"
 #include "serverapi.h"
 namespace SSJ {
- ;
     class AppWindow
     {
     private:

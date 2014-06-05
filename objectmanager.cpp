@@ -15,9 +15,15 @@ namespace SSJ {
         Player* Temp = new Player;
         Temp->SynchronizationObject(object);
         DataContainer::ObjectLists.push_back(Temp);
-        LayerContainer::GetGameLayer("druga")->addObject(Temp);
+        LayerContainer::GetGameLayer("trzecia")->addObject(Temp);
     }
 
+	void ObjectManager::CreateBullet(Json::Value object){
+		Bullet* Temp = new Bullet;
+		Temp->SynchronizationObject(object);
+		DataContainer::ObjectLists.push_back(Temp);
+		LayerContainer::GetGameLayer("trzecia")->addObject(Temp);
+	}
 
 
 

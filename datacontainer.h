@@ -19,7 +19,7 @@ namespace SSJ {
         static sf::Time DeltaTime;
         static sf::RenderWindow *window;
         static Object* MainPlayer;
-
+		static queue<Request> ReqToServer;
     };
 }
 #endif // DATACONTAINER_H

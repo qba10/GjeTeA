@@ -14,6 +14,7 @@ namespace SSJ {
     public:
         static void CreateMainPlayer(Json::Value object);
         static void CreatePlayer(Json::Value object);
+		static void CreateBullet(Json::Value object);
     };
 }
 #endif // OBJECTMANAGER_H

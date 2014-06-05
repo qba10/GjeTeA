@@ -36,10 +36,6 @@ int main()
     SSJ::LayerContainer::AddGameLayer(druga);
     SSJ::LayerContainer::AddGameLayer(trzecia);
 
-  //  SSJ::MainPlayer *obiekt = new SSJ::MainPlayer();
-//	obiekt->setMapPosition(100, 200);
-
-
 	SSJ::Map *mapa = new SSJ::Map;
 
 
@@ -48,13 +44,11 @@ int main()
 	sf::Sprite sprite(cursor);
 	sprite.setPosition(sf::Mouse::getPosition(Game).x, sf::Mouse::getPosition(Game).y);*/
 	
-    //obiekt->AddAction(sf::Event::MouseButtonPressed, Akcja1);
-    //druga->addObject(obiekt);
     pierwsza->addObject(mapa);
 
     Game->AddLayer(pierwsza);
 	Game->AddLayer(druga);
-    //Game->AddLayer(trzecia);
+    Game->AddLayer(trzecia);
     SSJ::DataContainer::window = Game->appWindow;
     //Game->LoadObjects();
     sf::Clock clk;
@@ -73,7 +67,7 @@ int main()
          Game->appWindow->display();
          SSJ::DataContainer::mutex.unlock();
 		 
-sf::sleep(sf::milliseconds(10));
+		sf::sleep(sf::milliseconds(10));
 
          fps = 1/ clk.getElapsedTime().asSeconds();
          clk.restart();
