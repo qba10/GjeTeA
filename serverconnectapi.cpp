@@ -60,5 +60,6 @@ sf::TcpSocket *ServerConnectAPI::Socket = NULL;
         DataContainer::SendMutex.lock();
         ServerConnectAPI::Socket->send(packet);
         DataContainer::SendMutex.unlock();
+
     }
 }

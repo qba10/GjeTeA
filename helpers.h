@@ -8,6 +8,7 @@ namespace SSJ{
       static bool isInScreen(Point);
       static Point getOnScreenPosition(double x, double y);
       static bool isInScreen(double x, double y);
-    };
+      static bool checkCollision(sf::Rect<double> a, sf::Rect<double> b);
+	};
 }
 #endif // HELPERS_H

@@ -20,8 +20,9 @@ namespace SSJ{
         bool isDynamic() const;
         void setDynamic(bool value);
         void UpdateLayer();
-        void DrawLayer();
+        virtual void DrawLayer();
         size_t AmountOfObjects();
+		vector <Object*>* getObjects() { return &objects; }
     };
 
     class LayerContainer{

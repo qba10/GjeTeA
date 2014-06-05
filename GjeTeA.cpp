@@ -29,14 +29,15 @@ int main()
 
     SSJ::AppWindow *Game  = new SSJ::AppWindow;
 
-    SSJ::GameLayer *pierwsza = new SSJ::GameLayer("pierwsza", true);
+	SSJ::Map *mapa = new SSJ::Map("mapa.txt");
+    SSJ::GameLayer *pierwsza = mapa;
     SSJ::GameLayer *druga = new SSJ::GameLayer("druga", true);
 	SSJ::GameLayer *trzecia = new SSJ::GameLayer("trzecia", true);
     SSJ::LayerContainer::AddGameLayer(pierwsza);
     SSJ::LayerContainer::AddGameLayer(druga);
     SSJ::LayerContainer::AddGameLayer(trzecia);
 
-	SSJ::Map *mapa = new SSJ::Map;
+
 
 
 	/*sf::Texture cursor;
@@ -44,7 +45,6 @@ int main()
 	sf::Sprite sprite(cursor);
 	sprite.setPosition(sf::Mouse::getPosition(Game).x, sf::Mouse::getPosition(Game).y);*/
 	
-    pierwsza->addObject(mapa);
 
     Game->AddLayer(pierwsza);
 	Game->AddLayer(druga);
@@ -58,12 +58,12 @@ int main()
 
      while( Game->appWindow->isOpen())
      {
-		 //Game->appWindow->clear(sf::Color::Black);
-         //cout << "xmap: " << SSJ::Config::ScreenPosition.x << "\tymap: " << SSJ::Config::ScreenPosition.y << "\n";
+
          SSJ::DataContainer::mutex.lock();
          Game->Events();
          Game->Update();
          Game->Draw();
+
          Game->appWindow->display();
          SSJ::DataContainer::mutex.unlock();
 		 
