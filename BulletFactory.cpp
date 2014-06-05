@@ -94,7 +94,7 @@ namespace SSJ{
 		Bullet* BazookaBullet = new Bullet();
 		BazookaBullet->name =			"Bazooka";
 		BazookaBullet->range =			600;
-		BazookaBullet->setVelocity(		2);
+		BazookaBullet->setVelocity(		4);
 		BazookaBullet->damage =			100;
 		BazookaBullet->blastFire =		true;
 		BazookaBullet->blastRange =		100;

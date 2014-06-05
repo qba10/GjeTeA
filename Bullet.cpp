@@ -55,7 +55,7 @@ namespace SSJ{
 			this->setMapPosition(CalcNewPosition());
 			
 			this->activity = true;
-			cout << "x: " << this->getMapPosition().x << "\ty: " << this->getMapPosition().y << endl;
+			//cout << "x: " << this->getMapPosition().x << "\ty: " << this->getMapPosition().y << endl;
 		}
 		else{
 			if(this->blastFire){

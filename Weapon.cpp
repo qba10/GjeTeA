@@ -60,7 +60,7 @@ namespace SSJ {
 	}
 
 	void Weapon::Reload(){
-		if(!isReloading && this->ammo != this->ammoInMag){
+		if(!isReloading && this->ammo != this->ammoInMag && this->ammo != allAmmo){
 			this->reloadClock.restart();
 			isReloading = true;
 		}

@@ -51,7 +51,7 @@ namespace SSJ {
 		this->AddActionKeyboard(sf::Event::KeyPressed, sf::Keyboard::R, SLOT(this, MainPlayer::eventReload));
 
 		WeaponFactory::setOwner(this);
-		this->weapon1 = WeaponFactory::CreateGlockObject();
+		this->weapon1 = WeaponFactory::CreateUziObject();
 		LayerContainer::GetGameLayer("trzecia")->addObject(weapon1);
     }
 

@@ -14,7 +14,7 @@ namespace SSJ {
         GlockObject->range = 		4;
         GlockObject->fireRate = 	0.01;
         GlockObject->damage = 		5;
-        GlockObject->reloadTime = 	9;
+        GlockObject->reloadTime = 	2;
         GlockObject->maxAmmo = 		85;
 		GlockObject->ammoInMag =	17;
 		GlockObject->ammo =			17;
@@ -32,7 +32,7 @@ namespace SSJ {
         UziObject->range = 			5;
         UziObject->fireRate = 		0.1;
         UziObject->damage = 		4;
-        UziObject->reloadTime = 	8;
+        UziObject->reloadTime = 	2;
         UziObject->maxAmmo = 		200;
 		UziObject->ammoInMag =		40;
 		UziObject->ammo =			40;
@@ -50,7 +50,7 @@ namespace SSJ {
         Ak47Object->range = 		7;
         Ak47Object->fireRate = 		0.2;
         Ak47Object->damage = 		7;
-        Ak47Object->reloadTime = 	5;
+        Ak47Object->reloadTime = 	3;
         Ak47Object->maxAmmo = 		150;
 		Ak47Object->ammoInMag =		30;
 		Ak47Object->ammo =			30;
@@ -68,7 +68,7 @@ namespace SSJ {
         M16Object->range = 			8;
         M16Object->fireRate = 		0.08;
         M16Object->damage = 		6;
-        M16Object->reloadTime = 	5;
+        M16Object->reloadTime = 	3;
         M16Object->maxAmmo = 		150;
 		M16Object->ammoInMag =		30;
 		M16Object->ammo =			30;
@@ -104,7 +104,7 @@ namespace SSJ {
         SniperRifleObject->range = 			10;
 		SniperRifleObject->fireRate = 		4;
         SniperRifleObject->damage = 		10;
-        SniperRifleObject->reloadTime = 	9;
+        SniperRifleObject->reloadTime = 	5;
         SniperRifleObject->maxAmmo = 		25;
 		SniperRifleObject->ammoInMag =		5;
 		SniperRifleObject->ammo =			5;
@@ -122,7 +122,7 @@ namespace SSJ {
         BazookaObject->range = 			6;
         BazookaObject->fireRate = 		5;
         BazookaObject->damage = 		10;
-        BazookaObject->reloadTime = 	8;
+        BazookaObject->reloadTime = 	5;
         BazookaObject->maxAmmo = 		8;
 		BazookaObject->ammoInMag =		1;
 		BazookaObject->ammo =			1;
@@ -140,7 +140,7 @@ namespace SSJ {
         GrenadeObject->range = 			5;
         GrenadeObject->fireRate = 		1;
         GrenadeObject->damage = 		10;
-        GrenadeObject->reloadTime = 	5;
+        GrenadeObject->reloadTime = 	1;
         GrenadeObject->maxAmmo = 		5;
 		GrenadeObject->ammoInMag =		1;
 		GrenadeObject->ammo =			1;
@@ -158,7 +158,7 @@ namespace SSJ {
         KnifeObject->range = 			1;
         KnifeObject->fireRate = 		0.3;
         KnifeObject->damage = 			4;
-        KnifeObject->reloadTime = 		10;
+        KnifeObject->reloadTime = 		0;
         KnifeObject->maxAmmo = 			0;
 		KnifeObject->ammoInMag =		0;
 		KnifeObject->ammo =				0;
