@@ -34,6 +34,9 @@ namespace SSJ {
 		
 	}
 
+	void ServerApi::AskToCreateWeapon(Json::Value parameters){
+        ServerApi::CreateRequest(_createWeapon, parameters);
+	}
 
 
 

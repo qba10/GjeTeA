@@ -43,6 +43,9 @@ sf::TcpSocket *ServerConnectAPI::Socket = NULL;
                         else if(static_cast<ObjectType>(root[_J(_synchronize)][i][_J(_objectName)].asInt()) == _Bullet){
                             ObjectManager::CreateBullet(root[_J(_synchronize)][i]);
 						}
+                        else if(static_cast<ObjectType>(root[_J(_synchronize)][i][_J(_objectName)].asInt()) == _Weapon){
+                            ObjectManager::CreateWeapon(root[_J(_synchronize)][i]);
+						}
 
 					}
 
@@ -54,7 +57,6 @@ sf::TcpSocket *ServerConnectAPI::Socket = NULL;
     }
 
     void ServerConnectAPI::SendToServer(string json){
-
         sf::Packet packet;
         packet << json;
         DataContainer::SendMutex.lock();

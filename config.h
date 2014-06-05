@@ -30,7 +30,8 @@ namespace SSJ {
     enum RequestName{
         _synchronizeMainPlayer,
         _createMainPlayer,
-        _createBullet
+        _createBullet,
+        _createWeapon
 
     };
 
@@ -64,9 +65,10 @@ namespace SSJ {
         _DynamicObject,
         _MainPlayer,
         _Player,
-        _Bullet
-
+		_Bullet,
+		_Weapon
     };
+
 
     class Object;
     using namespace std;
