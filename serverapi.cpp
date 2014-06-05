@@ -7,7 +7,8 @@ namespace SSJ {
         object["playerId"] = Config::PlayerId;
         object["ask"] = request;
         object["parametres"] = parametres;
-        Json::StyledWriter writer;
+        Json::FastWriter writer;
+ 
         ServerConnectAPI::SendToServer(writer.write(object));
 
 
