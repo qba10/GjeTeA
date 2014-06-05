@@ -31,7 +31,7 @@ namespace SSJ{
         }
 		while(!DataContainer::ReqToServer.empty()){
 			switch(DataContainer::ReqToServer.front().action){
-			case _CreateBullet:
+            case _createBullet:
 				ServerApi::AskToCreateBullet(DataContainer::ReqToServer.front().parameters);
 				break;
 			}
