@@ -24,27 +24,27 @@ sf::TcpSocket *ServerConnectAPI::Socket = NULL;
                     Json::Value root;
                     Json::Reader reader;
                     reader.parse(temptext, root, false);
-                    Json::Value objectsNumber = root["objectNumber"];
+                    Json::Value objectsNumber = root[_J(_objectAmount)];
                     // cout << temptext << endl;
 
 					DataContainer::mutex.lock();
 					for(int i = 0 ; i <  DataContainer::ObjectLists.size(); i++){
-						DataContainer::ObjectLists.at(i)->SynchronizationObject(root["synchronize"][i]);
+                        DataContainer::ObjectLists.at(i)->SynchronizationObject(root[_J(_synchronize)][i]);
 					}
 					for(int i =  DataContainer::ObjectLists.size() ; i <  objectsNumber.asInt(); i++){
-						if(static_cast<ObjectType>(root["synchronize"][i]["objectName"].asInt()) == _MainPlayer){
-							if(root["synchronize"][i]["playerID"] == Config::PlayerId)
-								ObjectManager::CreateMainPlayer(root["synchronize"][i]);
+                        if(static_cast<ObjectType>(root[_J(_synchronize)][i][_J(_objectName)].asInt()) == _MainPlayer){
+                            if(root[_J(_synchronize)][i][_J(_playerId)] == Config::PlayerId)
+                                ObjectManager::CreateMainPlayer(root[_J(_synchronize)][i]);
 							else
-								ObjectManager::CreatePlayer(root["synchronize"][i]);
+                                ObjectManager::CreatePlayer(root[_J(_synchronize)][i]);
 
 
 						}
-						else if(static_cast<ObjectType>(root["synchronize"][i]["objectName"].asInt()) == _Bullet){
-							ObjectManager::CreateBullet(root["synchronize"][i]);
+                        else if(static_cast<ObjectType>(root[_J(_synchronize)][i][_J(_objectName)].asInt()) == _Bullet){
+                            ObjectManager::CreateBullet(root[_J(_synchronize)][i]);
 						}
-						else if(static_cast<ObjectType>(root["synchronize"][i]["objectName"].asInt()) == _Weapon){
-							ObjectManager::CreateWeapon(root["synchronize"][i]);
+                        else if(static_cast<ObjectType>(root[_J(_synchronize)][i][_J(_objectName)].asInt()) == _Weapon){
+                            ObjectManager::CreateWeapon(root[_J(_synchronize)][i]);
 						}
 
 					}
@@ -57,7 +57,6 @@ sf::TcpSocket *ServerConnectAPI::Socket = NULL;
     }
 
     void ServerConnectAPI::SendToServer(string json){
-		cout << json;
         sf::Packet packet;
         packet << json;
         DataContainer::SendMutex.lock();
