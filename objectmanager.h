@@ -15,6 +15,7 @@ namespace SSJ {
         static void CreateMainPlayer(Json::Value object);
         static void CreatePlayer(Json::Value object);
 		static void CreateBullet(Json::Value object);
+		static void CreateWeapon(Json::Value object);
     };
 }
 #endif // OBJECTMANAGER_H

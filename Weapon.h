@@ -4,7 +4,7 @@
 #include <string>
 #include "BulletFactory.h"
 namespace SSJ{
-    class Weapon : public Object{
+    class Weapon : public DynamicObject{
     public:
 		WeaponType type;
 		string name;

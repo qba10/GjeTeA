@@ -12,7 +12,7 @@ namespace SSJ {
         static void AskToCreateMainPlayer();
         static void AskToSynchronizeMainPlayer();
 		static void AskToCreateBullet(Json::Value parameters);
-
+		static void AskToCreateWeapon(Json::Value parameters);
     };
 }
 #endif // SERVERAPI_H

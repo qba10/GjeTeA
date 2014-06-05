@@ -5,6 +5,7 @@ namespace SSJ{
 
 	Bullet::Bullet(){
 		this->setMapPosition(ownerPosition);
+		this->sprite.AddTexture("bullet", "./bullet.png");
 	}
 
 	Bullet::~Bullet(){
@@ -13,10 +14,15 @@ namespace SSJ{
 
 	void Bullet::draw(){
 
-		//if( (pow(bulletPosition.x - ownerPosition.x, 2) + pow(bulletPosition.y - ownerPosition.y, 2)) <= pow(this->range, 2)){
+		if( (pow(this->getMapPosition().x - ownerPosition.x, 2) + pow(this->getMapPosition().y - ownerPosition.y, 2)) <= pow(this->range, 2)){
+
 			this->setMapPosition(CalcNewPosition());
-			//cout << "x: " << this->getMapPosition().x << "\ty: " << this->getMapPosition().y << endl;
-		//}
+			DataContainer::window->draw(*(this->sprite.getSprite()));
+			this->activity = true;
+			cout << "x: " << this->getMapPosition().x << "\ty: " << this->getMapPosition().y << endl;
+		}
+		else
+			this->activity = false;
 	}
 
 	void Bullet::update(){
@@ -53,12 +59,6 @@ namespace SSJ{
         }
         if(jsonObject.isMember("activity")){
             this->activity = jsonObject["activity"].asBool();
-        }
-        if(jsonObject.isMember("hp")){
-            this->hp = jsonObject["hp"].asUInt();
-        }
-        if(jsonObject.isMember("maxHP")){
-            this->maxHP = jsonObject["maxHP"].asUInt();
         }
         if(jsonObject.isMember("angle")){
             this->angle = jsonObject["angle"].asDouble();

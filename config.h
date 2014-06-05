@@ -33,7 +33,8 @@ enum ObjectType{
         _DynamicObject,
         _MainPlayer,
         _Player,
-		_Bullet
+		_Bullet,
+		_Weapon
 
 };
     class Object;

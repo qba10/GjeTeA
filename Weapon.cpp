@@ -115,10 +115,17 @@ namespace SSJ {
 
 	}
 
-    void Weapon::SynchronizationObject(Json::Value){
-
+    void Weapon::SynchronizationObject(Json::Value jsonObject){
+		if(jsonObject.isMember("mapPositionX")){
+            this->mapPosition.x = jsonObject["mapPositionX"].asDouble();
+        }
+        if(jsonObject.isMember("mapPositionY")){
+            this->mapPosition.y = jsonObject["mapPositionY"].asDouble();
+        }
+        if(jsonObject.isMember("activity")){
+            this->activity = jsonObject["activity"].asBool();
+        }
     }
-
 
 }
 
