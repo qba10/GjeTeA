@@ -24,6 +24,7 @@ namespace SSJ {
         sf::Clock clock;
         sf::Time stopTime;
         bool stopAnimation;
+		bool animateOnce;
     private:
         int getNextFrameIndex();
     public:
@@ -34,6 +35,7 @@ namespace SSJ {
     public:
         Animation(string);
         void AddFrame(const char *, sf::Time = sf::Time::Zero );
+		void AddFrame(string path, sf::IntRect clip, sf::Time = sf::Time::Zero );
         sf::Time getDefaultFrameBreakTime() const;
         void setDefaultFrameBreakTime( sf::Time value);
         bool getSmooth() const;
@@ -43,6 +45,8 @@ namespace SSJ {
         bool isAlphaMaskSet() ;
         void disableAlphaMask();
         void setDefaultFrame(int);
+		void setAnimateOnce(bool);
+		bool isAnimateOnce();
     public:
         void start();
         void stop();

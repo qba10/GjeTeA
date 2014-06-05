@@ -79,6 +79,11 @@ namespace SSJ {
 
     void Animation::update()
     {
+		if(animateOnce){
+			if(this->getNextFrameIndex() == 0){
+				this->stop();
+			}
+		}
         if(!this->stopAnimation){
 
            sf::Time checkTime = this->clock.getElapsedTime();
@@ -89,6 +94,16 @@ namespace SSJ {
            }
         }
     }
+
+	void Animation::setAnimateOnce(bool animateOnce){
+		this->animateOnce = animateOnce;
+	}
+
+	bool Animation::isAnimateOnce(){
+		return this->animateOnce;
+	}
+
+
 
     sf::Texture* Animation::getCurrentFrame()
     {
@@ -150,6 +165,28 @@ namespace SSJ {
             this->framesBreakTime.push_back(timeBreak);
 
     }
+
+	void Animation::AddFrame(string path, sf::IntRect clip, sf::Time timeBreak){
+		sf::Texture * tempTexture = new sf::Texture;
+		sf::Image img;
+
+        if(!img.loadFromFile(path))
+            cout << "Failed load texture" << path << endl;
+
+        if(this->alphaMaskSet)
+            img.createMaskFromColor(this->getAlphaMask(), 0);
+
+        tempTexture->loadFromImage(img);
+        tempTexture->setSmooth(this->smooth);
+
+        this->frames.push_back(tempTexture);
+
+        if(timeBreak == sf::Time::Zero)
+            this->framesBreakTime.push_back(this->defaultFrameBreakTime);
+        else
+            this->framesBreakTime.push_back(timeBreak);
+	}
+
 
     Animation * Animation::getAnimation(string name)
     {

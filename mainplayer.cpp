@@ -48,10 +48,11 @@ namespace SSJ {
         this->AddAction(sf::Event::MouseMoved, SLOT(this, MainPlayer::eventMouseMoved));
         this->AddAction(sf::Event::MouseButtonPressed, SLOT(this, MainPlayer::eventMouseButtonPressed));
         this->AddAction(sf::Event::MouseButtonReleased, SLOT(this, MainPlayer::eventMouseButtonReleased));
+		this->AddActionKeyboard(sf::Event::KeyPressed, sf::Keyboard::R, SLOT(this, MainPlayer::eventReload));
 
 		WeaponFactory::setOwner(this);
-		this->weapon1 = WeaponFactory::CreateAk47Object();
-
+		this->weapon1 = WeaponFactory::CreateGlockObject();
+		LayerContainer::GetGameLayer("trzecia")->addObject(weapon1);
     }
 
 	void MainPlayer::eventMouseButtonPressed(sf::Event event){
@@ -67,6 +68,9 @@ namespace SSJ {
 		isFiring = false;
 	}
 
+	void MainPlayer::eventReload(sf::Event event){
+		this->weapon1->Reload();
+	}
 
 
 	void MainPlayer::eventMouseMoved(sf::Event event){
@@ -198,6 +202,7 @@ namespace SSJ {
 
     void MainPlayer::update(){
         this->sprite.getSprite()->setScale(2.f,2.f);
+		this->weapon1->setMapPosition(this->getMapPosition());
 
         if(moveBackward)
             this->MoveBackward();
