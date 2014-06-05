@@ -85,16 +85,16 @@ namespace SSJ {
 
     }
 
-    int Weapon::getMaxAmmo(){
-        return this->maxAmmo;
+    int Weapon::getAllAmmo(){
+        return this->allAmmo;
     }
 
     int Weapon::getAmmo(){
         return this->ammo;
     }
 
-    void Weapon::setMaxAmmo(int maxAmmo){
-        this->maxAmmo = maxAmmo;
+    void Weapon::setAllAmmo(int allAmmo){
+        this->allAmmo = allAmmo;
     }
 
     void Weapon::decreaseAmmo(){

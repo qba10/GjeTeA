@@ -8,13 +8,14 @@ namespace SSJ{
     public:
 		WeaponType type;
 		string name;
+	protected:
         int range; // zasięg broni
         int fireRate; // szybkostrzelność
         int damage; // ilość obrażeń zadawanych przez 1 pocisk
         int reloadTime; // czas przeładowania
 		bool isReloading;
 		int ammoInMag; // maksymalna ilość amunicji w magazynku
-        int maxAmmo; // maksumalna ilość amunicji dla broni
+        int maxAmmo; // maksymalna ilość amunicji dla broni
         int ammo; // aktualna ilośc amunicji
 		int allAmmo; // wszytskie pocisnki w broni aktualnie
         bool blastFire; // czy broń zadaje obrażenia obszarowe
@@ -32,10 +33,10 @@ namespace SSJ{
 		WeaponType getName();
         void Hit(); // dla zwykłych broni
         void HitByBlast(); // dla broni obszarowych
-        int getMaxAmmo();
+        int getAllAmmo();
         int getAmmo();
 		void Shoot();
-        void setMaxAmmo(int maxAmmo);
+        void setAllAmmo(int allAmmo);
         void decreaseAmmo(); // zmniejsz ilość pocisków po strzale
         void setAmmo(int ammo);
         void setReloadTime(int reloadTime);
