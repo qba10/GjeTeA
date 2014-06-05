@@ -37,17 +37,17 @@ namespace SSJ {
 		fileWidth = texture.getSize().x;
 		fileHeight = texture.getSize().y;
 
-		for(int i = 0 ; i < width ; ++ i )
+		for(int i = 0 ; i < height ; ++ i )
 		{
-			for( int j = 0 ; j < height ; ++j)
+			for( int j = 0 ; j < width ; ++j)
 			{
 				int tileCount;
 				char block;
 				bool bBlock;
 				int x, y;
 				int xClip = 0, yClip = 0;
-				x = i*tileWidth;
-				y = j*tileWidth;
+				x = j*tileWidth;
+				y = i*tileWidth;
 
 				mapFile >> tileCount;
 				mapFile >> block;
@@ -82,11 +82,38 @@ namespace SSJ {
 	}
 
 	void Map::DrawLayer(){
-		double x;
-		double y;
-		//x = 
-		for(size_t i = 0 ; i < this->getObjects()->size() ; i++ ){
-            this->getObjects()->at(i)->draw();
-        }
+		int x;
+		int y;
+		int first;
+		int last;
+		int offset = 3;
+		int screenTileHeight = ( DataContainer::ScreenHeight / this->tileWidth ) + 2*offset; 
+		
+		x = ( ( DataContainer::ScreenPosition.x -  fmod(DataContainer::ScreenPosition.x, tileWidth) )/ 
+			this->tileWidth ) - offset; 
+		y = ( ( DataContainer::ScreenPosition.y -  fmod(DataContainer::ScreenPosition.y, tileWidth) )/ 
+			this->tileWidth ) - offset;
+		if( x < 0 )
+			x = 0;
+		if( y < 0 )
+			y = 0;
+
+		int tempFirst;
+		for(int i = 0 ; i <  screenTileHeight; i++ )
+		{
+			first = y * (this->w) + x + i*w;;
+			if(i==0)
+				tempFirst=first;
+			last  = first + ( DataContainer::ScreenWidth / this->tileWidth ) + offset*2;
+			
+			if (last >= (y+i+1) * this->w)
+				last = (y+i) * this->w-1;
+			if( last >= this->getObjects()->size() )
+				last = this->getObjects()->size() -1;
+			for( int j = first ; j < last ; ++j)
+			{
+				this->getObjects()->at(j)->draw();			
+			}
+        }		
 	}
 }

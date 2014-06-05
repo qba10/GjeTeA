@@ -42,6 +42,8 @@ namespace SSJ {
 			return false;
 		if(a.top > b.top + b.height)
 			return false;
-		return true;
-	}
+        return true;
+    }
+
+
 }

@@ -25,6 +25,12 @@ namespace SSJ {
 		LayerContainer::GetGameLayer("trzecia")->addObject(Temp);
 	}
 
+	void ObjectManager::CreateWeapon(Json::Value object){
+		Weapon* Temp = new Weapon;
+		Temp->SynchronizationObject(object);
+		DataContainer::ObjectLists.push_back(Temp);
+		LayerContainer::GetGameLayer("trzecia")->addObject(Temp);
+	}
 
 
 }

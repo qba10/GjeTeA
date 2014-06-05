@@ -48,10 +48,11 @@ namespace SSJ {
         this->AddAction(sf::Event::MouseMoved, SLOT(this, MainPlayer::eventMouseMoved));
         this->AddAction(sf::Event::MouseButtonPressed, SLOT(this, MainPlayer::eventMouseButtonPressed));
         this->AddAction(sf::Event::MouseButtonReleased, SLOT(this, MainPlayer::eventMouseButtonReleased));
+		this->AddActionKeyboard(sf::Event::KeyPressed, sf::Keyboard::R, SLOT(this, MainPlayer::eventReload));
 
 		WeaponFactory::setOwner(this);
-		this->weapon1 = WeaponFactory::CreateAk47Object();
-
+		this->weapon1 = WeaponFactory::CreateUziObject();
+		LayerContainer::GetGameLayer("trzecia")->addObject(weapon1);
     }
 
 	void MainPlayer::eventMouseButtonPressed(sf::Event event){
@@ -67,6 +68,9 @@ namespace SSJ {
 		isFiring = false;
 	}
 
+	void MainPlayer::eventReload(sf::Event event){
+		this->weapon1->Reload();
+	}
 
 
 	void MainPlayer::eventMouseMoved(sf::Event event){
@@ -198,6 +202,7 @@ namespace SSJ {
 
     void MainPlayer::update(){
         this->sprite.getSprite()->setScale(2.f,2.f);
+		this->weapon1->setMapPosition(this->getMapPosition());
 
         if(moveBackward)
             this->MoveBackward();
@@ -226,29 +231,29 @@ namespace SSJ {
     }
     void MainPlayer::SynchronizationObject(Json::Value jsonObject)
     {
-        if(jsonObject.isMember("mapPositionX")){
-            this->mapPosition.x = jsonObject["mapPositionX"].asDouble();
+        if(jsonObject.isMember(_J(_mapPositionX))){
+            this->mapPosition.x = jsonObject[_J(_mapPositionX)].asDouble();
         }
-        if(jsonObject.isMember("mapPositionY")){
-            this->mapPosition.y = jsonObject["mapPositionY"].asDouble();
+        if(jsonObject.isMember(_J(_mapPositionY))){
+            this->mapPosition.y = jsonObject[_J(_mapPositionY)].asDouble();
         }
-        if(jsonObject.isMember("activity")){
-            this->activity = jsonObject["activity"].asBool();
+        if(jsonObject.isMember(_J(_activity))){
+            this->activity = jsonObject[_J(_activity)].asBool();
         }
-        if(jsonObject.isMember("hp")){
-            this->hp = jsonObject["hp"].asUInt();
+        if(jsonObject.isMember(_J(_hp))){
+            this->hp = jsonObject[_J(_hp)].asUInt();
         }
-        if(jsonObject.isMember("maxHP")){
-            this->maxHP = jsonObject["maxHP"].asUInt();
+        if(jsonObject.isMember(_J(_maxHP))){
+            this->maxHP = jsonObject[_J(_maxHP)].asUInt();
         }
-        if(jsonObject.isMember("velocity")){
-            this->velocity = jsonObject["velocity"].asUInt();
+        if(jsonObject.isMember(_J(_velocity))){
+            this->velocity = jsonObject[_J(_velocity)].asUInt();
         }
-        if(jsonObject.isMember("angle")){
-            this->angle = jsonObject["angle"].asDouble();
+        if(jsonObject.isMember(_J(_angle))){
+            this->angle = jsonObject[_J(_angle)].asDouble();
         }
-        if(jsonObject.isMember("targetAngle")){
-            this->targetAngle = jsonObject["targetAngle"].asDouble();
+        if(jsonObject.isMember(_J(_targetAngle))){
+            this->targetAngle = jsonObject[_J(_targetAngle)].asDouble();
         }
 
     }
@@ -256,14 +261,14 @@ namespace SSJ {
     Json::Value MainPlayer::SerializeMainPlayer()
     {
         Json::Value object;
-           object["mapPositionX"] =  this->getMapPosition().x;
-           object["mapPositionY"] =  this->getMapPosition().y;
-           object["activity"] = this->activity;
-           object["hp"] = (unsigned int)this->getHP();
-           object["maxHP"] = (unsigned int)this->getMaxHP();
-           object["velocity"] = (unsigned int)this->velocity;
-           object["angle"] = this->getAngle().getDegrees();
-           object["targetAngle"] = this->targetAngle.getDegrees();
+           object[_J(_mapPositionX)] =  this->getMapPosition().x;
+           object[_J(_mapPositionY)] =  this->getMapPosition().y;
+           object[_J(_activity)] = this->activity;
+           object[_J(_hp)] = (unsigned int)this->getHP();
+           object[_J(_maxHP)] = (unsigned int)this->getMaxHP();
+           object[_J(_velocity)] = (unsigned int)this->velocity;
+           object[_J(_angle)] = this->getAngle().getDegrees();
+           object[_J(_targetAngle)] = this->targetAngle.getDegrees();
            this->desynchronization = false;
         return object;
     }

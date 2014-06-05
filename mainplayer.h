@@ -26,6 +26,7 @@ namespace SSJ{
         void eventStopMoveBackward(sf::Event event);
         void eventStopMoveLeft(sf::Event event);
         void eventStopMoveRight(sf::Event event);
+		void eventReload(sf::Event event);
         void draw();
         void update();
         bool getMoveLeft() const;

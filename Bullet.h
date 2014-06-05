@@ -16,6 +16,7 @@ namespace SSJ{
 
 		Point ownerPosition;
 		string name;
+		Sprite blastSprite;
 		int range;
 		int damage;
 		bool blastFire;

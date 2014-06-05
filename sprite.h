@@ -26,7 +26,7 @@ namespace SSJ{
     public:
         static void updateAllSprites();
         void AddTexture(string key, string path);
-		void AddTexture(string key, sf::Texture* texture, sf::IntRect clip);
+		void AddTexture(string key, sf::Texture* texture, sf::IntRect clip); // To implement
         void AddAnimation(Animation *);
         void ActiveAnimation(string);
         void DeactivateAnimation();
