@@ -12,9 +12,10 @@ namespace SSJ {
     class ObjectManager
     {
     public:
-        static void CreateMainPlayer(Json::Value object);
-        static void CreatePlayer(Json::Value object);
-		static void CreateBullet(Json::Value object);
+		static int  nextId;
+        static void CreateMainPlayer(Json::Value object, int indeks=-1);
+        static void CreatePlayer(Json::Value object, int indeks=-1);
+		static void CreateBullet(Json::Value object, int indeks=-1);
     };
 }
 #endif // OBJECTMANAGER_H

@@ -2,7 +2,7 @@
 namespace SSJ {
 
 
-    MainPlayer::MainPlayer(): Player()
+    MainPlayer::MainPlayer() : Player()
     {
         this->setActivity(true);
 		this->setMaxHP(100);
@@ -14,27 +14,6 @@ namespace SSJ {
         this->moveForward = false;
         this->moveLeft = false;
         this->moveRight = false;
-
-
-        Animation * animation = new Animation("chodzenie");
-        animation->setAlphaMask(sf::Color::Magenta);
-        //animation->setSmooth(true);
-       // animation->setDefaultFrameBreakTime(sf::milliseconds(300));
-        animation->setDefaultFrame(0);
-        animation->AddFrame("./sprite/mainPlayerChodzenie/mainChodzenie1.png");
-        animation->AddFrame("./sprite/mainPlayerChodzenie/mainChodzenie2.png");
-        animation->AddFrame("./sprite/mainPlayerChodzenie/mainChodzenie3.png");
-        animation->AddFrame("./sprite/mainPlayerChodzenie/mainChodzenie4.png");
-        animation->AddFrame("./sprite/mainPlayerChodzenie/mainChodzenie5.png");
-		animation->AddFrame("./sprite/mainPlayerChodzenie/mainChodzenie2.png");
-        this->sprite.AddAnimation(animation);
-        this->sprite.ActiveAnimation("chodzenie");
-
-        
-        //this->sprite.setSmooth(true);
-        //this->sprite.setAlphaMaks(sf::Color::Black);
-       //
-
 
 
         this->AddActionKeyboard(sf::Event::KeyPressed,sf::Keyboard::W,  SLOT(this, MainPlayer::eventStartMoveForward));
@@ -249,6 +228,9 @@ namespace SSJ {
         }
         if(jsonObject.isMember(_J(_targetAngle))){
             this->targetAngle = jsonObject[_J(_targetAngle)].asDouble();
+        }
+		if(jsonObject.isMember(_J(_syncId))){
+			this->syncId = jsonObject[_J(_syncId)].asInt();
         }
 
     }
