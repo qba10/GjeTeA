@@ -185,6 +185,7 @@ namespace SSJ {
     }
 
     void MainPlayer::update(){
+		this->getSprite().Update();
         this->sprite.getSprite()->setScale(2.f,2.f);
 		this->weapon1->setMapPosition(this->getMapPosition());
 

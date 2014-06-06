@@ -70,7 +70,6 @@ sf::TcpSocket *ServerConnectAPI::Socket = NULL;
 									break;
 								}
 							}
-							
 							delete DataContainer::ObjectLists.at(i);
 							DataContainer::ObjectLists.at(i) = NULL;
 						}

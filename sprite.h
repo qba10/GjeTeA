@@ -11,7 +11,7 @@ namespace SSJ{
     class Sprite
     {
     private:
-        static vector <Sprite *> allSprites;
+        
         map <string, sf::Texture *> textures;
         map <string, Animation *> animations;
         sf::Sprite *sprite;
@@ -21,7 +21,7 @@ namespace SSJ{
         sf::Color alphaMaks;
         bool alphaMaksSet;
         string activeAnimation;
-        void Update();
+        
         bool AnyTextureActive;
     public:
         static void updateAllSprites();
@@ -32,9 +32,10 @@ namespace SSJ{
         void DeactivateAnimation();
         void setTexture(string);
         bool isAnyTextureActive();
-
+		static vector <Sprite *> allSprites;
         Animation* getAnimation(string);
         Sprite();
+		void Update();
 
         sf::Sprite *getSprite() const;
 		void		setSprite(sf::Sprite sprite);

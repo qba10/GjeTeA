@@ -49,7 +49,7 @@ namespace SSJ{
 	}
 
 	void Bullet::update(){
-		
+		this->getSprite().Update();
 
 		this->sprite.getSprite()->setOrigin(this->sprite.getSprite()->getTexture()->getSize().x/2,this->sprite.getSprite()->getTexture()->getSize().y/2 );
 		this->sprite.getSprite()->setRotation(this->angle.getDegrees()-180);
@@ -106,7 +106,9 @@ namespace SSJ{
         if(jsonObject.isMember(_J(_targetAngle))){
             this->targetAngle = jsonObject[_J(_targetAngle)].asDouble();
         }
-
+		if(jsonObject.isMember(_J(_syncId))){
+			this->syncId = jsonObject[_J(_syncId)].asInt();
+        }
 
     }
 }
