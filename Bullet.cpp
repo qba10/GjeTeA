@@ -50,21 +50,7 @@ namespace SSJ{
 
 	void Bullet::update(){
 		
-		if( (pow(this->getMapPosition().x - ownerPosition.x, 2) + pow(this->getMapPosition().y - ownerPosition.y, 2)) <= pow(this->range, 2)){
 
-			this->setMapPosition(CalcNewPosition());
-			
-			this->activity = true;
-			//cout << "x: " << this->getMapPosition().x << "\ty: " << this->getMapPosition().y << endl;
-		}
-		else{
-			if(this->blastFire){
-				//Blast();
-				this->blastFire = false;
-			}
-			this->activity = false;
-
-		}
 		this->sprite.getSprite()->setOrigin(this->sprite.getSprite()->getTexture()->getSize().x/2,this->sprite.getSprite()->getTexture()->getSize().y/2 );
 		this->sprite.getSprite()->setRotation(this->angle.getDegrees()-180);
 		
@@ -91,9 +77,19 @@ namespace SSJ{
         newPosition.x += px;
         newPosition.y -= py;
         return newPosition;
-	}
+    }
+    WeaponType Bullet::getType() const
+    {
+        return type;
+    }
 
-	void Bullet::SynchronizationObject(Json::Value jsonObject)
+    void Bullet::setType(const WeaponType &value)
+    {
+        type = value;
+    }
+
+
+    void Bullet::SynchronizationObject(Json::Value jsonObject)
     {
         if(jsonObject.isMember(_J(_mapPositionX))){
             this->mapPosition.x = jsonObject[_J(_mapPositionX)].asDouble();
@@ -104,14 +100,13 @@ namespace SSJ{
         if(jsonObject.isMember(_J(_activity))){
             this->activity = jsonObject[_J(_activity)].asBool();
         }
-
         if(jsonObject.isMember(_J(_angle))){
             this->angle = jsonObject[_J(_angle)].asDouble();
-
         }
         if(jsonObject.isMember(_J(_targetAngle))){
             this->targetAngle = jsonObject[_J(_targetAngle)].asDouble();
         }
+
 
     }
 }

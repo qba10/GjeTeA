@@ -57,7 +57,8 @@ namespace SSJ{
 
     void GameLayer::DrawLayer(){
         for(size_t i = 0 ; i < this->objects.size() ; i++ ){
-            this->objects.at(i)->draw();
+            if(this->objects.at(i)->isActive())
+                this->objects.at(i)->draw();
         }
     }
 
