@@ -2,12 +2,14 @@
 #define APPWINDOW_H
 #include "objectmanager.h"
 #include "serverapi.h"
+#include "hud.h"
 namespace SSJ {
     class AppWindow
     {
     private:
        vector <GameLayer*> GameLayers;
         sf::Thread *ServerConnectThread;
+		Hud* hud;
     public:
        void AddLayer(GameLayer*);
 

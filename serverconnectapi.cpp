@@ -122,7 +122,6 @@ sf::TcpSocket *ServerConnectAPI::Socket = NULL;
     }
 
     void ServerConnectAPI::SendToServer(string json){
-
         sf::Packet packet;
         packet << json;
         DataContainer::SendMutex.lock();

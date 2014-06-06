@@ -16,11 +16,15 @@ namespace SSJ{
 
 		Point ownerPosition;
 		string name;
+        WeaponType type;
+		Sprite blastSprite;
 		int range;
 		int damage;
 		bool blastFire;
 		int blastRange;
 		void SynchronizationObject(Json::Value);
-	};
+        WeaponType getType() const;
+        void setType(const WeaponType &value);
+    };
 }
 #endif
