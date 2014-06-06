@@ -13,6 +13,7 @@ namespace SSJ{
     public:
         void ServerListener();
         static void SendToServer(string);
+		static void CreateObject(Json::Value value, int i, int indeks=-1);
     };
 }
 #endif // SERVERCONNECTAPI_H
