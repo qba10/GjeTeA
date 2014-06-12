@@ -9,7 +9,7 @@ namespace SSJ {
     private:
        vector <GameLayer*> GameLayers;
         sf::Thread *ServerConnectThread;
-		Hud* hud;
+		
     public:
        void AddLayer(GameLayer*);
 
@@ -20,7 +20,7 @@ namespace SSJ {
         void Update();
         void Draw();
         sf::Time Delta;
-
+		Hud* hud;
 
         sf::RenderWindow *appWindow;
         sf::Event event;

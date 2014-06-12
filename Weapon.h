@@ -34,6 +34,10 @@ namespace SSJ{
         void HitByBlast(); // dla broni obszarowych
         int getAllAmmo();
         int getAmmo();
+		int getMaxAmmo();
+		int getAmmoInMag();
+		int getReloadTime();
+		bool getReloading();
 		void Shoot();
         void setAllAmmo(int allAmmo);
         void decreaseAmmo(); // zmniejsz ilość pocisków po strzale

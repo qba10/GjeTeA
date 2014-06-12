@@ -4,13 +4,21 @@
 #include "mainplayer.h"
 
 namespace SSJ{
-	class Hud{
+	class Hud : public Object{
 		sf::Font consola;
+		Sprite bulletHud;
+		bool isReloading;
+		sf::Clock reloadingClock;
+		sf::Time timeBetweenReloadingBullets;
+		int reloadedBulletAmount;
+		double allBulletsReloadTime;
 	public:
 		Hud();
 		~Hud();
 		void draw();
-
+		void update();
+		void SynchronizationObject(Json::Value);
+		void reloadingStarted();
 	};
 }
 #endif HUD_H

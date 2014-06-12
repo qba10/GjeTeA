@@ -49,7 +49,6 @@ namespace SSJ{
         for(size_t i = 0 ; i < this->GameLayers.size(); i++){
                 this->GameLayers.at(i)->DrawLayer();
         }
-		hud->draw();
     }
 
 

@@ -6,7 +6,7 @@
 // Description : Hello World in C++, Ansi-style
 //============================================================================
 #include "appwindow.h"
-#define BEZ_SERWERA
+//#define BEZ_SERWERA
 
 
 
@@ -34,9 +34,11 @@ int main()
     SSJ::GameLayer *pierwsza = mapa;
     SSJ::GameLayer *druga = new SSJ::GameLayer("druga", true);
 	SSJ::GameLayer *trzecia = new SSJ::GameLayer("trzecia", true);
+	SSJ::GameLayer *czwarta = new SSJ::GameLayer("czwarta", true);
     SSJ::LayerContainer::AddGameLayer(pierwsza);
     SSJ::LayerContainer::AddGameLayer(druga);
     SSJ::LayerContainer::AddGameLayer(trzecia);
+	SSJ::LayerContainer::AddGameLayer(czwarta);
 #ifdef BEZ_SERWERA
     SSJ::MainPlayer * mainPlayer = new SSJ::MainPlayer;
     trzecia->addObject(mainPlayer);
@@ -54,8 +56,9 @@ int main()
     Game->AddLayer(pierwsza);
 	Game->AddLayer(druga);
     Game->AddLayer(trzecia);
+	Game->AddLayer(czwarta);
+	SSJ::LayerContainer::GetGameLayer("czwarta")->addObject(Game->hud);
     SSJ::DataContainer::window = Game->appWindow;
-    //Game->LoadObjects();
     sf::Clock clk;
     float fps = 0;
     Game->LoadObjects();

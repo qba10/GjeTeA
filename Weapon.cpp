@@ -68,10 +68,20 @@ namespace SSJ {
 		}
 	}
 
+	bool Weapon::getReloading(){
+		return this->isReloading;
+	}
+
 
 	WeaponType Weapon::getName(){
 		return this->type;
 	}
+
+	int Weapon::getReloadTime(){
+		return this->reloadTime;
+	}
+
+
 
 	Weapon::Weapon(){
 		this->firstFiredBullet = true;
@@ -94,6 +104,15 @@ namespace SSJ {
     int Weapon::getAmmo(){
         return this->ammo;
     }
+
+	int Weapon::getMaxAmmo(){
+		return this->maxAmmo;
+	}
+
+	int Weapon::getAmmoInMag(){
+		return this->ammoInMag;
+	}
+
 
     void Weapon::setAllAmmo(int allAmmo){
         this->allAmmo = allAmmo;
@@ -134,7 +153,7 @@ namespace SSJ {
 	void Weapon::update(){
 		if(this->ammo == 0)
 			Reload();
-		cout << "ammo: " << this->ammo << "\tallAmmo: " << this->allAmmo << endl;
+		//cout << "ammo: " << this->ammo << "\tallAmmo: " << this->allAmmo << endl;
 		if(isReloading){
 			this->timeBetweenReloads = this->reloadClock.getElapsedTime();
 			if(timeBetweenReloads.asSeconds() > reloadTime){
