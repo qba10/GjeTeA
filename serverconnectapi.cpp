@@ -3,6 +3,25 @@
 namespace SSJ {
 sf::TcpSocket *ServerConnectAPI::Socket = NULL;
 
+	void ServerConnectAPI::CreateObject(Json::Value value, int i, int indeks)
+	{
+		switch(static_cast<ObjectType>(value[_J(_synchronize)][i][_J(_objectName)].asInt()))
+		{
+		case _MainPlayer:
+            if(value[_J(_synchronize)][i][_J(_playerId)] == Config::PlayerId)
+                ObjectManager::CreateMainPlayer(value[_J(_synchronize)][i], indeks);
+			else
+                ObjectManager::CreatePlayer(value[_J(_synchronize)][i], indeks);
+			break;
+
+		case  _Bullet:
+            ObjectManager::CreateBullet(value[_J(_synchronize)][i], indeks);
+			break;
+		default:
+			break;
+		}
+	}
+
     void ServerConnectAPI::ServerListener(){
         DataContainer::SendMutex.lock();
         sf::TcpSocket socket;
@@ -29,24 +48,69 @@ sf::TcpSocket *ServerConnectAPI::Socket = NULL;
 
 					DataContainer::mutex.lock();
 					for(int i = 0 ; i <  DataContainer::ObjectLists.size(); i++){
-                        DataContainer::ObjectLists.at(i)->SynchronizationObject(root[_J(_synchronize)][i]);
+						if( DataContainer::ObjectLists.at(i) != NULL &&
+							(!root[_J(_synchronize)][i][_J(_activity)].asBool()))
+						{
+							bool found = false;
+							for(int j = 0 ; j < LayerContainer::GetGameLayer("trzecia")->getObjects()->size() ; ++j)
+							{
+								if(LayerContainer::GetGameLayer("trzecia")->getObjects()->at(j) == DataContainer::ObjectLists.at(i))
+								{
+									LayerContainer::GetGameLayer("trzecia")->getObjects()->erase(LayerContainer::GetGameLayer("trzecia")->getObjects()->begin()+j);
+									found = true;
+									break;
+								}
+							}
+							for(int j = 0 ; j < LayerContainer::GetGameLayer("druga")->getObjects()->size() && !found; ++j)
+							{
+								if(LayerContainer::GetGameLayer("druga")->getObjects()->at(j) == DataContainer::ObjectLists.at(i))
+								{
+									LayerContainer::GetGameLayer("druga")->getObjects()->erase(LayerContainer::GetGameLayer("druga")->getObjects()->begin()+j);
+									
+									break;
+								}
+							}
+							delete DataContainer::ObjectLists.at(i);
+							DataContainer::ObjectLists.at(i) = NULL;
+						}
+						else if(DataContainer::ObjectLists.at(i) == NULL && root[_J(_synchronize)][i][_J(_activity)].asBool())
+						{
+							CreateObject(root, i, i);
+						}
+						else if(DataContainer::ObjectLists.at(i) != NULL &&
+							root[_J(_synchronize)][i][_J(_activity)].asBool() &&
+							DataContainer::ObjectLists.at(i)->getSyncId() != root[_J(_synchronize)][i][_J(_syncId)].asInt())
+						{
+							bool found = false;
+							for(int j = 0 ; j < LayerContainer::GetGameLayer("trzecia")->getObjects()->size() ; ++j)
+							{
+								if(LayerContainer::GetGameLayer("trzecia")->getObjects()->at(j) == DataContainer::ObjectLists.at(i))
+								{
+									LayerContainer::GetGameLayer("trzecia")->getObjects()->erase(LayerContainer::GetGameLayer("trzecia")->getObjects()->begin()+j);
+									found = true;
+									break;
+								}
+							}
+							for(int j = 0 ; j < LayerContainer::GetGameLayer("druga")->getObjects()->size() && !found ; ++j)
+							{
+								if(LayerContainer::GetGameLayer("druga")->getObjects()->at(j) == DataContainer::ObjectLists.at(j))
+								{
+									LayerContainer::GetGameLayer("druga")->getObjects()->erase(LayerContainer::GetGameLayer("druga")->getObjects()->begin()+j);
+									break;
+								}
+							}
+							
+							delete DataContainer::ObjectLists.at(i);
+							DataContainer::ObjectLists.at(i) = NULL;
+							CreateObject(root, i, i);
+						}
+						else if( DataContainer::ObjectLists.at(i) != NULL)
+						{
+							DataContainer::ObjectLists.at(i)->SynchronizationObject(root[_J(_synchronize)][i]);
+						}
 					}
 					for(int i =  DataContainer::ObjectLists.size() ; i <  objectsNumber.asInt(); i++){
-                        if(static_cast<ObjectType>(root[_J(_synchronize)][i][_J(_objectName)].asInt()) == _MainPlayer){
-                            if(root[_J(_synchronize)][i][_J(_playerId)] == Config::PlayerId)
-                                ObjectManager::CreateMainPlayer(root[_J(_synchronize)][i]);
-							else
-                                ObjectManager::CreatePlayer(root[_J(_synchronize)][i]);
-
-
-						}
-                        else if(static_cast<ObjectType>(root[_J(_synchronize)][i][_J(_objectName)].asInt()) == _Bullet){
-                            ObjectManager::CreateBullet(root[_J(_synchronize)][i]);
-						}
-                        else if(static_cast<ObjectType>(root[_J(_synchronize)][i][_J(_objectName)].asInt()) == _Weapon){
-                            ObjectManager::CreateWeapon(root[_J(_synchronize)][i]);
-						}
-
+                        CreateObject(root, i);
 					}
 
 

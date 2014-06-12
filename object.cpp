@@ -6,17 +6,20 @@ namespace SSJ {
         this->mapPosition.x = x;
         this->mapPosition.y = y;
         this->desynchronization = false;
+		syncId = -1;
     }
 
     Object::Object(Point position){
         this->mapPosition = position;
         this->desynchronization = false;
+		syncId = -1;
     }
 
     Object::Object(){
         this->mapPosition.x = 0;
         this->mapPosition.y = 0;
         this->desynchronization = false;
+		syncId = -1;
 
     }
 
@@ -87,15 +90,18 @@ namespace SSJ {
 
     void Object::SynchronizationObject(Json::Value jsonObject)
     {
-        if(jsonObject.isMember(_J(_mapPositionX))){
-            this->mapPosition.x = jsonObject[_J(_mapPositionX)].asDouble();
-        }
-        if(jsonObject.isMember(_J(_mapPositionY))){
-            this->mapPosition.y = jsonObject[_J(_mapPositionY)].asDouble();
-        }
-        if(jsonObject.isMember(_J(_activity))){
+		if(jsonObject.isMember(_J(_activity))){
             this->activity = jsonObject[_J(_activity)].asBool();
         }
-
+		if(activity)
+		{
+			if(jsonObject.isMember(_J(_mapPositionX))){
+				this->mapPosition.x = jsonObject[_J(_mapPositionX)].asDouble();
+			}
+			if(jsonObject.isMember(_J(_mapPositionY))){
+				this->mapPosition.y = jsonObject[_J(_mapPositionY)].asDouble();
+			}
+        
+		}
     }
 }

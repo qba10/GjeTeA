@@ -61,8 +61,8 @@ namespace SSJ {
     void Sprite::updateAllSprites()
     {
 
-        for(int i = 0 ; i < Sprite::allSprites.size(); i++)
-                Sprite::allSprites.at(i)->Update();
+        /*for(int i = 0 ; i < Sprite::allSprites.size(); i++)
+                Sprite::allSprites.at(i)->Update();*/
     }
 
     void Sprite::AddTexture(string key, string path){

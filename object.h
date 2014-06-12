@@ -8,7 +8,7 @@ namespace SSJ{
     {
     protected:
         Point screenPosition;
-
+		int syncId;		/* Unique number used to identificate objects when synchronizing */
         Sprite sprite;
 
         /*for synchronization by server*/
@@ -37,6 +37,7 @@ namespace SSJ{
         void setSprite( Sprite value);
         bool isDesynchronization() const;
         void setDesynchronization(bool value);
+		int getSyncId() { return this->syncId; }
     };
 
 

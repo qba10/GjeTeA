@@ -64,7 +64,9 @@ namespace SSJ {
         if(jsonObject.isMember(_J(_targetAngle))){
             this->targetAngle = jsonObject[_J(_targetAngle)].asDouble();
         }
-
+		if(jsonObject.isMember(_J(_syncId))){
+			this->syncId = jsonObject[_J(_syncId)].asInt();
+        }
     }
 
 }
