@@ -1,7 +1,9 @@
 #include "hud.h"
 
 namespace SSJ{
+
 	Hud::Hud() : Object(){
+
 		if(!this->consola.loadFromFile("./visitor1.ttf"))
 			std::cout << "Nie ma czcionki" << std::endl;
 		this->isReloading = false;

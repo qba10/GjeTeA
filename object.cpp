@@ -7,12 +7,14 @@ namespace SSJ {
         this->mapPosition.y = y;
         this->desynchronization = false;
 		syncId = -1;
+        this->activity = true;
     }
 
     Object::Object(Point position){
         this->mapPosition = position;
         this->desynchronization = false;
 		syncId = -1;
+        this->activity = true;
     }
 
     Object::Object(){
@@ -20,6 +22,7 @@ namespace SSJ {
         this->mapPosition.y = 0;
         this->desynchronization = false;
 		syncId = -1;
+        this->activity = true;
 
     }
 
