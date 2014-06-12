@@ -5,28 +5,28 @@
 namespace SSJ {
 
     class Degrees {
-        double degrees;
+        float degrees;
     public:
         Degrees();
-        Degrees(double);
+        Degrees(float);
         Degrees(int);
-        double getDegrees();
-        void operator= (const double &);
-        void operator-= (const double &);
+        float getDegrees();
+        void operator= (const float &);
+        void operator-= (const float &);
         void operator-= ( Degrees );
-        void operator+= (const double &);
+        void operator+= (const float &);
         void operator+= ( Degrees );
-        bool operator== (const double &);
+        bool operator== (const float &);
         bool operator== (const int &);
-        bool operator< (const double &);
-        bool operator> (const double &);
-        bool operator>= (const double &);
-        bool operator<= (const double &);
-        Degrees operator+ (const double &);
+        bool operator< (const float &);
+        bool operator> (const float &);
+        bool operator>= (const float &);
+        bool operator<= (const float &);
+        Degrees operator+ (const float &);
         Degrees operator+ ( Degrees );
-        Degrees &operator- (const double &);
+        Degrees &operator- (const float &);
         Degrees &operator- ( Degrees );
-        double getRadians();
+        float getRadians();
 
     };
 }

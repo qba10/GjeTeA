@@ -52,10 +52,10 @@ namespace  SSJ {
     void InteractiveObject::SynchronizationObject(Json::Value jsonObject)
     {
         if(jsonObject.isMember(_J(_mapPositionX))){
-            this->mapPosition.x = jsonObject[_J(_mapPositionX)].asDouble();
+            this->mapPosition.x = jsonObject[_J(_mapPositionX)].asFloat();
         }
         if(jsonObject.isMember(_J(_mapPositionY))){
-            this->mapPosition.y = jsonObject[_J(_mapPositionY)].asDouble();
+            this->mapPosition.y = jsonObject[_J(_mapPositionY)].asFloat();
         }
         if(jsonObject.isMember(_J(_activity))){
             this->activity = jsonObject[_J(_activity)].asBool();

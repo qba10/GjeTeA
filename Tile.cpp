@@ -26,11 +26,11 @@ namespace SSJ {
 	{
 		if( !visible )
 			return;
-		sf::Rect<double> tRect = sf::Rect<double>( this->getMapPosition().x,
+        sf::Rect<float> tRect = sf::Rect<float>( this->getMapPosition().x,
 												this->getMapPosition().y,
 												this->width,
 												this->width);
-		sf::Rect<double> camera = sf::Rect<double>( DataContainer::ScreenPosition.x,
+        sf::Rect<float> camera = sf::Rect<float>( DataContainer::ScreenPosition.x,
 												DataContainer::ScreenPosition.y,
 												DataContainer::ScreenWidth,
 												DataContainer::ScreenHeight);
@@ -38,7 +38,7 @@ namespace SSJ {
 		if(!Helpers::checkCollision(tRect, camera))
 			return;
 
-		double x, y;
+        float x, y;
 		x = this->getScreenPosition().x;
 		y = this->getScreenPosition().y;
 		(this->getSprite().getSprite())->setPosition(x,y);

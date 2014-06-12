@@ -3,6 +3,7 @@
 #include "datacontainer.h"
 #include <string>
 #include <sstream>
+#include <typeinfo>
 using namespace  std;
 
 
@@ -11,9 +12,13 @@ namespace SSJ{
     public:
       static Point getOnScreenPosition(Point);
       static bool isInScreen(Point);
-      static Point getOnScreenPosition(double x, double y);
-      static bool isInScreen(double x, double y);
-      static bool checkCollision(sf::Rect<double> a, sf::Rect<double> b);
+      static Point getOnScreenPosition(float x, float y);
+      static bool isInScreen(float x, float y);
+      static bool checkCollision(sf::Rect<float> a, sf::Rect<float> b);
+      template <typename T>
+      char * compressData(T data);
+      template <typename T>
+      T decompressData(char * data);
     };
 }
 #endif // HELPERS_H

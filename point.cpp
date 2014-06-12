@@ -2,7 +2,7 @@
 namespace SSJ {
 
 
-    Point::Point(double x, double y){
+    Point::Point(float x, float y){
         this->x = x;
         this->y = y;
     }

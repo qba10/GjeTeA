@@ -11,7 +11,7 @@ namespace SSJ{
 		sf::Clock reloadingClock;
 		sf::Time timeBetweenReloadingBullets;
 		int reloadedBulletAmount;
-		double allBulletsReloadTime;
+        float allBulletsReloadTime;
 	public:
 		Hud();
 		~Hud();

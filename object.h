@@ -11,21 +11,24 @@ namespace SSJ{
 		int syncId;		/* Unique number used to identificate objects when synchronizing */
         Sprite sprite;
 
+
+
         /*for synchronization by server*/
 
         Point mapPosition;
         bool activity;
         bool desynchronization;
-
+    private:
+        void setDefaultVar();
     public:
         void AddAction(sf::Event::EventType, Object*,  ActionEvent);
         void AddActionKeyboard(sf::Event::EventType, sf::Keyboard::Key, Object* ,ActionEvent);
     public:
         Object();
-        Object(double x, double y);
+        Object(float x, float y);
         Object(Point);
         Point getMapPosition();
-        void setMapPosition(double x, double y);
+        void setMapPosition(float x, float y);
         void setMapPosition(Point screenPosition);
         Point getScreenPosition();
         virtual void draw() = 0;
@@ -38,6 +41,8 @@ namespace SSJ{
         bool isDesynchronization() const;
         void setDesynchronization(bool value);
 		int getSyncId() { return this->syncId; }
+
+
     };
 
 

@@ -65,7 +65,7 @@ namespace SSJ{
 				this->timeBetweenReloadingBullets = this->reloadingClock.getElapsedTime();
 				int reloadTime = dynamic_cast<MainPlayer*>(DataContainer::MainPlayer)->getWeapon1()->getReloadTime();
 				int bulletAmount = dynamic_cast<MainPlayer*>(DataContainer::MainPlayer)->getWeapon1()->getAmmoInMag();
-				double bulletReloadTime = reloadTime / bulletAmount;
+                float bulletReloadTime = reloadTime / bulletAmount;
 				if(this->timeBetweenReloadingBullets.asSeconds() > allBulletsReloadTime && this->reloadedBulletAmount != bulletAmount){
 					this->allBulletsReloadTime = this->reloadedBulletAmount * bulletReloadTime;
 					this->reloadedBulletAmount = (this->timeBetweenReloadingBullets.asSeconds() / allBulletsReloadTime) * bulletAmount;

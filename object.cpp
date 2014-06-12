@@ -2,27 +2,23 @@
 namespace SSJ {
 	
 
-    Object::Object(double x, double y){
+    Object::Object(float x, float y){
         this->mapPosition.x = x;
         this->mapPosition.y = y;
-        this->desynchronization = false;
-		syncId = -1;
-        this->activity = true;
+        this->setDefaultVar();
     }
 
     Object::Object(Point position){
         this->mapPosition = position;
-        this->desynchronization = false;
-		syncId = -1;
-        this->activity = true;
+        this->setDefaultVar();
+
     }
 
     Object::Object(){
         this->mapPosition.x = 0;
         this->mapPosition.y = 0;
-        this->desynchronization = false;
-		syncId = -1;
-        this->activity = true;
+        this->setDefaultVar();
+
 
     }
 
@@ -30,7 +26,7 @@ namespace SSJ {
         return mapPosition;
     }
 
-    void Object::setMapPosition(double x, double y){
+    void Object::setMapPosition(float x, float y){
         this->mapPosition.x = x;
         this->mapPosition.y = y;
     }
@@ -64,6 +60,15 @@ namespace SSJ {
     {
         desynchronization = value;
     }
+
+
+    void Object::setDefaultVar()
+    {
+        this->desynchronization = false;
+        this->syncId = -1;
+        this->activity = true;
+    }
+
     void Object::AddAction(sf::Event::EventType type,  Object*  object, ActionEvent function){
         Event temp;
         temp.ActionFunction = function;
@@ -99,10 +104,10 @@ namespace SSJ {
 		if(activity)
 		{
 			if(jsonObject.isMember(_J(_mapPositionX))){
-				this->mapPosition.x = jsonObject[_J(_mapPositionX)].asDouble();
+                this->mapPosition.x = jsonObject[_J(_mapPositionX)].asFloat();
 			}
 			if(jsonObject.isMember(_J(_mapPositionY))){
-				this->mapPosition.y = jsonObject[_J(_mapPositionY)].asDouble();
+                this->mapPosition.y = jsonObject[_J(_mapPositionY)].asFloat();
 			}
         
 		}

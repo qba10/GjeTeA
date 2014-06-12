@@ -71,9 +71,9 @@ namespace SSJ{
 
 		Point newPosition = this->getMapPosition();
         SSJ::Degrees tempDegrees = this->angle;
-		double s = this->velocity *100 * DataContainer::DeltaTime.asSeconds();
-        double px = sin(tempDegrees.getRadians()) * s;
-        double py = cos(tempDegrees.getRadians()) * s;
+        float s = this->velocity *100 * DataContainer::DeltaTime.asSeconds();
+        float px = sin(tempDegrees.getRadians()) * s;
+        float py = cos(tempDegrees.getRadians()) * s;
         newPosition.x += px;
         newPosition.y -= py;
         return newPosition;
@@ -92,19 +92,19 @@ namespace SSJ{
     void Bullet::SynchronizationObject(Json::Value jsonObject)
     {
         if(jsonObject.isMember(_J(_mapPositionX))){
-            this->mapPosition.x = jsonObject[_J(_mapPositionX)].asDouble();
+            this->mapPosition.x = jsonObject[_J(_mapPositionX)].asFloat();
         }
         if(jsonObject.isMember(_J(_mapPositionY))){
-            this->mapPosition.y = jsonObject[_J(_mapPositionY)].asDouble();
+            this->mapPosition.y = jsonObject[_J(_mapPositionY)].asFloat();
         }
         if(jsonObject.isMember(_J(_activity))){
             this->activity = jsonObject[_J(_activity)].asBool();
         }
         if(jsonObject.isMember(_J(_angle))){
-            this->angle = jsonObject[_J(_angle)].asDouble();
+            this->angle = jsonObject[_J(_angle)].asFloat();
         }
         if(jsonObject.isMember(_J(_targetAngle))){
-            this->targetAngle = jsonObject[_J(_targetAngle)].asDouble();
+            this->targetAngle = jsonObject[_J(_targetAngle)].asFloat();
         }
 		if(jsonObject.isMember(_J(_syncId))){
 			this->syncId = jsonObject[_J(_syncId)].asInt();

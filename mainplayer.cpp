@@ -55,15 +55,15 @@ namespace SSJ {
 
 	void MainPlayer::eventMouseMoved(sf::Event event){
 
-		double x = (double)(event.mouseMove.x - (double)(DataContainer::ScreenWidth/2));
-		double y = (double)(event.mouseMove.y - (double)(DataContainer::ScreenHeight/2));
-		double tg = 0.0;
-		SSJ::Degrees tanAng = 0.0;
+        float x = (float)(event.mouseMove.x - (float)(DataContainer::ScreenWidth/2));
+        float y = (float)(event.mouseMove.y - (float)(DataContainer::ScreenHeight/2));
+        float tg = 0.0;
+        SSJ::Degrees tanAng = 0.f;
 		
 		if(x > 0.0 && y > 0.0){
 			tg = atan(y / x);
 			tanAng = tg * 180.0 / PI;
-			this->angle = (double)(90.0 + tanAng.getDegrees());
+            this->angle = (float)(90.0 + tanAng.getDegrees());
 		}
 		else if(x > 0.0 && y < 0.0){
 			tg = atan(abs(x) / abs(y));
@@ -73,12 +73,12 @@ namespace SSJ {
 		else if(x < 0.0 && y < 0.0){
 			tg = atan(abs(y) / abs(x));
 			tanAng = tg * 180.0 / PI;
-			this->angle = (double)(270.0 + tanAng.getDegrees());
+            this->angle = (float)(270.0 + tanAng.getDegrees());
 		}
 		else if(x < 0.0 && y > 0.0){
 			tg = atan(abs(x) / abs(y));
 			tanAng = tg * 180.0 / PI;
-			this->angle = (double)(180.0 + tanAng.getDegrees());
+            this->angle = (float)(180.0 + tanAng.getDegrees());
 		}
 		else if(x >= 0.0 && y == 0.0)
 			this->angle = 90.0;
@@ -218,10 +218,10 @@ namespace SSJ {
     void MainPlayer::SynchronizationObject(Json::Value jsonObject)
     {
         if(jsonObject.isMember(_J(_mapPositionX))){
-            this->mapPosition.x = jsonObject[_J(_mapPositionX)].asDouble();
+            this->mapPosition.x = jsonObject[_J(_mapPositionX)].asFloat();
         }
         if(jsonObject.isMember(_J(_mapPositionY))){
-            this->mapPosition.y = jsonObject[_J(_mapPositionY)].asDouble();
+            this->mapPosition.y = jsonObject[_J(_mapPositionY)].asFloat();
         }
         if(jsonObject.isMember(_J(_activity))){
             this->activity = jsonObject[_J(_activity)].asBool();
@@ -236,10 +236,10 @@ namespace SSJ {
             this->velocity = jsonObject[_J(_velocity)].asUInt();
         }
         if(jsonObject.isMember(_J(_angle))){
-            this->angle = jsonObject[_J(_angle)].asDouble();
+            this->angle = jsonObject[_J(_angle)].asFloat();
         }
         if(jsonObject.isMember(_J(_targetAngle))){
-            this->targetAngle = jsonObject[_J(_targetAngle)].asDouble();
+            this->targetAngle = jsonObject[_J(_targetAngle)].asFloat();
         }
 		if(jsonObject.isMember(_J(_syncId))){
 			this->syncId = jsonObject[_J(_syncId)].asInt();

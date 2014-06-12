@@ -55,7 +55,9 @@ namespace SSJ {
         _weaponType,
         _objectAmount,
         _synchronize,
-		_syncId
+        _syncId,
+        _syncPeriod,
+        _syncEvents
 
     };
     enum ObjectType{

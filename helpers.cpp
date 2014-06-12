@@ -10,14 +10,14 @@ namespace SSJ {
         return Helpers::isInScreen(position.x, position.y);
     }
 
-    Point Helpers::getOnScreenPosition(double x, double y){
+    Point Helpers::getOnScreenPosition(float x, float y){
         Point objectPosition;
         objectPosition.x = x - DataContainer::ScreenPosition.x;
         objectPosition.y = y - DataContainer::ScreenPosition.y;
         return objectPosition;
     }
 
-    bool Helpers::isInScreen(double x, double y){
+    bool Helpers::isInScreen(float x, float y){
         Point virtualScreen;
         virtualScreen.x = DataContainer::ScreenPosition.x - DataContainer::ScreenMargin;
         virtualScreen.y = DataContainer::ScreenPosition.y - DataContainer::ScreenMargin;
@@ -32,7 +32,7 @@ namespace SSJ {
         return true;
     }
 
-	bool Helpers::checkCollision(sf::Rect<double> a, sf::Rect<double> b)
+    bool Helpers::checkCollision(sf::Rect<float> a, sf::Rect<float> b)
 	{
 		if(a.left + a.width < b.left)
 			return false;
@@ -44,6 +44,35 @@ namespace SSJ {
 			return false;
         return true;
     }
+
+    template <typename T>
+    char * Helpers::compressData(T data)
+    {
+        char * result = new char[sizeof(T)+1];
+        result[sizeof(T)] = '\0';
+        T* pointerTyep = &data;
+        char * charPointer =  (char*) pointerTyep;
+        for(int i = 0; i < sizeof(T); i++){
+            cout << i << "  " << *(charPointer+i) <<endl ;
+            result[i] += *(charPointer+i);
+        }
+        return result;
+
+    }
+
+    template <typename T>
+    T Helpers::decompressData(char * data)
+    {
+        T *result = new T;
+        char * pointerType = (char*) result;
+        for(int i = 0; i < sizeof(T); i++){
+            *(pointerType+i) = data[i] ;
+        }
+        result = (T*) pointerType;
+        return *result;
+
+    }
+
 
 
 }
