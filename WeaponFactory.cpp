@@ -11,7 +11,7 @@ namespace SSJ {
         Weapon *GlockObject = new Weapon();
 		GlockObject->type =			Glock;
 		GlockObject->name =			"Glock";
-        GlockObject->range = 		4;
+        GlockObject->range = 		200;
         GlockObject->fireRate = 	0.01;
         GlockObject->damage = 		5;
         GlockObject->reloadTime = 	2;
@@ -29,7 +29,7 @@ namespace SSJ {
         Weapon *UziObject = new Weapon();
 		UziObject->type =			Uzi;
 		UziObject->name =			"Uzi";
-        UziObject->range = 			5;
+        UziObject->range = 			250;
         UziObject->fireRate = 		0.1;
         UziObject->damage = 		4;
         UziObject->reloadTime = 	2;
@@ -47,7 +47,7 @@ namespace SSJ {
         Weapon *Ak47Object = new Weapon();
 		Ak47Object->type =			Ak47;
 		Ak47Object->name =			"Ak-47";
-        Ak47Object->range = 		7;
+        Ak47Object->range = 		400;
         Ak47Object->fireRate = 		0.2;
         Ak47Object->damage = 		7;
         Ak47Object->reloadTime = 	3;
@@ -65,7 +65,7 @@ namespace SSJ {
         Weapon *M16Object = new Weapon();
 		M16Object->type =			M16;
 		M16Object->name =			"M-16";
-        M16Object->range = 			8;
+        M16Object->range = 			400;
         M16Object->fireRate = 		0.08;
         M16Object->damage = 		6;
         M16Object->reloadTime = 	3;
@@ -83,8 +83,8 @@ namespace SSJ {
         Weapon *ShotgunObject = new Weapon();
 		ShotgunObject->type =			Shotgun;
 		ShotgunObject->name =			"Shotgun";
-        ShotgunObject->range = 			3;
-        ShotgunObject->fireRate = 		1;
+        ShotgunObject->range = 			150;
+        ShotgunObject->fireRate = 		0.5;
         ShotgunObject->damage = 		8;
         ShotgunObject->reloadTime = 	4;
         ShotgunObject->maxAmmo = 		150;
@@ -101,7 +101,7 @@ namespace SSJ {
         Weapon *SniperRifleObject = new Weapon();
 		SniperRifleObject->type =			SniperRifle;
 		SniperRifleObject->name =			"Sniper rifle";
-        SniperRifleObject->range = 			10;
+        SniperRifleObject->range = 			500;
 		SniperRifleObject->fireRate = 		4;
         SniperRifleObject->damage = 		10;
         SniperRifleObject->reloadTime = 	5;
@@ -119,7 +119,7 @@ namespace SSJ {
         Weapon *BazookaObject = new Weapon();
 		BazookaObject->type =			Bazooka;
 		BazookaObject->name =			"Bazooka";
-        BazookaObject->range = 			6;
+        BazookaObject->range = 			300;
         BazookaObject->fireRate = 		5;
         BazookaObject->damage = 		10;
         BazookaObject->reloadTime = 	5;
@@ -137,7 +137,7 @@ namespace SSJ {
         Weapon *GrenadeObject = new Weapon();
 		GrenadeObject->type =			Grenade;
 		GrenadeObject->name =			"Grenade";
-        GrenadeObject->range = 			5;
+        GrenadeObject->range = 			250;
         GrenadeObject->fireRate = 		1;
         GrenadeObject->damage = 		10;
         GrenadeObject->reloadTime = 	1;
@@ -155,7 +155,7 @@ namespace SSJ {
         Weapon *KnifeObject = new Weapon();
 		KnifeObject->type =				Knife;
 		KnifeObject->name =				"Knife";
-        KnifeObject->range = 			1;
+        KnifeObject->range = 			25;
         KnifeObject->fireRate = 		0.3;
         KnifeObject->damage = 			4;
         KnifeObject->reloadTime = 		0;

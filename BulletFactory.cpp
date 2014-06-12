@@ -16,7 +16,7 @@ namespace SSJ{
 		Bullet* GlockBullet = new Bullet();
 		GlockBullet->name =				"Glock";
         GlockBullet->setType(           Glock);
-		GlockBullet->range =			400;
+		GlockBullet->range =			200;
 		GlockBullet->setVelocity(		10);
 		GlockBullet->damage =			25;
 		GlockBullet->blastFire =		false;
@@ -30,7 +30,7 @@ namespace SSJ{
 		Bullet* UziBullet = new Bullet();
 		UziBullet->name =				"Uzi";
         UziBullet->setType(             Uzi);
-		UziBullet->range =				500;
+		UziBullet->range =				250;
 		UziBullet->setVelocity(			12);
 		UziBullet->damage =				10;
 		UziBullet->blastFire =			false;
@@ -44,7 +44,7 @@ namespace SSJ{
 		Bullet* Ak47Bullet = new Bullet();
 		Ak47Bullet->name =				"Ak-47";
         Ak47Bullet->setType(            Ak47);
-		Ak47Bullet->range =				800;
+		Ak47Bullet->range =				400;
 		Ak47Bullet->setVelocity(		18);
 		Ak47Bullet->damage =			15;
 		Ak47Bullet->blastFire =			false;
@@ -58,7 +58,7 @@ namespace SSJ{
 		Bullet* M16Bullet = new Bullet();
 		M16Bullet->name =				"M-16";
         M16Bullet->setType(             M16);
-		M16Bullet->range =				800;
+		M16Bullet->range =				400;
 		M16Bullet->setVelocity(			18);
 		M16Bullet->damage =				12;
 		M16Bullet->blastFire =			false;
@@ -72,7 +72,7 @@ namespace SSJ{
 		Bullet* ShotgunBullet = new Bullet();
 		ShotgunBullet->name =			"Shotgun";
         ShotgunBullet->setType(         Shotgun);
-		ShotgunBullet->range =			300;
+		ShotgunBullet->range =			150;
 		ShotgunBullet->setVelocity(		14);
 		ShotgunBullet->damage =			50;
 		ShotgunBullet->blastFire =		true;
@@ -86,7 +86,7 @@ namespace SSJ{
 		Bullet* SniperRifleBullet = new Bullet();
 		SniperRifleBullet->name =		"Sniper rifle";
         SniperRifleBullet->setType(     SniperRifle);
-		SniperRifleBullet->range =		1000;
+		SniperRifleBullet->range =		500;
 		SniperRifleBullet->setVelocity(	16);
 		SniperRifleBullet->damage =		100;
 		SniperRifleBullet->blastFire =	false;
@@ -100,7 +100,7 @@ namespace SSJ{
 		Bullet* BazookaBullet = new Bullet();
 		BazookaBullet->name =			"Bazooka";
         BazookaBullet->setType(         Bazooka);
-		BazookaBullet->range =			600;
+		BazookaBullet->range =			300;
 		BazookaBullet->setVelocity(		4);
 		BazookaBullet->damage =			100;
 		BazookaBullet->blastFire =		true;
@@ -114,7 +114,7 @@ namespace SSJ{
 		Bullet* GrenadeBullet = new Bullet();
 		GrenadeBullet->name =			"Grenade";
         GrenadeBullet->setType(         Grenade);
-		GrenadeBullet->range =			500;
+		GrenadeBullet->range =			250;
 		GrenadeBullet->setVelocity(		6);
 		GrenadeBullet->damage =			100;
 		GrenadeBullet->blastFire =		true;
@@ -128,7 +128,7 @@ namespace SSJ{
 		Bullet* KnifeBullet = new Bullet();
 		KnifeBullet->name =				"Knife";
         KnifeBullet->setType(           Knife);
-		KnifeBullet->range =			50;
+		KnifeBullet->range =			25;
         KnifeBullet->setVelocity(		0);
 		KnifeBullet->damage =			35;
 		KnifeBullet->blastFire =		false;

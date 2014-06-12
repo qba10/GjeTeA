@@ -14,8 +14,8 @@
 int main()
 {
     SSJ::DataContainer::mutex.lock();
-    SSJ::DataContainer::ScreenWidth = 800;
-    SSJ::DataContainer::ScreenHeight = 600;
+    SSJ::DataContainer::ScreenWidth = 1366;
+    SSJ::DataContainer::ScreenHeight = 798;
     SSJ::DataContainer::ScreenMargin = 64;
     time_t  timev;
     time(&timev);
@@ -51,7 +51,6 @@ int main()
 	cursor.loadFromFile("aim.png");
 	sf::Sprite sprite(cursor);
 	sprite.setPosition(sf::Mouse::getPosition(Game).x, sf::Mouse::getPosition(Game).y);*/
-	
 
     Game->AddLayer(pierwsza);
 	Game->AddLayer(druga);

@@ -15,7 +15,7 @@ namespace SSJ {
         this->moveLeft = false;
         this->moveRight = false;
 
-
+		this->currentWeaponIndex = 0;
 
         this->AddActionKeyboard(sf::Event::KeyPressed,sf::Keyboard::W,  SLOT(this, MainPlayer::eventStartMoveForward));
         this->AddActionKeyboard(sf::Event::KeyPressed,sf::Keyboard::S,  SLOT(this, MainPlayer::eventStartMoveBackward));
@@ -25,14 +25,26 @@ namespace SSJ {
         this->AddActionKeyboard(sf::Event::KeyReleased,sf::Keyboard::S,  SLOT(this, MainPlayer::eventStopMoveBackward));
         this->AddActionKeyboard(sf::Event::KeyReleased,sf::Keyboard::A,  SLOT(this, MainPlayer::eventStopMoveLeft));
         this->AddActionKeyboard(sf::Event::KeyReleased,sf::Keyboard::D,  SLOT(this, MainPlayer::eventStopMoveRight));
+		this->AddAction(sf::Event::MouseWheelMoved, SLOT(this, MainPlayer::eventMouseWheel));
         this->AddAction(sf::Event::MouseMoved, SLOT(this, MainPlayer::eventMouseMoved));
         this->AddAction(sf::Event::MouseButtonPressed, SLOT(this, MainPlayer::eventMouseButtonPressed));
         this->AddAction(sf::Event::MouseButtonReleased, SLOT(this, MainPlayer::eventMouseButtonReleased));
 		this->AddActionKeyboard(sf::Event::KeyPressed, sf::Keyboard::R, SLOT(this, MainPlayer::eventReload));
 
 		WeaponFactory::setOwner(this);
-		this->weapon1 = WeaponFactory::CreateUziObject();
-		LayerContainer::GetGameLayer("trzecia")->addObject(weapon1);
+		this->equipWeapon.push_back(WeaponFactory::CreateGlockObject());
+		this->equipWeapon.push_back(WeaponFactory::CreateUziObject());
+		this->equipWeapon.push_back(WeaponFactory::CreateShotgunObject());
+		this->equipWeapon.push_back(WeaponFactory::CreateAk47Object());
+		this->equipWeapon.push_back(WeaponFactory::CreateM16Object());
+		this->equipWeapon.push_back(WeaponFactory::CreateSniperRifleObject());
+		this->equipWeapon.push_back(WeaponFactory::CreateBazookaObject());
+				
+		this->weapon1 = equipWeapon.at(this->currentWeaponIndex);
+		
+		for(int i = 0; i < equipWeapon.size(); i++){
+			LayerContainer::GetGameLayer("trzecia")->addObject(equipWeapon.at(i));
+		}
     }
 
 	void MainPlayer::eventMouseButtonPressed(sf::Event event){
@@ -51,6 +63,24 @@ namespace SSJ {
 	void MainPlayer::eventReload(sf::Event event){
 		this->weapon1->Reload();
 	}
+
+	void MainPlayer::eventMouseWheel(sf::Event event){
+		if(event.mouseWheel.delta > 0){
+			if(this->currentWeaponIndex == 0)
+				this->currentWeaponIndex = equipWeapon.size() - 1;
+			else
+				this->currentWeaponIndex--;
+		}
+		else{
+			if(this->currentWeaponIndex == equipWeapon.size() - 1)
+				this->currentWeaponIndex = 0;
+			else
+				this->currentWeaponIndex++;
+		}
+
+		this->weapon1 = equipWeapon.at(this->currentWeaponIndex);
+	}
+
 
 
 	void MainPlayer::eventMouseMoved(sf::Event event){
@@ -132,14 +162,31 @@ namespace SSJ {
         this->setMoveRight(false);
     }
 
+	Weapon* MainPlayer::getWeapon0(){
+		int tmp = this->currentWeaponIndex;
+		if(this->currentWeaponIndex == 0)
+				tmp = equipWeapon.size() - 1;
+			else
+				tmp--;
+		return this->equipWeapon.at(tmp);
+	}
+
 	Weapon* MainPlayer::getWeapon1(){
 		return this->weapon1;
 	}
 
+	Weapon* MainPlayer::getWeapon2(){
+		int tmp = this->currentWeaponIndex;
+		if(this->currentWeaponIndex == equipWeapon.size() - 1)
+				tmp = 0;
+			else
+				tmp++;
+		return this->equipWeapon.at(tmp);
+	}
+
+
 
     void MainPlayer::draw(){
-
-
 
         DataContainer::window->draw(*(this->sprite.getSprite()));
     }
@@ -188,6 +235,7 @@ namespace SSJ {
     void MainPlayer::update(){
 		this->getSprite().Update();
         this->sprite.getSprite()->setScale(2.f,2.f);
+
 		this->weapon1->setMapPosition(this->getMapPosition());
 
         if(moveBackward)

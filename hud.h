@@ -12,13 +12,14 @@ namespace SSJ{
 		sf::Time timeBetweenReloadingBullets;
 		int reloadedBulletAmount;
 		double allBulletsReloadTime;
+		float lastRadius;
+		float currentRadius;
 	public:
 		Hud();
 		~Hud();
 		void draw();
 		void update();
 		void SynchronizationObject(Json::Value);
-		void reloadingStarted();
 	};
 }
 #endif HUD_H

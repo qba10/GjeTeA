@@ -72,15 +72,27 @@ namespace SSJ {
 		return this->isReloading;
 	}
 
+	sf::Time Weapon::getReloadClockElapsedTime(){
+		return this->reloadClock.getElapsedTime();
+	}
 
-	WeaponType Weapon::getName(){
+
+	WeaponType Weapon::getType(){
 		return this->type;
 	}
+
+	std::string Weapon::getName(){
+		return this->name;
+	}
+
 
 	int Weapon::getReloadTime(){
 		return this->reloadTime;
 	}
 
+	int Weapon::getRange(){
+		return this->range;
+	}
 
 
 	Weapon::Weapon(){

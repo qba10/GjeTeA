@@ -10,9 +10,10 @@ namespace SSJ{
         bool moveRight;
         bool moveForward;
         bool moveBackward;
-
+		int currentWeaponIndex;
 	protected:
 		Weapon* weapon1;
+		vector <Weapon*> equipWeapon;
     public:
         MainPlayer();
 		void eventMouseButtonReleased(sf::Event event);
@@ -27,6 +28,7 @@ namespace SSJ{
         void eventStopMoveLeft(sf::Event event);
         void eventStopMoveRight(sf::Event event);
 		void eventReload(sf::Event event);
+		void eventMouseWheel(sf::Event event);
         void draw();
         void update();
         bool getMoveLeft() const;
@@ -37,7 +39,10 @@ namespace SSJ{
         void setMoveForward(bool value);
         bool getMoveBackward() const;
         void setMoveBackward(bool value);
+		Weapon* getWeapon0();
 		Weapon* getWeapon1();
+		Weapon* getWeapon2();
+		
         /**
          * JSON:
          * {

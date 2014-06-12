@@ -138,6 +138,7 @@ namespace SSJ {
         this->smooth = false;
         this->alphaMaskSet = false;
         this->defaultFrameBreakTime = sf::milliseconds(100);
+		this->animateOnce = false;
 
     }
 
@@ -200,7 +201,7 @@ namespace SSJ {
           it->second->update();
     }
 
-    void addAnimationToContainer(string name, Animation * animation)
+    void Animation::addAnimationToContainer(string name, Animation * animation)
     {
         Animation::AnimationContainer[name] = animation;
     }
