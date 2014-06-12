@@ -29,7 +29,8 @@ namespace SSJ{
 
     public:
 		static Bullet* CreateBullet(Point ownerPosition, SSJ::Degrees ownerAngle, WeaponType type);
-		WeaponType getName();
+		WeaponType getType();
+		std::string getName();
         void Hit(); // dla zwykłych broni
         void HitByBlast(); // dla broni obszarowych
         int getAllAmmo();
@@ -38,11 +39,13 @@ namespace SSJ{
 		int getAmmoInMag();
 		int getReloadTime();
 		bool getReloading();
+		int getRange();
 		void Shoot();
         void setAllAmmo(int allAmmo);
         void decreaseAmmo(); // zmniejsz ilość pocisków po strzale
         void setAmmo(int ammo);
         void setReloadTime(int reloadTime);
+		sf::Time getReloadClockElapsedTime();
         void setDamage(int damage);
         void setFireRate(int fireRate);
 		void Reload();

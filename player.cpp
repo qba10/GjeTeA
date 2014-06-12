@@ -26,6 +26,12 @@ namespace SSJ {
 
     void Player::draw()
     {
+		sf::RectangleShape hpFrame(sf::Vector2f(20,5));
+		hpFrame.setFillColor(sf::Color::Transparent);
+		hpFrame.setOutlineColor(sf::Color::Black);
+		hpFrame.setOutlineThickness(2);
+		// todo
+
         DataContainer::window->draw(*(this->sprite.getSprite()));
     }
 

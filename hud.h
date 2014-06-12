@@ -11,14 +11,17 @@ namespace SSJ{
 		sf::Clock reloadingClock;
 		sf::Time timeBetweenReloadingBullets;
 		int reloadedBulletAmount;
+
         float allBulletsReloadTime;
+		float lastRadius;
+		float currentRadius;
+
 	public:
 		Hud();
 		~Hud();
 		void draw();
 		void update();
 		void SynchronizationObject(Json::Value);
-		void reloadingStarted();
 	};
 }
 #endif HUD_H

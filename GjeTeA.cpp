@@ -6,7 +6,7 @@
 // Description : Hello World in C++, Ansi-style
 //============================================================================
 #include "appwindow.h"
-#define BEZ_SERWERA
+//#define BEZ_SERWERA
 
 
 
@@ -14,7 +14,7 @@
 int main()
 {
     SSJ::DataContainer::mutex.lock();
-    SSJ::DataContainer::ScreenWidth = 800;
+    SSJ::DataContainer::ScreenWidth = 1240;
     SSJ::DataContainer::ScreenHeight = 600;
     SSJ::DataContainer::ScreenMargin = 64;
     time_t  timev;
@@ -51,7 +51,6 @@ int main()
 	cursor.loadFromFile("aim.png");
 	sf::Sprite sprite(cursor);
 	sprite.setPosition(sf::Mouse::getPosition(Game).x, sf::Mouse::getPosition(Game).y);*/
-	
 
     Game->AddLayer(pierwsza);
 	Game->AddLayer(druga);

@@ -71,9 +71,11 @@ namespace SSJ{
 
 		Point newPosition = this->getMapPosition();
         SSJ::Degrees tempDegrees = this->angle;
+
         float s = this->velocity *100 * DataContainer::DeltaTime.asSeconds();
         float px = sin(tempDegrees.getRadians()) * s;
         float py = cos(tempDegrees.getRadians()) * s;
+
         newPosition.x += px;
         newPosition.y -= py;
         return newPosition;
