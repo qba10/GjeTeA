@@ -64,8 +64,8 @@ void ServerConnectAPI::ServerListener(){
                                 ServerConnectAPI::deletePointersToObjectFromGameLayers(DataContainer::ObjectLists.at(i));
                                 toDelete.push_back(DataContainer::ObjectLists.at(i));
                             }else{
-                                DataContainer::ObjectLists.at(i)->SynchronizationObject(root[_J(_synchronize)][i]);
-                                if(static_cast<ObjectType>(root[_J(_synchronize)][i][_J(_objectName)].asInt()) == _Bullet){
+                                if(static_cast<ObjectType>(root[_J(_synchronize)][i][_J(_objectName)].asInt()) != _Bullet){
+									DataContainer::ObjectLists.at(i)->SynchronizationObject(root[_J(_synchronize)][i]);
                                     cout << "sync bullet: " << i << endl;
                                 }
                             }

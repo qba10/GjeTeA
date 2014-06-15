@@ -49,7 +49,7 @@ namespace SSJ{
 		Ak47Bullet->setDamage(			15);
 		Ak47Bullet->setBlastFire(		false);
         Ak47Bullet->setBlastRange(		0);
-		Ak47Bullet->setOwnerPosition(	BulletFactory::ownerPosition);
+		//Ak47Bullet->setOwnerPosition(	BulletFactory::ownerPosition);
 		Ak47Bullet->setMapPosition(		BulletFactory::ownerPosition);
 		Ak47Bullet->setAngle(			BulletFactory::ownerAngle);
 		return Ak47Bullet;
@@ -63,7 +63,7 @@ namespace SSJ{
 		M16Bullet->setDamage(			12);
 		M16Bullet->setBlastFire(		false);
         M16Bullet->setBlastRange(		0);
-		M16Bullet->setOwnerPosition(	BulletFactory::ownerPosition);
+		//M16Bullet->setOwnerPosition(	BulletFactory::ownerPosition);
 		M16Bullet->setMapPosition(		BulletFactory::ownerPosition);
 		M16Bullet->setAngle(			BulletFactory::ownerAngle);
 		return M16Bullet;
@@ -77,7 +77,7 @@ namespace SSJ{
 		ShotgunBullet->setDamage(		50);
 		ShotgunBullet->setBlastFire(	true);
 		ShotgunBullet->setBlastRange(	20);
-		ShotgunBullet->setOwnerPosition(BulletFactory::ownerPosition);
+		//ShotgunBullet->setOwnerPosition(BulletFactory::ownerPosition);
 		ShotgunBullet->setMapPosition(	BulletFactory::ownerPosition);
 		ShotgunBullet->setAngle(		BulletFactory::ownerAngle);
 		return ShotgunBullet;
@@ -91,7 +91,7 @@ namespace SSJ{
 		SniperRifleBullet->setDamage(		100);
 		SniperRifleBullet->setBlastFire(	false);
         SniperRifleBullet->setBlastRange(	0);
-		SniperRifleBullet->setOwnerPosition(BulletFactory::ownerPosition);
+		//SniperRifleBullet->setOwnerPosition(BulletFactory::ownerPosition);
 		SniperRifleBullet->setMapPosition(	BulletFactory::ownerPosition);
 		SniperRifleBullet->setAngle(		BulletFactory::ownerAngle);
 		return SniperRifleBullet;
@@ -105,7 +105,7 @@ namespace SSJ{
 		BazookaBullet->setDamage(		100);
 		BazookaBullet->setBlastFire(	true);
 		BazookaBullet->setBlastRange(	100);
-		BazookaBullet->setOwnerPosition(BulletFactory::ownerPosition);
+		//BazookaBullet->setOwnerPosition(BulletFactory::ownerPosition);
 		BazookaBullet->setMapPosition(	BulletFactory::ownerPosition);
 		BazookaBullet->setAngle(		BulletFactory::ownerAngle);
 		return BazookaBullet;
@@ -119,7 +119,7 @@ namespace SSJ{
 		GrenadeBullet->setDamage(		100);
 		GrenadeBullet->setBlastFire(	true);
 		GrenadeBullet->setBlastRange(		70);
-		GrenadeBullet->setOwnerPosition(BulletFactory::ownerPosition);
+		//GrenadeBullet->setOwnerPosition(BulletFactory::ownerPosition);
 		GrenadeBullet->setMapPosition(	BulletFactory::ownerPosition);
 		GrenadeBullet->setAngle(		BulletFactory::ownerAngle);
 		return GrenadeBullet;
@@ -133,7 +133,7 @@ namespace SSJ{
 		KnifeBullet->setDamage(			35);
 		KnifeBullet->setBlastFire(		false);
         KnifeBullet->setBlastRange(		0);
-		KnifeBullet->setOwnerPosition(	BulletFactory::ownerPosition);
+		//KnifeBullet->setOwnerPosition(	BulletFactory::ownerPosition);
 		KnifeBullet->setMapPosition(	BulletFactory::ownerPosition);
 		KnifeBullet->setAngle(			BulletFactory::ownerAngle);
 		return KnifeBullet;

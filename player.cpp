@@ -25,11 +25,25 @@ namespace SSJ {
 
     void Player::draw()
     {
-		sf::RectangleShape hpFrame(sf::Vector2f(20,5));
+		sf::RectangleShape hpFrame(sf::Vector2f(25,5));
 		hpFrame.setFillColor(sf::Color::Transparent);
-		hpFrame.setOutlineColor(sf::Color::Black);
+		hpFrame.setOutlineColor(sf::Color(Cornflower,120));
 		hpFrame.setOutlineThickness(2);
-		// todo
+		hpFrame.setPosition(this->sprite.getSprite()->getPosition().x-10, this->sprite.getSprite()->getPosition().y-30);
+		DataContainer::window->draw(hpFrame);
+
+		int hp = this->getHP() / 4;
+		int lackHp = (this->getMaxHP() / 4) - hp;
+
+		sf::RectangleShape rHp(sf::Vector2f(hp, 5));
+		rHp.setFillColor(sf::Color(Cornflower));
+		rHp.setPosition(this->sprite.getSprite()->getPosition().x-10, this->sprite.getSprite()->getPosition().y-30);
+		DataContainer::window->draw(rHp);
+
+		sf::RectangleShape rLackHp(sf::Vector2f(lackHp, 5));
+		rLackHp.setFillColor(sf::Color(Cornflower,60));
+		rLackHp.setPosition(this->sprite.getSprite()->getPosition().x-10+hp, this->sprite.getSprite()->getPosition().y-30);
+		DataContainer::window->draw(rLackHp);
 
         DataContainer::window->draw(*(this->sprite.getSprite()));
     }

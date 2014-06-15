@@ -15,6 +15,8 @@ namespace SSJ {
         this->moveLeft = false;
         this->moveRight = false;
 
+		//this->getSprite().AddTexture("dead", "sprite/deadplayer.png");
+
 		this->currentWeaponIndex = 0;
 
         this->AddActionKeyboard(sf::Event::KeyPressed,sf::Keyboard::W,  SLOT(this, MainPlayer::eventStartMoveForward));
@@ -218,6 +220,11 @@ namespace SSJ {
     }
 
 	void MainPlayer::update(){
+		this->setHP(50);
+		/*if(this->getHP() <= 0 ){
+			this->getSprite().setTexture("dead");
+		}*/
+
 		this->getSprite().Update();
         this->sprite.getSprite()->setScale(2.f,2.f);
 
