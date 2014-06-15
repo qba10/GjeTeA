@@ -9,12 +9,9 @@ namespace SSJ {
     private:
        vector <GameLayer*> GameLayers;
         sf::Thread *ServerConnectThread;
-		
-    public:
-       void AddLayer(GameLayer*);
-
     public:
         AppWindow();
+		void AddLayer(GameLayer*);
         void LoadObjects();
         void Events();
         void Update();

@@ -79,7 +79,24 @@ namespace SSJ{
     }
 
 
-    void DynamicObject::SynchronizationObject(Json::Value jsonObject)
+	Degrees DynamicObject::getAngle() const{
+		return this->angle;
+	}
+
+	void DynamicObject::setAngle(const Degrees angle){
+		this->angle = angle;
+	}
+
+	int DynamicObject::getVelocity() const{
+		return this->velocity;
+	}
+
+	void DynamicObject::setVelocity(const int velocity){
+		this->velocity = velocity;
+	}
+
+
+	void DynamicObject::SynchronizationObject(Json::Value jsonObject)
     {
         if(jsonObject.isMember(_J(_mapPositionX))){
             this->mapPosition.x = jsonObject[_J(_mapPositionX)].asDouble();
@@ -105,24 +122,5 @@ namespace SSJ{
         if(jsonObject.isMember(_J(_targetAngle))){
             this->targetAngle = jsonObject[_J(_targetAngle)].asDouble();
         }
-
     }
-
-	Degrees DynamicObject::getAngle(){
-		return this->angle;
-	}
-
-	void DynamicObject::setAngle(Degrees angle){
-		this->angle = angle;
-	}
-
-	int DynamicObject::getVelocity(){
-		return this->velocity;
-	}
-
-	void DynamicObject::setVelocity(int velocity){
-		this->velocity = velocity;
-	}
-
-
 }

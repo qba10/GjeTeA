@@ -7,7 +7,6 @@ namespace SSJ{
         float x, y;
         Point(float x, float y);
         Point();
-
     };
 }
 #endif // POINT_H

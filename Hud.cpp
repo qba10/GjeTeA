@@ -11,6 +11,7 @@ namespace SSJ{
 		this->reloadedBulletAmount = 1;
 		this->allBulletsReloadTime = 0;
 	}
+
 	Hud::~Hud(){
 
 	}
@@ -54,26 +55,40 @@ namespace SSJ{
 			/**********************************
 					ACTIVE WEAPON DRAWING
 			**********************************/
-			std::string sWeapo02 = dynamic_cast<MainPlayer*>(DataContainer::MainPlayer)->getWeapon0()->getName();
-			sf::Text tWeapon0(sWeapo02, consola);
-			tWeapon0.setCharacterSize(20);
-			tWeapon0.setColor(sf::Color(153,217,234,120));
-			tWeapon0.setPosition(10,DataContainer::ScreenHeight-145);
-			DataContainer::window->draw(tWeapon0);
+			std::string sWeaponPP = dynamic_cast<MainPlayer*>(DataContainer::MainPlayer)->getSelectedWeapon(-2)->getName();
+			sf::Text tWeaponPP(sWeaponPP, consola);
+			tWeaponPP.setCharacterSize(13);
+			tWeaponPP.setColor(sf::Color(153,217,234,80));
+			tWeaponPP.setPosition(10,DataContainer::ScreenHeight-147);
+			DataContainer::window->draw(tWeaponPP);
 
-			std::string sWeapon1 = dynamic_cast<MainPlayer*>(DataContainer::MainPlayer)->getWeapon1()->getName();
+			std::string sWeaponP = dynamic_cast<MainPlayer*>(DataContainer::MainPlayer)->getSelectedWeapon(-1)->getName();
+			sf::Text tWeaponP(sWeaponP, consola);
+			tWeaponP.setCharacterSize(20);
+			tWeaponP.setColor(sf::Color(153,217,234,120));
+			tWeaponP.setPosition(10,DataContainer::ScreenHeight-140);
+			DataContainer::window->draw(tWeaponP);
+
+			std::string sWeapon1 = dynamic_cast<MainPlayer*>(DataContainer::MainPlayer)->getSelectedWeapon(0)->getName();
 			sf::Text tWeapon1(sWeapon1, consola);
 			tWeapon1.setCharacterSize(30);
 			tWeapon1.setColor(sf::Color::Cyan);
 			tWeapon1.setPosition(10,DataContainer::ScreenHeight-130);
 			DataContainer::window->draw(tWeapon1);
 
-			std::string sWeapon2 = dynamic_cast<MainPlayer*>(DataContainer::MainPlayer)->getWeapon2()->getName();
-			sf::Text tWeapon2(sWeapon2, consola);
-			tWeapon2.setCharacterSize(20);
-			tWeapon2.setColor(sf::Color(153,217,234,120));
-			tWeapon2.setPosition(10,DataContainer::ScreenHeight-100);
-			DataContainer::window->draw(tWeapon2);
+			std::string sWeaponN = dynamic_cast<MainPlayer*>(DataContainer::MainPlayer)->getSelectedWeapon(1)->getName();
+			sf::Text tWeaponN(sWeaponN, consola);
+			tWeaponN.setCharacterSize(20);
+			tWeaponN.setColor(sf::Color(153,217,234,120));
+			tWeaponN.setPosition(10,DataContainer::ScreenHeight-105);
+			DataContainer::window->draw(tWeaponN);
+
+			std::string sWeaponNN = dynamic_cast<MainPlayer*>(DataContainer::MainPlayer)->getSelectedWeapon(2)->getName();
+			sf::Text tWeaponNN(sWeaponNN, consola);
+			tWeaponNN.setCharacterSize(13);
+			tWeaponNN.setColor(sf::Color(153,217,234,80));
+			tWeaponNN.setPosition(10,DataContainer::ScreenHeight-87);
+			DataContainer::window->draw(tWeaponNN);
 
 			// WEAPON RANGE
 			sf::CircleShape weaponRange((float)this->currentRadius, 100);
@@ -143,6 +158,4 @@ namespace SSJ{
 	void Hud::SynchronizationObject(Json::Value){
 
 	}
-
-
 }

@@ -3,10 +3,12 @@
 #include <fstream>
 
 namespace SSJ {
+
 	Map::Map() : GameLayer("Mapa", false)
 	{
 		
 	}
+
 	Map::Map(string file) : GameLayer("Mapa", false)
 	{
 		this->load(file);

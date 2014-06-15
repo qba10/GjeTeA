@@ -12,6 +12,7 @@ namespace SSJ {
 		Degrees angle;
 		Degrees targetAngle;
     public:
+		DynamicObject();
         void MoveForward();
         void MoveBackward();
         void MoveLeft();
@@ -19,8 +20,11 @@ namespace SSJ {
         void RotateLeft();
         void RotateRight();
         Point CalcNewPosition( SSJ::Degrees);
-		Degrees getAngle();
-        DynamicObject();
+		
+		void setVelocity(const int velocity);
+		int getVelocity() const;
+		void setAngle(const Degrees angle);
+		Degrees getAngle() const;
         /**
          * JSON:
          * {
@@ -36,9 +40,6 @@ namespace SSJ {
          * }
          */
         void SynchronizationObject(Json::Value);
-		void setVelocity(int velocity);
-		int getVelocity();
-		void setAngle(Degrees angle);
     };
 }
 #endif // DYNAMICOBJECT_H

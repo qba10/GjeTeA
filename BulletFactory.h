@@ -7,8 +7,8 @@ namespace SSJ {
 		static Point ownerPosition;
 		static SSJ::Degrees ownerAngle;
 	public:
-		static void setOwnerPosition(Point ownerPosition);
-		static void setOwnerAngle(SSJ::Degrees ownerAngle);
+		static void setOwnerPosition(const Point ownerPosition);
+		static void setOwnerAngle(const SSJ::Degrees ownerAngle);
         static Bullet* CreateGlockBullet();
         static Bullet* CreateUziBullet();
         static Bullet* CreateAk47Bullet();

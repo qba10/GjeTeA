@@ -16,8 +16,35 @@ namespace SSJ{
         ServerConnectThread->launch();
 
 		this->hud = new Hud;
-		
     }
+
+	void AppWindow::AddLayer(GameLayer *gameLayer){
+        this->GameLayers.push_back(gameLayer);
+    }
+
+	void AppWindow::LoadObjects(){
+        ServerApi::AskToCreateMainPlayer();
+    }
+
+	void AppWindow::Events(){
+        while(this->appWindow->pollEvent(this->event)){
+            if(this->event.type == sf::Event::Closed){
+                this->appWindow->close();
+            }
+            for(size_t i = 0 ; i < DataContainer::EventList.size(); i++){
+                if(this->event.type == DataContainer::EventList.at(i).EventType){
+                    if(this->event.type == sf::Event::KeyPressed || this->event.type == sf::Event::KeyReleased){
+                        if(DataContainer::EventList.at(i).KeyAction != sf::Keyboard::Unknown && DataContainer::EventList.at(i).KeyAction == this->event.key.code)
+                            ((DataContainer::EventList.at(i).object)->*(DataContainer::EventList.at(i).ActionFunction))(this->event);
+					}
+					else{
+                            ((DataContainer::EventList.at(i).object)->*(DataContainer::EventList.at(i).ActionFunction))(this->event);
+                    }
+                }
+            }
+        }
+    }
+
     void AppWindow::Update(){
         Animation::UpdateAllAnimation();
         Sprite::updateAllSprites();
@@ -39,7 +66,6 @@ namespace SSJ{
 			DataContainer::ReqToServer.pop();
 		}
 
-
         ServerApi::AskToSynchronizeMainPlayer();
     }
 
@@ -49,35 +75,5 @@ namespace SSJ{
         for(size_t i = 0 ; i < this->GameLayers.size(); i++){
                 this->GameLayers.at(i)->DrawLayer();
         }
-    }
-
-
-    void AppWindow::Events(){
-        while(this->appWindow->pollEvent(this->event)){
-            if(this->event.type == sf::Event::Closed){
-                this->appWindow->close();
-            }
-
-            for(size_t i = 0 ; i < DataContainer::EventList.size(); i++){
-                if(this->event.type == DataContainer::EventList.at(i).EventType){
-                    if(this->event.type == sf::Event::KeyPressed || this->event.type == sf::Event::KeyReleased){
-                        if(DataContainer::EventList.at(i).KeyAction != sf::Keyboard::Unknown && DataContainer::EventList.at(i).KeyAction == this->event.key.code)
-                            ((DataContainer::EventList.at(i).object)->*(DataContainer::EventList.at(i).ActionFunction))(this->event);
-					}else{
-                            ((DataContainer::EventList.at(i).object)->*(DataContainer::EventList.at(i).ActionFunction))(this->event);
-
-                    }
-                }
-            }
-        }
-    }
-
-
-    void AppWindow::LoadObjects(){
-        ServerApi::AskToCreateMainPlayer();
-    }
-
-    void AppWindow::AddLayer(GameLayer *gameLayer){
-        this->GameLayers.push_back(gameLayer);
     }
 }

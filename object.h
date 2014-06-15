@@ -27,17 +27,22 @@ namespace SSJ{
         Object();
         Object(float x, float y);
         Object(Point);
+
         Point getMapPosition();
         void setMapPosition(float x, float y);
         void setMapPosition(Point screenPosition);
         Point getScreenPosition();
+
+
         virtual void draw() = 0;
         virtual void update() = 0;
         virtual void SynchronizationObject(Json::Value) = 0;
-        void setActivity(bool activity);
-        bool isActive();
-        Sprite getSprite() ;
-        void setSprite( Sprite value);
+
+        void setActivity(const bool activity);
+        bool isActive() const;
+        Sprite getSprite() const;
+        void setSprite(const Sprite value);
+
         bool isDesynchronization() const;
         void setDesynchronization(bool value);
 		int getSyncId() { return this->syncId; }
