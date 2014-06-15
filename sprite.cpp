@@ -26,7 +26,7 @@ namespace SSJ {
 
 
 
-    sf::Sprite* Sprite::getSprite() const
+    sf::Sprite* Sprite::getSprite()
     {
         return sprite;
     }
@@ -69,20 +69,15 @@ namespace SSJ {
         sf::Texture * tempTexture = new sf::Texture;
         sf::Image img;
 
-
-
         if(!img.loadFromFile(path)){
             cout << "Failed load texture" + path << endl;
         }
         if(this->alphaMaksSet)
             img.createMaskFromColor(this->getAlphaMaks(), 0);
-
-
         tempTexture->loadFromImage(img);
-
         tempTexture->setSmooth(this->smooth);
-
         this->textures[key] = tempTexture;
+
         if(this->textures.size() == 1){
             this->sprite->setTexture(*tempTexture);
             this->activeTexture = key;

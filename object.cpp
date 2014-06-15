@@ -54,9 +54,9 @@ namespace SSJ {
         return activity;
     }
 
-    Sprite Object::getSprite() const
+    Sprite *Object::getSprite()
     {
-        return sprite;
+        return &sprite;
     }
 
     void Object::setSprite(const Sprite value)
@@ -80,7 +80,7 @@ namespace SSJ {
     void Object::setDefaultVar()
     {
         this->desynchronization = false;
-        this->syncId = -1;
+        //this->syncId = -1;
         this->activity = true;
     }
 

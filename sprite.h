@@ -12,7 +12,7 @@ namespace SSJ{
     {
     private:
         
-        map <string, sf::Texture *> textures;
+      public:  map <string, sf::Texture *> textures;
         map <string, Animation *> animations;
         sf::Sprite *sprite;
         string defaultTexture;
@@ -20,7 +20,7 @@ namespace SSJ{
         bool smooth;
         sf::Color alphaMaks;
         bool alphaMaksSet;
-        string activeAnimation;
+       public: string activeAnimation;
         
         bool AnyTextureActive;
     public:
@@ -37,7 +37,7 @@ namespace SSJ{
         Sprite();
 		void Update();
 
-        sf::Sprite *getSprite() const;
+        sf::Sprite *getSprite() ;
 		void		setSprite(sf::Sprite sprite);
         bool getSmooth() const;
         void setSmooth(bool value);

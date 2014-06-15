@@ -41,7 +41,7 @@ namespace SSJ {
         float x, y;
 		x = this->getScreenPosition().x;
 		y = this->getScreenPosition().y;
-		(this->getSprite().getSprite())->setPosition(x,y);
+        (this->getSprite()->getSprite())->setPosition(x,y);
 		DataContainer::window->draw( *(this->sprite.getSprite()));
 	}
 };

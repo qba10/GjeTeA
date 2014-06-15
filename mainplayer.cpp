@@ -16,7 +16,6 @@ namespace SSJ {
         this->moveRight = false;
 
 		this->currentWeaponIndex = 0;
-
         this->AddActionKeyboard(sf::Event::KeyPressed,sf::Keyboard::W,  SLOT(this, MainPlayer::eventStartMoveForward));
         this->AddActionKeyboard(sf::Event::KeyPressed,sf::Keyboard::S,  SLOT(this, MainPlayer::eventStartMoveBackward));
         this->AddActionKeyboard(sf::Event::KeyPressed,sf::Keyboard::A,  SLOT(this, MainPlayer::eventStartMoveLeft));
@@ -101,42 +100,42 @@ namespace SSJ {
 	}
 
     void MainPlayer::eventStartMoveForward(sf::Event event){
-        this->getSprite().getAnimation("chodzenie")->start();
+        this->getSprite()->getAnimation("chodzenie")->start();
         this->setMoveForward(true);
     }
 
     void MainPlayer::eventStartMoveBackward(sf::Event event){
-        this->getSprite().getAnimation("chodzenie")->start();
+        this->getSprite()->getAnimation("chodzenie")->start();
         this->setMoveBackward(true);
     }
 
     void MainPlayer::eventStartMoveLeft(sf::Event event){
-        this->getSprite().getAnimation("chodzenie")->start();
+        this->getSprite()->getAnimation("chodzenie")->start();
         this->setMoveLeft(true);
     }
 
     void MainPlayer::eventStartMoveRight(sf::Event event){
-        this->getSprite().getAnimation("chodzenie")->start();
+        this->getSprite()->getAnimation("chodzenie")->start();
         this->setMoveRight(true);
     }
 
     void MainPlayer::eventStopMoveForward(sf::Event event){
-        this->getSprite().getAnimation("chodzenie")->stop();
+        this->getSprite()->getAnimation("chodzenie")->stop();
         this->setMoveForward(false);
     }
 
     void MainPlayer::eventStopMoveBackward(sf::Event event){
-        this->getSprite().getAnimation("chodzenie")->stop();
+        this->getSprite()->getAnimation("chodzenie")->stop();
         this->setMoveBackward(false);
     }
 
     void MainPlayer::eventStopMoveLeft(sf::Event event){
-        this->getSprite().getAnimation("chodzenie")->stop();
+        this->getSprite()->getAnimation("chodzenie")->stop();
         this->setMoveLeft(false);
     }
 
     void MainPlayer::eventStopMoveRight(sf::Event event){
-       this->getSprite().getAnimation("chodzenie")->stop();
+       this->getSprite()->getAnimation("chodzenie")->stop();
         this->setMoveRight(false);
     }
 
@@ -217,8 +216,13 @@ namespace SSJ {
         DataContainer::window->draw(*(this->sprite.getSprite()));
     }
 
-	void MainPlayer::update(){
-		this->getSprite().Update();
+    void MainPlayer::update(){
+       // this->setHP(0);
+       // if(this->getHP() <= 0 ){
+       //  this->getSprite()->activeAnimation = "*";
+         // this->getSprite()->setTexture("dead");
+        // }
+        this->getSprite()->Update();
         this->sprite.getSprite()->setScale(2.f,2.f);
 
 		this->weapon1->setMapPosition(this->getMapPosition());
@@ -308,6 +312,7 @@ namespace SSJ {
            object[_J(_velocity)] = (unsigned int)this->velocity;
            object[_J(_angle)] = this->getAngle().getDegrees();
            object[_J(_targetAngle)] = this->targetAngle.getDegrees();
+
            this->desynchronization = false;
         return object;
     }

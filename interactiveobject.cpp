@@ -10,7 +10,7 @@ namespace  SSJ {
 
     void InteractiveObject::setHP(const int hp)
     {
-        if(this->maxHP <= hp && hp >= 0)
+        if(this->maxHP >= hp && hp >= 0)
             this->hp = hp;
     }
 

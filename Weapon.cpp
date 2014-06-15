@@ -46,6 +46,7 @@ namespace SSJ {
 					this->bulletClock.restart();
 					Request tmp;
                     tmp.action = _createBullet;
+                    tmp.parameters[_J(_ownerSyncId)] = this->owner->getSyncId();
                     tmp.parameters[_J(_ownerPositionX)] = this->owner->getMapPosition().x;
                     tmp.parameters[_J(_ownerPositionY)] = this->owner->getMapPosition().y;
                     tmp.parameters[_J(_ownerAngle)] = this->owner->getAngle().getDegrees();

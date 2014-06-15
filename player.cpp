@@ -21,6 +21,9 @@ namespace SSJ {
         animation->AddFrame("./sprite/mainPlayerChodzenie/mainChodzenie5.png");
         this->sprite.AddAnimation(animation);
         this->sprite.ActiveAnimation("chodzenie");
+        this->getSprite()->AddTexture("dead", "sprite/deadplayer.png");
+
+
     }
 
     void Player::draw()
@@ -36,7 +39,7 @@ namespace SSJ {
 
     void Player::update()
     {
-        this->getSprite().Update();
+        this->getSprite()->Update();
         this->sprite.getSprite()->setScale(2.f,2.f);
         this->sprite.getSprite()->setOrigin(this->sprite.getSprite()->getTexture()->getSize().x/2,this->sprite.getSprite()->getTexture()->getSize().y/2 );
         this->sprite.getSprite()->setRotation(this->angle.getDegrees()-180);

@@ -46,7 +46,7 @@ namespace SSJ{
 	}
 
 	void Bullet::update(){
-		this->getSprite().Update();
+        this->getSprite()->Update();
 
         this->setMapPosition(CalcNewPosition());
         this->sprite.getSprite()->setOrigin(this->sprite.getSprite()->getTexture()->getSize().x/2,this->sprite.getSprite()->getTexture()->getSize().y/2 );
@@ -59,7 +59,7 @@ namespace SSJ{
 	void Bullet::Blast(){
 		this->sprite.getSprite()->setPosition(this->getScreenPosition().x, this->getScreenPosition().y);
 		DataContainer::window->draw(*(this->sprite.getSprite()));
-		this->getSprite().getAnimation("wybuch")->start();
+        this->getSprite()->getAnimation("wybuch")->start();
 	}
 
 	void Bullet::Hit(){
