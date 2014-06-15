@@ -4,6 +4,7 @@ namespace SSJ{
 	Bullet::Bullet(){
 		//this->setMapPosition(this->ownerPosition);
 		this->sprite.AddTexture("bullet", "./bullet.png");
+		
 		/*Animation *pocisk = new Animation("pocisk");
 		pocisk->AddFrame("./bullet.png");
 		sprite.AddAnimation(pocisk);*/
@@ -34,6 +35,7 @@ namespace SSJ{
 			
 		}*/
 		//this->sprite.ActiveAnimation("pocisk");
+		this->setOwnerPosition(DataContainer::MainPlayer->getMapPosition());
 	}
 
 	Bullet::~Bullet(){
@@ -46,9 +48,15 @@ namespace SSJ{
 	}
 
 	void Bullet::update(){
+<<<<<<< HEAD
         this->getSprite()->Update();
+=======
+		this->getSprite().Update();
+		if( (pow(this->getMapPosition().x - ownerPosition.x, 2) + pow(this->getMapPosition().y - ownerPosition.y, 2)) <= pow(this->range, 2)){
+>>>>>>> 22c66d9e8e5977d11e52a888604cbf7fac55701a
 
-        this->setMapPosition(CalcNewPosition());
+            this->setMapPosition(CalcNewPosition());
+        }
         this->sprite.getSprite()->setOrigin(this->sprite.getSprite()->getTexture()->getSize().x/2,this->sprite.getSprite()->getTexture()->getSize().y/2 );
         this->sprite.getSprite()->setRotation(this->angle.getDegrees()-180);
 

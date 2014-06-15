@@ -13,6 +13,7 @@
 #define SLOT(object, method) object, (ActionEvent)(&method)
 #define _J(enum) intToString(enum)
 #define PI 3.14159265
+#define Cornflower 153,217,234 // color
 namespace SSJ {
     string intToString(int);
 

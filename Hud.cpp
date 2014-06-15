@@ -58,14 +58,14 @@ namespace SSJ{
 			std::string sWeaponPP = dynamic_cast<MainPlayer*>(DataContainer::MainPlayer)->getSelectedWeapon(-2)->getName();
 			sf::Text tWeaponPP(sWeaponPP, consola);
 			tWeaponPP.setCharacterSize(13);
-			tWeaponPP.setColor(sf::Color(153,217,234,80));
+			tWeaponPP.setColor(sf::Color(Cornflower,80));
 			tWeaponPP.setPosition(10,DataContainer::ScreenHeight-147);
 			DataContainer::window->draw(tWeaponPP);
 
 			std::string sWeaponP = dynamic_cast<MainPlayer*>(DataContainer::MainPlayer)->getSelectedWeapon(-1)->getName();
 			sf::Text tWeaponP(sWeaponP, consola);
 			tWeaponP.setCharacterSize(20);
-			tWeaponP.setColor(sf::Color(153,217,234,120));
+			tWeaponP.setColor(sf::Color(Cornflower,120));
 			tWeaponP.setPosition(10,DataContainer::ScreenHeight-140);
 			DataContainer::window->draw(tWeaponP);
 
@@ -79,20 +79,20 @@ namespace SSJ{
 			std::string sWeaponN = dynamic_cast<MainPlayer*>(DataContainer::MainPlayer)->getSelectedWeapon(1)->getName();
 			sf::Text tWeaponN(sWeaponN, consola);
 			tWeaponN.setCharacterSize(20);
-			tWeaponN.setColor(sf::Color(153,217,234,120));
+			tWeaponN.setColor(sf::Color(Cornflower,120));
 			tWeaponN.setPosition(10,DataContainer::ScreenHeight-105);
 			DataContainer::window->draw(tWeaponN);
 
 			std::string sWeaponNN = dynamic_cast<MainPlayer*>(DataContainer::MainPlayer)->getSelectedWeapon(2)->getName();
 			sf::Text tWeaponNN(sWeaponNN, consola);
 			tWeaponNN.setCharacterSize(13);
-			tWeaponNN.setColor(sf::Color(153,217,234,80));
+			tWeaponNN.setColor(sf::Color(Cornflower,80));
 			tWeaponNN.setPosition(10,DataContainer::ScreenHeight-87);
 			DataContainer::window->draw(tWeaponNN);
 
 			// WEAPON RANGE
 			sf::CircleShape weaponRange((float)this->currentRadius, 100);
-			weaponRange.setOutlineColor(sf::Color(153,217,234,120));
+			weaponRange.setOutlineColor(sf::Color(Cornflower,120));
 			weaponRange.setOutlineThickness(3);
 			weaponRange.setPosition(dynamic_cast<MainPlayer*>(DataContainer::MainPlayer)->getScreenPosition().x - (double)this->currentRadius, 
 									dynamic_cast<MainPlayer*>(DataContainer::MainPlayer)->getScreenPosition().y - (double)this->currentRadius);
@@ -102,7 +102,7 @@ namespace SSJ{
 			// LIFE
 			sf::RectangleShape hpFrame(sf::Vector2f(100,20));
 			hpFrame.setFillColor(sf::Color::Transparent);
-			hpFrame.setOutlineColor(sf::Color(153,217,234,120));
+			hpFrame.setOutlineColor(sf::Color(Cornflower,120));
 			hpFrame.setOutlineThickness(4);
 			hpFrame.setPosition(DataContainer::ScreenWidth-150, DataContainer::ScreenHeight-30);
 			DataContainer::window->draw(hpFrame);
@@ -111,14 +111,14 @@ namespace SSJ{
 			int lackHp = dynamic_cast<MainPlayer*>(DataContainer::MainPlayer)->getMaxHP() - hp;
 
 			sf::RectangleShape rHp(sf::Vector2f(hp, 20));
-			rHp.setFillColor(sf::Color(153,217,234));
+			rHp.setFillColor(sf::Color(Cornflower));
 			rHp.setPosition(DataContainer::ScreenWidth-150, DataContainer::ScreenHeight-30);
 			DataContainer::window->draw(rHp);
 
 
 			sf::RectangleShape rLackHp(sf::Vector2f(lackHp, 20));
-			rLackHp.setFillColor(sf::Color(153,217,60));
-			rLackHp.setPosition(DataContainer::ScreenWidth-150+hp, DataContainer::ScreenHeight-28);
+			rLackHp.setFillColor(sf::Color(Cornflower,60));
+			rLackHp.setPosition(DataContainer::ScreenWidth-150+hp, DataContainer::ScreenHeight-30);
 			DataContainer::window->draw(rLackHp);
 
 		}
