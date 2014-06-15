@@ -218,7 +218,7 @@ namespace SSJ {
         DataContainer::window->draw(*(this->sprite.getSprite()));
     }
 
-<<<<<<< HEAD
+
     void MainPlayer::update(){
        // this->setHP(0);
        // if(this->getHP() <= 0 ){
@@ -226,15 +226,7 @@ namespace SSJ {
          // this->getSprite()->setTexture("dead");
         // }
         this->getSprite()->Update();
-=======
-	void MainPlayer::update(){
-		this->setHP(50);
-		/*if(this->getHP() <= 0 ){
-			this->getSprite().setTexture("dead");
-		}*/
 
-		this->getSprite().Update();
->>>>>>> 22c66d9e8e5977d11e52a888604cbf7fac55701a
         this->sprite.getSprite()->setScale(2.f,2.f);
 
 		this->weapon1->setMapPosition(this->getMapPosition());

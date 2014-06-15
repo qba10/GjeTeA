@@ -13,6 +13,7 @@ namespace SSJ{
 		int damage;
 		bool blastFire;
 		int blastRange;
+        bool wasFirst;
 
     public:
 		Bullet();

@@ -2,6 +2,7 @@
 namespace SSJ{
 
 	Bullet::Bullet(){
+
 		//this->setMapPosition(this->ownerPosition);
 		this->sprite.AddTexture("bullet", "./bullet.png");
 		
@@ -36,6 +37,7 @@ namespace SSJ{
 		}*/
 		//this->sprite.ActiveAnimation("pocisk");
 		this->setOwnerPosition(DataContainer::MainPlayer->getMapPosition());
+        this->wasFirst = false;
 	}
 
 	Bullet::~Bullet(){
@@ -48,12 +50,10 @@ namespace SSJ{
 	}
 
 	void Bullet::update(){
-<<<<<<< HEAD
+
         this->getSprite()->Update();
-=======
-		this->getSprite().Update();
 		if( (pow(this->getMapPosition().x - ownerPosition.x, 2) + pow(this->getMapPosition().y - ownerPosition.y, 2)) <= pow(this->range, 2)){
->>>>>>> 22c66d9e8e5977d11e52a888604cbf7fac55701a
+
 
             this->setMapPosition(CalcNewPosition());
         }
@@ -125,23 +125,27 @@ namespace SSJ{
 
     void Bullet::SynchronizationObject(Json::Value jsonObject)
     {
-        if(jsonObject.isMember(_J(_mapPositionX))){
-            this->mapPosition.x = jsonObject[_J(_mapPositionX)].asFloat();
+
+        if(!wasFirst){
+            if(jsonObject.isMember(_J(_mapPositionX))){
+                this->mapPosition.x = jsonObject[_J(_mapPositionX)].asFloat();
+            }
+            if(jsonObject.isMember(_J(_mapPositionY))){
+                this->mapPosition.y = jsonObject[_J(_mapPositionY)].asFloat();
+            }
+            if(jsonObject.isMember(_J(_activity))){
+                this->activity = jsonObject[_J(_activity)].asBool();
+            }
+            if(jsonObject.isMember(_J(_angle))){
+                this->angle = jsonObject[_J(_angle)].asFloat();
+            }
+            if(jsonObject.isMember(_J(_targetAngle))){
+                this->targetAngle = jsonObject[_J(_targetAngle)].asFloat();
+            }
+            if(jsonObject.isMember(_J(_syncId))){
+                this->syncId = jsonObject[_J(_syncId)].asInt();
+            }
+            wasFirst = true;
         }
-        if(jsonObject.isMember(_J(_mapPositionY))){
-            this->mapPosition.y = jsonObject[_J(_mapPositionY)].asFloat();
-        }
-        if(jsonObject.isMember(_J(_activity))){
-            this->activity = jsonObject[_J(_activity)].asBool();
-        }
-        if(jsonObject.isMember(_J(_angle))){
-            this->angle = jsonObject[_J(_angle)].asFloat();
-        }
-        if(jsonObject.isMember(_J(_targetAngle))){
-            this->targetAngle = jsonObject[_J(_targetAngle)].asFloat();
-        }
-		if(jsonObject.isMember(_J(_syncId))){
-			this->syncId = jsonObject[_J(_syncId)].asInt();
-		}
     }
 }

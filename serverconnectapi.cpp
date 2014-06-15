@@ -20,7 +20,7 @@ void ServerConnectAPI::deletePointersToObjectFromGameLayers(Object* pointer)
         if(it->second->isDynamic()){
             for(int i =0; i < it->second->getObjects()->size(); i++ ){
                 if( it->second->getObjects()->at(i) == pointer ){
-                    cout << it->second->getObjects()->at(i) << endl;
+                   // cout << it->second->getObjects()->at(i) << endl;
                     it->second->getObjects()->at(i) = NULL;
                     return;
                 }
@@ -53,7 +53,7 @@ void ServerConnectAPI::ServerListener(){
                     reader.parse(temptext, root, false);
                     Json::Value objectsNumber = root[_J(_objectAmount)];
                     const Json::Value arrayToDelete = root[_J(_delete)];
-                    //cout << root << endl;
+                    cout << root << endl;
                     vector <Object*> toDelete;
 
                     if(root[_J(_synchronize)] != Json::nullValue ){
