@@ -28,10 +28,10 @@ namespace SSJ{
         Object(float x, float y);
         Object(Point);
 
-        Point getMapPosition();
+        Point getMapPosition() const;
         void setMapPosition(float x, float y);
         void setMapPosition(Point screenPosition);
-        Point getScreenPosition();
+        Point getScreenPosition() const;
 
 
         virtual void draw() = 0;
