@@ -50,10 +50,12 @@ namespace SSJ{
 
 	void Bullet::update(){
 		this->getSprite().Update();
+        if( (pow(this->getMapPosition().x - ownerPosition.x, 2) + pow(this->getMapPosition().y - ownerPosition.y, 2)) <= pow(this->range*6, 2)){
 
-		this->sprite.getSprite()->setOrigin(this->sprite.getSprite()->getTexture()->getSize().x/2,this->sprite.getSprite()->getTexture()->getSize().y/2 );
-		this->sprite.getSprite()->setRotation(this->angle.getDegrees()-180);
-		
+            this->setMapPosition(CalcNewPosition());
+            this->sprite.getSprite()->setOrigin(this->sprite.getSprite()->getTexture()->getSize().x/2,this->sprite.getSprite()->getTexture()->getSize().y/2 );
+            this->sprite.getSprite()->setRotation(this->angle.getDegrees()-180);
+        }
 	}
 
 	void Bullet::Blast(){

@@ -27,8 +27,8 @@ namespace SSJ{
 
     class LayerContainer{
         private:
-            static map <string,GameLayer*> layers;
         public:
+            static map <string,GameLayer*> layers;
             static void AddGameLayer(GameLayer *);
             static GameLayer* GetGameLayer(string name);
     };

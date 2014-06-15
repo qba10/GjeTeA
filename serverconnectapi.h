@@ -10,6 +10,8 @@ namespace SSJ{
     protected:
           static  sf::TcpSocket* Socket;
             sf::Mutex mutex;
+            static bool isInArray(Json::Value element, Json::Value array);
+            static void deletePointersToObjectFromGameLayers(Object* pointer);
     public:
         void ServerListener();
         static void SendToServer(string);

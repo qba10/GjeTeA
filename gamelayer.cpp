@@ -50,15 +50,17 @@ namespace SSJ{
 
     void GameLayer::UpdateLayer(){
         for(size_t i = 0 ; i < this->objects.size() ; i++ ){
-            if(this->objects.at(i)->isActive())
-                this->objects.at(i)->update();
+            if(this->objects.at(i) != NULL)
+                if(this->objects.at(i)->isActive())
+                    this->objects.at(i)->update();
         }
     }
 
     void GameLayer::DrawLayer(){
         for(size_t i = 0 ; i < this->objects.size() ; i++ ){
-            if(this->objects.at(i)->isActive())
-                this->objects.at(i)->draw();
+            if(this->objects.at(i) != NULL)
+                if(this->objects.at(i)->isActive())
+                    this->objects.at(i)->draw();
         }
     }
 
@@ -77,5 +79,7 @@ namespace SSJ{
     {
         return LayerContainer::layers.at(name);
     }
+
+
 
 }

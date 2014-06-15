@@ -56,8 +56,8 @@ namespace SSJ {
         _objectAmount,
         _synchronize,
         _syncId,
-        _syncPeriod,
-        _syncEvents
+        _delete
+
 
     };
     enum ObjectType{
