@@ -8,16 +8,16 @@ namespace SSJ{
         InteractiveObject();
     protected:
         /*for synchronization by server*/
-        size_t hp;
-        size_t maxHP;
+        int hp;
+        int maxHP;
     public:
-        void setHP(size_t hp);
-        void setMaxHP(size_t hp);
-        void addHP(size_t hp);
-        void subHP(size_t hp);
-        size_t getHP();
-        size_t getMaxHP();
-        bool isDead();
+        void setHP(const int hp);
+        void setMaxHP(const int hp);
+        void addHP(int hp);
+        void subHP(int hp);
+        int getHP() const;
+        int getMaxHP() const;
+        bool isDead() const;
         /**
          * JSON:
          * {

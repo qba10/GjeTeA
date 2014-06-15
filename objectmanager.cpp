@@ -70,6 +70,4 @@ namespace SSJ {
 		DataContainer::ObjectLists.push_back(Temp);
 		LayerContainer::GetGameLayer("trzecia")->addObject(Temp);
 	}
-
-
 }

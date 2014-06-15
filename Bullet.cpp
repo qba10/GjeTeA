@@ -1,8 +1,6 @@
 #include "Bullet.h"
 namespace SSJ{
 
-
-
 	Bullet::Bullet(){
 		//this->setMapPosition(this->ownerPosition);
 		this->sprite.AddTexture("bullet", "./bullet.png");
@@ -43,7 +41,6 @@ namespace SSJ{
 	}
 
 	void Bullet::draw(){
-
 		this->sprite.getSprite()->setPosition(this->getScreenPosition().x, this->getScreenPosition().y);
 		DataContainer::window->draw(*(this->sprite.getSprite()));
 	}
@@ -53,14 +50,13 @@ namespace SSJ{
 
 		this->sprite.getSprite()->setOrigin(this->sprite.getSprite()->getTexture()->getSize().x/2,this->sprite.getSprite()->getTexture()->getSize().y/2 );
 		this->sprite.getSprite()->setRotation(this->angle.getDegrees()-180);
-		
 	}
+
 
 	void Bullet::Blast(){
 		this->sprite.getSprite()->setPosition(this->getScreenPosition().x, this->getScreenPosition().y);
 		DataContainer::window->draw(*(this->sprite.getSprite()));
 		this->getSprite().getAnimation("wybuch")->start();
-
 	}
 
 	void Bullet::Hit(){
@@ -68,7 +64,6 @@ namespace SSJ{
 	}
 
 	Point Bullet::CalcNewPosition(){
-
 		Point newPosition = this->getMapPosition();
         SSJ::Degrees tempDegrees = this->angle;
 		double s = this->velocity * 100 * DataContainer::DeltaTime.asSeconds();
@@ -78,6 +73,32 @@ namespace SSJ{
         newPosition.y -= py;
         return newPosition;
     }
+
+
+	void Bullet::setOwnerPosition(const Point ownerPosition){
+		this->ownerPosition = ownerPosition;
+	}
+
+	void Bullet::setRange(const int range){
+		this->range = range;
+	}
+
+	void Bullet::setName(const string name){
+		this->name = name;
+	}
+
+	void Bullet::setDamage(const int damage){
+		this->damage = damage;
+	}
+
+	void Bullet::setBlastFire(const bool blastFire){
+		this->blastFire = blastFire;
+	}
+
+	void Bullet::setBlastRange(const int blastRange){
+		this->blastRange = blastRange;
+	}
+
     WeaponType Bullet::getType() const
     {
         return type;
@@ -108,7 +129,6 @@ namespace SSJ{
         }
 		if(jsonObject.isMember(_J(_syncId))){
 			this->syncId = jsonObject[_J(_syncId)].asInt();
-        }
-
+		}
     }
 }

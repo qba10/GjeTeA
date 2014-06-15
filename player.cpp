@@ -21,7 +21,6 @@ namespace SSJ {
         animation->AddFrame("./sprite/mainPlayerChodzenie/mainChodzenie5.png");
         this->sprite.AddAnimation(animation);
         this->sprite.ActiveAnimation("chodzenie");
-
     }
 
     void Player::draw()
@@ -42,9 +41,8 @@ namespace SSJ {
         this->sprite.getSprite()->setOrigin(this->sprite.getSprite()->getTexture()->getSize().x/2,this->sprite.getSprite()->getTexture()->getSize().y/2 );
         this->sprite.getSprite()->setRotation(this->angle.getDegrees()-180);
         this->sprite.getSprite()->setPosition(this->getScreenPosition().x, this->getScreenPosition().y);
-
-
     }
+
     void Player::SynchronizationObject(Json::Value jsonObject)
     {
         if(jsonObject.isMember(_J(_mapPositionX))){

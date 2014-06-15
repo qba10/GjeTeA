@@ -10,8 +10,6 @@ namespace SSJ {
         Json::FastWriter writer;
  
         ServerConnectAPI::SendToServer(writer.write(object));
-
-
     }
 
     void ServerApi::AskToSynchronizeMainPlayer()
@@ -31,13 +29,10 @@ namespace SSJ {
 
 	void ServerApi::AskToCreateBullet(Json::Value parameters){
         ServerApi::CreateRequest(_createBullet, parameters);
-		
 	}
 
 	void ServerApi::AskToCreateWeapon(Json::Value parameters){
         ServerApi::CreateRequest(_createWeapon, parameters);
 	}
-
-
 
 }

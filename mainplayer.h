@@ -16,8 +16,8 @@ namespace SSJ{
 		vector <Weapon*> equipWeapon;
     public:
         MainPlayer();
-		void eventMouseButtonReleased(sf::Event event);
 		void eventMouseButtonPressed(sf::Event event);
+		void eventMouseButtonReleased(sf::Event event);
 		void eventMouseMoved(sf::Event event);
         void eventStartMoveForward(sf::Event event);
         void eventStartMoveBackward(sf::Event event);
@@ -29,22 +29,22 @@ namespace SSJ{
         void eventStopMoveRight(sf::Event event);
 		void eventReload(sf::Event event);
 		void eventMouseWheel(sf::Event event);
+
+		bool getMoveLeft() const;
+        void setMoveLeft(const bool value);
+        bool getMoveRight() const;
+        void setMoveRight(const bool value);
+        bool getMoveForward() const;
+        void setMoveForward(const bool value);
+        bool getMoveBackward() const;
+        void setMoveBackward(const bool value);
+
         void draw();
         void update();
-        bool getMoveLeft() const;
-        void setMoveLeft(bool value);
-        bool getMoveRight() const;
-        void setMoveRight(bool value);
-        bool getMoveForward() const;
-        void setMoveForward(bool value);
-        bool getMoveBackward() const;
-        void setMoveBackward(bool value);
-		Weapon* getWeapon0();
 		Weapon* getWeapon1();
-		Weapon* getWeapon2();
+		Weapon* getSelectedWeapon(int) const ;
 		
-        /**
-         * JSON:
+        /* JSON:
          * {
          *      mapPositionX: "",
          *      mapPositionY: "",

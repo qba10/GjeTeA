@@ -14,7 +14,6 @@ namespace SSJ{
         name = value;
     }
 
-
     bool GameLayer::isDynamic() const
     {
         return dynamic;
@@ -24,6 +23,7 @@ namespace SSJ{
     {
         dynamic = value;
     }
+
     GameLayer::GameLayer(string name)
     {
         this->name = name;
@@ -40,8 +40,6 @@ namespace SSJ{
 
         this->objects.push_back(object);
     }
-
-
 
     bool GameLayer::isEmpty() const{
         return this->objects.empty();
@@ -65,7 +63,6 @@ namespace SSJ{
     size_t GameLayer::AmountOfObjects(){
         return this->objects.size();
     }
-
 
 
     void LayerContainer::AddGameLayer(GameLayer * gameLayer)

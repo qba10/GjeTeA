@@ -7,8 +7,6 @@
 #include <iostream>
 using namespace std;
 namespace SSJ {
-
-
     class Animation
     {
     private:

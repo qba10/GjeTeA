@@ -2,141 +2,140 @@
 namespace SSJ{
 	Point BulletFactory::ownerPosition;
 
-	void BulletFactory::setOwnerPosition(Point ownerPosition){
+	void BulletFactory::setOwnerPosition(const Point ownerPosition){
 		BulletFactory::ownerPosition = ownerPosition;
 	}
 
 	SSJ::Degrees BulletFactory::ownerAngle;
 
-	void BulletFactory::setOwnerAngle(SSJ::Degrees ownerAngle){
+	void BulletFactory::setOwnerAngle(const SSJ::Degrees ownerAngle){
 		BulletFactory::ownerAngle = ownerAngle;
 	}
 
 	Bullet* BulletFactory::CreateGlockBullet(){
 		Bullet* GlockBullet = new Bullet();
-		GlockBullet->name =				"Glock";
+		GlockBullet->setName(			"Glock");
         GlockBullet->setType(           Glock);
-		GlockBullet->range =			200;
+		GlockBullet->setRange(			200);
 		GlockBullet->setVelocity(		10);
-		GlockBullet->damage =			25;
-		GlockBullet->blastFire =		false;
-        GlockBullet->blastRange =		0;
-		GlockBullet->ownerPosition =	BulletFactory::ownerPosition;
+		GlockBullet->setDamage(			25);
+		GlockBullet->setBlastFire(		false);
+		GlockBullet->setBlastRange(		0);
+		GlockBullet->setOwnerPosition(	BulletFactory::ownerPosition);
 		GlockBullet->setMapPosition(	BulletFactory::ownerPosition);
 		GlockBullet->setAngle(			BulletFactory::ownerAngle);
 		return GlockBullet;
 	}
 	Bullet* BulletFactory::CreateUziBullet(){
 		Bullet* UziBullet = new Bullet();
-		UziBullet->name =				"Uzi";
+		UziBullet->setName(				"Uzi");
         UziBullet->setType(             Uzi);
-		UziBullet->range =				250;
+		UziBullet->setRange(			250);
 		UziBullet->setVelocity(			12);
-		UziBullet->damage =				10;
-		UziBullet->blastFire =			false;
-        UziBullet->blastRange =			0;
-		UziBullet->ownerPosition =		BulletFactory::ownerPosition;
+		UziBullet->setDamage(			10);
+		UziBullet->setBlastFire(		false);
+        UziBullet->setBlastRange(		0);
+		UziBullet->setOwnerPosition(	BulletFactory::ownerPosition);
 		UziBullet->setMapPosition(		BulletFactory::ownerPosition);
 		UziBullet->setAngle(			BulletFactory::ownerAngle);
 		return UziBullet;
 	}
 	Bullet* BulletFactory::CreateAk47Bullet(){
 		Bullet* Ak47Bullet = new Bullet();
-		Ak47Bullet->name =				"Ak-47";
+		Ak47Bullet->setName(			"Ak-47");
         Ak47Bullet->setType(            Ak47);
-		Ak47Bullet->range =				400;
+		Ak47Bullet->setRange(			400);
 		Ak47Bullet->setVelocity(		18);
-		Ak47Bullet->damage =			15;
-		Ak47Bullet->blastFire =			false;
-        Ak47Bullet->blastRange =		0;
-		Ak47Bullet->ownerPosition =		BulletFactory::ownerPosition;
+		Ak47Bullet->setDamage(			15);
+		Ak47Bullet->setBlastFire(		false);
+        Ak47Bullet->setBlastRange(		0);
+		Ak47Bullet->setOwnerPosition(	BulletFactory::ownerPosition);
 		Ak47Bullet->setMapPosition(		BulletFactory::ownerPosition);
 		Ak47Bullet->setAngle(			BulletFactory::ownerAngle);
 		return Ak47Bullet;
 	}
 	Bullet* BulletFactory::CreateM16Bullet(){
 		Bullet* M16Bullet = new Bullet();
-		M16Bullet->name =				"M-16";
+		M16Bullet->setName(				"M-16");
         M16Bullet->setType(             M16);
-		M16Bullet->range =				400;
+		M16Bullet->setRange(			400);
 		M16Bullet->setVelocity(			18);
-		M16Bullet->damage =				12;
-		M16Bullet->blastFire =			false;
-        M16Bullet->blastRange =			0;
-		M16Bullet->ownerPosition =		BulletFactory::ownerPosition;
+		M16Bullet->setDamage(			12);
+		M16Bullet->setBlastFire(		false);
+        M16Bullet->setBlastRange(		0);
+		M16Bullet->setOwnerPosition(	BulletFactory::ownerPosition);
 		M16Bullet->setMapPosition(		BulletFactory::ownerPosition);
 		M16Bullet->setAngle(			BulletFactory::ownerAngle);
 		return M16Bullet;
 	}
 	Bullet* BulletFactory::CreateShotgunBullet(){
 		Bullet* ShotgunBullet = new Bullet();
-		ShotgunBullet->name =			"Shotgun";
+		ShotgunBullet->setName(			"Shotgun");
         ShotgunBullet->setType(         Shotgun);
-		ShotgunBullet->range =			150;
+		ShotgunBullet->setRange(		150);
 		ShotgunBullet->setVelocity(		14);
-		ShotgunBullet->damage =			50;
-		ShotgunBullet->blastFire =		true;
-		ShotgunBullet->blastRange =		20;
-		ShotgunBullet->ownerPosition =	BulletFactory::ownerPosition;
+		ShotgunBullet->setDamage(		50);
+		ShotgunBullet->setBlastFire(	true);
+		ShotgunBullet->setBlastRange(	20);
+		ShotgunBullet->setOwnerPosition(BulletFactory::ownerPosition);
 		ShotgunBullet->setMapPosition(	BulletFactory::ownerPosition);
 		ShotgunBullet->setAngle(		BulletFactory::ownerAngle);
 		return ShotgunBullet;
 	}
 	Bullet* BulletFactory::CreateSniperRifleBullet(){
 		Bullet* SniperRifleBullet = new Bullet();
-		SniperRifleBullet->name =		"Sniper rifle";
-        SniperRifleBullet->setType(     SniperRifle);
-		SniperRifleBullet->range =		500;
-		SniperRifleBullet->setVelocity(	16);
-		SniperRifleBullet->damage =		100;
-		SniperRifleBullet->blastFire =	false;
-        SniperRifleBullet->blastRange =	0;
-		SniperRifleBullet->ownerPosition =	BulletFactory::ownerPosition;
+		SniperRifleBullet->setName(			"Sniper rifle");
+        SniperRifleBullet->setType(			SniperRifle);
+		SniperRifleBullet->setRange(		500);
+		SniperRifleBullet->setVelocity(		16);
+		SniperRifleBullet->setDamage(		100);
+		SniperRifleBullet->setBlastFire(	false);
+        SniperRifleBullet->setBlastRange(	0);
+		SniperRifleBullet->setOwnerPosition(BulletFactory::ownerPosition);
 		SniperRifleBullet->setMapPosition(	BulletFactory::ownerPosition);
 		SniperRifleBullet->setAngle(		BulletFactory::ownerAngle);
 		return SniperRifleBullet;
 	}
 	Bullet* BulletFactory::CreateBazookaBullet(){
 		Bullet* BazookaBullet = new Bullet();
-		BazookaBullet->name =			"Bazooka";
+		BazookaBullet->setName(			"Bazooka");
         BazookaBullet->setType(         Bazooka);
-		BazookaBullet->range =			300;
+		BazookaBullet->setRange(		300);
 		BazookaBullet->setVelocity(		4);
-		BazookaBullet->damage =			100;
-		BazookaBullet->blastFire =		true;
-		BazookaBullet->blastRange =		100;
-		BazookaBullet->ownerPosition =	BulletFactory::ownerPosition;
+		BazookaBullet->setDamage(		100);
+		BazookaBullet->setBlastFire(	true);
+		BazookaBullet->setBlastRange(	100);
+		BazookaBullet->setOwnerPosition(BulletFactory::ownerPosition);
 		BazookaBullet->setMapPosition(	BulletFactory::ownerPosition);
 		BazookaBullet->setAngle(		BulletFactory::ownerAngle);
 		return BazookaBullet;
 	}
 	Bullet* BulletFactory::CreateGrenadeBullet(){
 		Bullet* GrenadeBullet = new Bullet();
-		GrenadeBullet->name =			"Grenade";
+		GrenadeBullet->setName(			"Grenade");
         GrenadeBullet->setType(         Grenade);
-		GrenadeBullet->range =			250;
+		GrenadeBullet->setRange(		250);
 		GrenadeBullet->setVelocity(		6);
-		GrenadeBullet->damage =			100;
-		GrenadeBullet->blastFire =		true;
-		GrenadeBullet->blastRange =		70;
-		GrenadeBullet->ownerPosition =	BulletFactory::ownerPosition;
+		GrenadeBullet->setDamage(		100);
+		GrenadeBullet->setBlastFire(	true);
+		GrenadeBullet->setBlastRange(		70);
+		GrenadeBullet->setOwnerPosition(BulletFactory::ownerPosition);
 		GrenadeBullet->setMapPosition(	BulletFactory::ownerPosition);
 		GrenadeBullet->setAngle(		BulletFactory::ownerAngle);
 		return GrenadeBullet;
 	}
 	Bullet* BulletFactory::CreateKnifeBullet(){
 		Bullet* KnifeBullet = new Bullet();
-		KnifeBullet->name =				"Knife";
+		KnifeBullet->setName(			"Knife");
         KnifeBullet->setType(           Knife);
-		KnifeBullet->range =			25;
+		KnifeBullet->setRange(			25);
         KnifeBullet->setVelocity(		0);
-		KnifeBullet->damage =			35;
-		KnifeBullet->blastFire =		false;
-        KnifeBullet->blastRange =		0;
-		KnifeBullet->ownerPosition =	BulletFactory::ownerPosition;
+		KnifeBullet->setDamage(			35);
+		KnifeBullet->setBlastFire(		false);
+        KnifeBullet->setBlastRange(		0);
+		KnifeBullet->setOwnerPosition(	BulletFactory::ownerPosition);
 		KnifeBullet->setMapPosition(	BulletFactory::ownerPosition);
 		KnifeBullet->setAngle(			BulletFactory::ownerAngle);
 		return KnifeBullet;
 	}
-
 }

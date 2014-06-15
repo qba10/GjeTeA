@@ -2,6 +2,32 @@
 namespace SSJ {
 	
 
+	void Object::AddAction(sf::Event::EventType type,  Object*  object, ActionEvent function){
+        Event temp;
+        temp.ActionFunction = function;
+        temp.EventType = type;
+        temp.object = object;
+        DataContainer::EventList.push_back(temp);
+    }
+
+    void Object::AddActionKeyboard(sf::Event::EventType type, sf::Keyboard::Key key,  Object*  object , ActionEvent function){
+        Event temp;
+        temp.ActionFunction = function;
+        temp.EventType = type;
+        temp.KeyAction =  key;
+        temp.object = object;
+        DataContainer::EventList.push_back(temp);
+    }
+
+	Object::Object(){
+        this->mapPosition.x = 0;
+        this->mapPosition.y = 0;
+        this->desynchronization = false;
+		syncId = -1;
+        this->activity = true;
+
+    }
+
     Object::Object(double x, double y){
         this->mapPosition.x = x;
         this->mapPosition.y = y;
@@ -17,43 +43,45 @@ namespace SSJ {
         this->activity = true;
     }
 
-    Object::Object(){
-        this->mapPosition.x = 0;
-        this->mapPosition.y = 0;
-        this->desynchronization = false;
-		syncId = -1;
-        this->activity = true;
+    
 
-    }
-
-    Point Object::getMapPosition(){
+    Point Object::getMapPosition() const{
         return mapPosition;
     }
 
-    void Object::setMapPosition(double x, double y){
+    void Object::setMapPosition(const double x, const double y){
         this->mapPosition.x = x;
         this->mapPosition.y = y;
     }
 
-    void Object::setMapPosition(Point position){
+    void Object::setMapPosition(const Point position){
         this->mapPosition = position;
     }
 
-    Point Object::getScreenPosition()
+    Point Object::getScreenPosition() const
     {
         return Helpers::getOnScreenPosition(this->mapPosition);
     }
 
 
-    Sprite Object::getSprite()
+	void Object::setActivity(const bool activity){
+        this->activity = activity;
+    }
+
+    bool Object::isActive() const{
+        return activity;
+    }
+
+    Sprite Object::getSprite() const
     {
         return sprite;
     }
 
-    void Object::setSprite( Sprite value)
+    void Object::setSprite(const Sprite value)
     {
         sprite = value;
     }
+	
 
     bool Object::isDesynchronization() const
     {
@@ -64,33 +92,7 @@ namespace SSJ {
     {
         desynchronization = value;
     }
-    void Object::AddAction(sf::Event::EventType type,  Object*  object, ActionEvent function){
-        Event temp;
-        temp.ActionFunction = function;
-        temp.EventType = type;
-        temp.object = object;
-        DataContainer::EventList.push_back(temp);
-
-    }
-
-    void Object::AddActionKeyboard(sf::Event::EventType type, sf::Keyboard::Key key,  Object*  object , ActionEvent function){
-        Event temp;
-        temp.ActionFunction = function;
-        temp.EventType = type;
-        temp.KeyAction =  key;
-        temp.object = object;
-        DataContainer::EventList.push_back(temp);
-
-    }
-
-    void Object::setActivity(bool activity){
-        this->activity = activity;
-    }
-
-    bool Object::isActive(){
-        return activity;
-    }
-
+    
     void Object::SynchronizationObject(Json::Value jsonObject)
     {
 		if(jsonObject.isMember(_J(_activity))){
@@ -104,7 +106,6 @@ namespace SSJ {
 			if(jsonObject.isMember(_J(_mapPositionY))){
 				this->mapPosition.y = jsonObject[_J(_mapPositionY)].asDouble();
 			}
-        
 		}
     }
 }

@@ -1,6 +1,7 @@
 #include "staticobject.h"
 
 namespace SSJ{
+
     StaticObject::StaticObject()
     {
 

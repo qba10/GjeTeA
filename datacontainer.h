@@ -3,8 +3,6 @@
 #include "config.h"
 
 namespace SSJ {
-
-
     class DataContainer
     {
     public:

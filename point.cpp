@@ -1,7 +1,6 @@
 #include "point.h"
 namespace SSJ {
 
-
     Point::Point(double x, double y){
         this->x = x;
         this->y = y;
@@ -9,7 +8,5 @@ namespace SSJ {
     Point::Point(){
         this->x = 0;
         this->y = 0;
-
     }
-
 }

@@ -34,7 +34,6 @@ namespace SSJ {
         _createWeapon
 
     };
-
     enum JsonOption{
         _mapPositionX,
         _mapPositionY,
@@ -69,23 +68,17 @@ namespace SSJ {
 		_Weapon
     };
 
-
     class Object;
     using namespace std;
     typedef void(Object::*ActionEvent)(sf::Event);
 
-
     struct Event{
-        Event(){
-             KeyAction = sf::Keyboard::Unknown;
-        }
-         sf::Event::EventType EventType;
-         ActionEvent ActionFunction;
-         sf::Keyboard::Key KeyAction;
-         Object * object;
+		Event(){ KeyAction = sf::Keyboard::Unknown; }
+		sf::Event::EventType EventType;
+		ActionEvent ActionFunction;
+		sf::Keyboard::Key KeyAction;
+		Object * object;
     };
-
-
 
 	struct Request{
         RequestName action;
@@ -96,7 +89,6 @@ namespace SSJ {
     public:
         static string PlayerId;
         static size_t RotationSpeed;
-
     };
 }
 #endif // CONFIG_H

@@ -11,9 +11,4 @@
 #include <sstream>
 
 
-
-
-
-
-
 #endif // LOADER_H

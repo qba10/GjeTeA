@@ -41,6 +41,7 @@ namespace SSJ {
 		this->equipWeapon.push_back(WeaponFactory::CreateBazookaObject());
 				
 		this->weapon1 = equipWeapon.at(this->currentWeaponIndex);
+		this->weapon1->setIsGettingUsed(true);
 		
 		for(int i = 0; i < equipWeapon.size(); i++){
 			LayerContainer::GetGameLayer("trzecia")->addObject(equipWeapon.at(i));
@@ -59,29 +60,6 @@ namespace SSJ {
 	void MainPlayer::eventMouseButtonReleased(sf::Event event){
 		isFiring = false;
 	}
-
-	void MainPlayer::eventReload(sf::Event event){
-		this->weapon1->Reload();
-	}
-
-	void MainPlayer::eventMouseWheel(sf::Event event){
-		if(event.mouseWheel.delta > 0){
-			if(this->currentWeaponIndex == 0)
-				this->currentWeaponIndex = equipWeapon.size() - 1;
-			else
-				this->currentWeaponIndex--;
-		}
-		else{
-			if(this->currentWeaponIndex == equipWeapon.size() - 1)
-				this->currentWeaponIndex = 0;
-			else
-				this->currentWeaponIndex++;
-		}
-
-		this->weapon1 = equipWeapon.at(this->currentWeaponIndex);
-	}
-
-
 
 	void MainPlayer::eventMouseMoved(sf::Event event){
 
@@ -162,41 +140,43 @@ namespace SSJ {
         this->setMoveRight(false);
     }
 
-	Weapon* MainPlayer::getWeapon0(){
-		int tmp = this->currentWeaponIndex;
-		if(this->currentWeaponIndex == 0)
-				tmp = equipWeapon.size() - 1;
-			else
-				tmp--;
-		return this->equipWeapon.at(tmp);
+	void MainPlayer::eventReload(sf::Event event){
+		this->weapon1->Reload();
 	}
 
-	Weapon* MainPlayer::getWeapon1(){
-		return this->weapon1;
+	void MainPlayer::eventMouseWheel(sf::Event event){
+		if(this->equipWeapon.size() > 1){
+			if(this->equipWeapon.at(this->currentWeaponIndex)->getReloading()){
+				this->equipWeapon.at(this->currentWeaponIndex)->setReloading(false);
+			}
+
+			this->equipWeapon.at(this->currentWeaponIndex)->setIsGettingUsed(false);
+
+			if(event.mouseWheel.delta > 0){
+				if(this->currentWeaponIndex == 0)
+					this->currentWeaponIndex = equipWeapon.size() - 1;
+				else
+					this->currentWeaponIndex--;
+			}
+			else{
+				if(this->currentWeaponIndex == equipWeapon.size() - 1)
+					this->currentWeaponIndex = 0;
+				else
+					this->currentWeaponIndex++;
+			}
+
+			this->weapon1 = this->equipWeapon.at(this->currentWeaponIndex);
+			this->weapon1->setIsGettingUsed(true);
+		}
 	}
 
-	Weapon* MainPlayer::getWeapon2(){
-		int tmp = this->currentWeaponIndex;
-		if(this->currentWeaponIndex == equipWeapon.size() - 1)
-				tmp = 0;
-			else
-				tmp++;
-		return this->equipWeapon.at(tmp);
-	}
 
-
-
-    void MainPlayer::draw(){
-
-        DataContainer::window->draw(*(this->sprite.getSprite()));
-    }
-
-    bool MainPlayer::getMoveLeft() const
+	bool MainPlayer::getMoveLeft() const
     {
         return moveLeft;
     }
 
-    void MainPlayer::setMoveLeft(bool value)
+    void MainPlayer::setMoveLeft(const bool value)
     {
         moveLeft = value;
     }
@@ -206,7 +186,7 @@ namespace SSJ {
         return moveRight;
     }
 
-    void MainPlayer::setMoveRight(bool value)
+    void MainPlayer::setMoveRight(const bool value)
     {
 
         moveRight = value;
@@ -217,7 +197,7 @@ namespace SSJ {
         return moveForward;
     }
 
-    void MainPlayer::setMoveForward(bool value)
+    void MainPlayer::setMoveForward(const bool value)
     {
         moveForward = value;
     }
@@ -227,12 +207,17 @@ namespace SSJ {
         return moveBackward;
     }
 
-    void MainPlayer::setMoveBackward(bool value)
+    void MainPlayer::setMoveBackward(const bool value)
     {
         moveBackward = value;
     }
 
-    void MainPlayer::update(){
+
+    void MainPlayer::draw(){
+        DataContainer::window->draw(*(this->sprite.getSprite()));
+    }
+
+	void MainPlayer::update(){
 		this->getSprite().Update();
         this->sprite.getSprite()->setScale(2.f,2.f);
 
@@ -248,7 +233,7 @@ namespace SSJ {
             this->MoveForward();
 		if(isFiring){
 			weapon1->Shoot();	
-			if(!weapon1->repeatFire){
+			if(!weapon1->getRepeatFire()){
 				isFiring = false;
 			}
 		}
@@ -256,13 +241,30 @@ namespace SSJ {
        this->sprite.getSprite()->setOrigin(this->sprite.getSprite()->getTexture()->getSize().x/2,this->sprite.getSprite()->getTexture()->getSize().y/2 );
        this->sprite.getSprite()->setRotation(this->angle.getDegrees()-180);
 
-        DataContainer::ScreenPosition.x = this->getMapPosition().x+this->sprite.getSprite()->getOrigin().x - (DataContainer::ScreenWidth)/2;
-        DataContainer::ScreenPosition.y = this->getMapPosition().y+this->sprite.getSprite()->getOrigin().y - (DataContainer::ScreenHeight)/2;
+       DataContainer::ScreenPosition.x = this->getMapPosition().x+this->sprite.getSprite()->getOrigin().x - (DataContainer::ScreenWidth)/2;
+       DataContainer::ScreenPosition.y = this->getMapPosition().y+this->sprite.getSprite()->getOrigin().y - (DataContainer::ScreenHeight)/2;
 
-        this->sprite.getSprite()->setPosition(this->getScreenPosition().x, this->getScreenPosition().y);
-
-
+       this->sprite.getSprite()->setPosition(this->getScreenPosition().x, this->getScreenPosition().y);
     }
+
+	Weapon* MainPlayer::getWeapon1(){
+		return this->weapon1;
+	}
+
+	Weapon* MainPlayer::getSelectedWeapon(int number) const{
+		int tmp = number;
+		
+		if(tmp >= 0)
+			return this->equipWeapon.at( (this->currentWeaponIndex + tmp) % this->equipWeapon.size() );
+		else{
+			if((abs(tmp) % this->equipWeapon.size()) <= this->currentWeaponIndex)
+				return this->equipWeapon.at(this->currentWeaponIndex + tmp);
+			else
+				return this->equipWeapon.at( this->equipWeapon.size() - ((abs(tmp) % this->equipWeapon.size()) - this->currentWeaponIndex) );
+		}
+	}
+
+
     void MainPlayer::SynchronizationObject(Json::Value jsonObject)
     {
         if(jsonObject.isMember(_J(_mapPositionX))){

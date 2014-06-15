@@ -4,45 +4,44 @@ namespace  SSJ {
 
     InteractiveObject::InteractiveObject() : Object()
     {
-
         this->maxHP = 100;
         this->hp = 100;
     }
 
-    void InteractiveObject::setHP(size_t hp)
+    void InteractiveObject::setHP(const int hp)
     {
         if(this->maxHP <= hp && hp >= 0)
             this->hp = hp;
     }
 
-    void InteractiveObject::setMaxHP(size_t hp)
+    void InteractiveObject::setMaxHP(const int hp)
     {
         this->maxHP = hp;
     }
 
-    void InteractiveObject::addHP(size_t hp)
+    void InteractiveObject::addHP(int hp)
     {
      if(this->maxHP <= this->hp+hp && this->hp+hp >= 0)
          this->hp += hp;
     }
 
-    void InteractiveObject::subHP(size_t hp)
+    void InteractiveObject::subHP(int hp)
     {
         if(this->maxHP <= this->hp-hp && this->hp-hp >= 0)
             this->hp -= hp;
     }
 
-    size_t InteractiveObject::getHP()
+    int InteractiveObject::getHP() const
     {
         return this->hp;
     }
 
-    size_t InteractiveObject::getMaxHP()
+    int InteractiveObject::getMaxHP() const
     {
         return this->maxHP;
     }
 
-    bool InteractiveObject::isDead(){
+    bool InteractiveObject::isDead() const{
         if(this->hp == 0)
             return true;
         else
@@ -66,6 +65,5 @@ namespace  SSJ {
         if(jsonObject.isMember(_J(_maxHP))){
             this->maxHP = jsonObject[_J(_maxHP)].asUInt();
         }
-
     }
 }
