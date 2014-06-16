@@ -53,7 +53,7 @@ void ServerConnectAPI::ServerListener(){
                     reader.parse(temptext, root, false);
                     Json::Value objectsNumber = root[_J(_objectAmount)];
                     const Json::Value arrayToDelete = root[_J(_delete)];
-                    cout << root << endl;
+                    //cout << root << endl;
                     vector <Object*> toDelete;
 
                     if(root[_J(_synchronize)] != Json::nullValue ){

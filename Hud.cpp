@@ -115,11 +115,17 @@ namespace SSJ{
 			rHp.setPosition(DataContainer::ScreenWidth-150, DataContainer::ScreenHeight-30);
 			DataContainer::window->draw(rHp);
 
-
 			sf::RectangleShape rLackHp(sf::Vector2f(lackHp, 20));
 			rLackHp.setFillColor(sf::Color(Cornflower,60));
 			rLackHp.setPosition(DataContainer::ScreenWidth-150+hp, DataContainer::ScreenHeight-30);
 			DataContainer::window->draw(rLackHp);
+
+            std::string sfrags = "DEATHS: " + intToString(dynamic_cast<MainPlayer*>(DataContainer::MainPlayer)->getFrags());
+            sf::Text tfrags(sfrags, consola);
+            tfrags.setCharacterSize(30);
+            tfrags.setColor(sf::Color::Cyan);
+            tfrags.setPosition(DataContainer::ScreenWidth/2,50);
+            DataContainer::window->draw(tfrags);
 
 		}
 

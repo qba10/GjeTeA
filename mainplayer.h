@@ -11,6 +11,7 @@ namespace SSJ{
         bool moveForward;
         bool moveBackward;
 		int currentWeaponIndex;
+        int frags;
 	protected:
 		Weapon* weapon1;
 		vector <Weapon*> equipWeapon;
@@ -59,6 +60,8 @@ namespace SSJ{
          */
         void SynchronizationObject(Json::Value);
         Json::Value SerializeMainPlayer();
+        int getFrags() const;
+        void setFrags(int value);
     };
 }
 

@@ -61,7 +61,7 @@ namespace SSJ {
 			DataContainer::ObjectLists.push_back(Temp);
 		else
 			DataContainer::ObjectLists[indeks] = Temp;
-		LayerContainer::GetGameLayer("trzecia")->addObject(Temp);
+        LayerContainer::GetGameLayer("trzecia")->addObject(Temp);
 	}
 
 	void ObjectManager::CreateWeapon(Json::Value object){

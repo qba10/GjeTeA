@@ -2,11 +2,21 @@
 namespace SSJ {
 
 
-    MainPlayer::MainPlayer() : Player()
-    {
-        this->setActivity(true);
-		this->setMaxHP(100);
-        this->velocity = 200.0;
+
+int MainPlayer::getFrags() const
+{
+    return frags;
+}
+
+void MainPlayer::setFrags(int value)
+{
+    frags = value;
+}
+MainPlayer::MainPlayer() : Player()
+{
+    this->setActivity(true);
+    this->setMaxHP(100);
+    this->velocity = 200.0;
 		this->setHP(this->getMaxHP());
 		this->isFiring = false;
 
@@ -14,6 +24,7 @@ namespace SSJ {
         this->moveForward = false;
         this->moveLeft = false;
         this->moveRight = false;
+        frags = 0;
 
 		//this->getSprite().AddTexture("dead", "sprite/deadplayer.png");
 
@@ -301,6 +312,9 @@ namespace SSJ {
         }
 		if(jsonObject.isMember(_J(_syncId))){
 			this->syncId = jsonObject[_J(_syncId)].asInt();
+        }
+        if(jsonObject.isMember(_J(_deaths))){
+            this->frags = jsonObject[_J(_deaths)].asInt();
         }
 
     }
